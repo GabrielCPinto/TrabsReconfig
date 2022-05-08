@@ -1,5 +1,3 @@
---Está perto de dar certo
-
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 
@@ -22,6 +20,11 @@ PROCESS(nrst, clk_in, abus_in, dbus_in, wr_en, rd_en)
 	BEGIN
 		IF nrst = '0' THEN
 			dbus_out <= (OTHERS => '0');
+			irp_out <= '0';
+			rp_out <= (OTHERS => '0');
+			z_out <= '0';
+			dc_out <= '0';
+			c_out <= '0';			
 		ELSIF RISING_EDGE(clk_in) AND abus_in(6 DOWNTO 0) = "0000011" AND wr_en = '1' THEN
 			irp_out <= dbus_in(7);
 			rp_out <= dbus_in (6 DOWNTO 5);

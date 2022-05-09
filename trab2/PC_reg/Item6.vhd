@@ -1,27 +1,7 @@
---É mais ou menos isso aqui. O caminho é esse
-
-LIBRARY ieee;
-USE ieee.std_logic_1164.all;
-
-ENTITY Item6 IS
-	PORT (
-		--Entradas e saidas do PC_reg (Item6)
-		nrst, clk_in : IN STD_LOGIC;
-		addr_in : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-		abus_in : IN STD_LOGIC_VECTOR(8 DOWNTO 0);
-		dbus_in : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-		inc_pc, load_pc : IN STD_LOGIC;
-		wr_en, rd_en : IN STD_LOGIC;
-		stack_push, stack_pop : IN STD_LOGIC;
-		nextpc_out : OUT STD_LOGIC_VECTOR(12 DOWNTO 0);
-		dbus_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-		--Entradas e saidas da Pilha (Item5)
-		stack_in : IN STD_LOGIC_VECTOR(12 DOWNTO 0);
-		stack_out : OUT STD_LOGIC_VECTOR(12 DOWNTO 0)
-	);
-END ENTITY;
+--É mais ou menos isso aqui. FALTA SEPARAR OS PROCESSES E AS LOGICA COMBINACIONAIS
 
 ARCHITECTURE pc_reg OF Item6 IS
+	CONSTANT one : STD_LOGIC_VECTOR(12 DOWNTO 0) := "0000000000001";
 BEGIN
 
 --Lógica combinacional para nextpc
@@ -43,6 +23,7 @@ PROCESS(nrst, clk_in) --PROCESS PCLATH
 		IF nrst = '0' THEN
 		   stack_out <= (OTHERS => '0');
 		   dbus_out <= (OTHERS => '0');
+		   nextpc_out <= (OTHERS => '0');
 		ELSIF RISING_EDGE(clk_in) THEN
 			IF stack_push = '1' THEN 
 				stack_out(0) <= stack_in(0);
@@ -65,18 +46,30 @@ PROCESS(nrst, clk_in) --PROCESS PCLATH
 				stack_out(6) <= stack_in(7);
 				stack_out(12 DOWNTO 7) <= "000000";
 			END IF;
-			IF abus_in(6 DOWNTO 0) = "0000010" AND wr_en = '1' THEN
-				nextpc_out <= (OTHERS => '0');
+			IF inc_pc = '1' THEN
+				nextpc_out <= (stack_in + one);
 			END IF;
-			IF abus_in(6 DOWNTO 0) = "0001010" AND wr_en = '1' THEN
+			IF load_pc = '1' THEN
+				nextpc_out(10 DOWNTO 0) <= addr_in;
+				nextpc_out(12 DOWNTO 11) <= dbus_in(4 DOWNTO 3);
+			END IF;
+			IF abus_in(6 DOWNTO 0) = "0000010" AND wr_en = '1' THEN --Escrita em PCL
+				nextpc_out(7 DOWNTO 0) <= dbus_in;
+				nextpc_out(12 DOWNTO 8) <= dbus_in(4 DOWNTO 0);
+			ELSIF abus_in(6 DOWNTO 0) = "0001010" AND wr_en = '1' THEN --Escrita em PCLath
 				dbus_out <= dbus_in;
-			END IF;			
-		ELSIF inc_pc = '1' THEN
-			nextpc_out <= (OTHERS => '0');
+			END IF;
+			IF abus_in(6 DOWNTO 0) = "0000010" AND rd_en = '1' THEN --Leitura em PCL
+				dbus_out <= dbus_in;
+			ELSIF abus_in(6 DOWNTO 0) = "0001010" AND rd_en = '1' THEN --Leitura em PCLath
+				dbus_out <= dbus_in;
+			ELSE
+				dbus_out <= "ZZZZZZZZ";
+			END IF;
 		END IF;
 	END PROCESS;
 	
 --Lógica combinacional para dbus_out
 
 
-END pc_reg;
+END pc_reg

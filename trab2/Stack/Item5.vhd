@@ -20,7 +20,6 @@ ARCHITECTURE stack OF Pilha IS
 	SIGNAL stack_reg5 : STD_LOGIC_VECTOR(12 DOWNTO 0);
 	SIGNAL stack_reg6 : STD_LOGIC_VECTOR(12 DOWNTO 0);
 	SIGNAL stack_reg7 : STD_LOGIC_VECTOR(12 DOWNTO 0);
-	CONSTANT zero : STD_LOGIC_VECTOR(12 DOWNTO 0) := "0000000000000";
 BEGIN
 PROCESS(nrst, clk_in, stack_push, stack_pop)
 	BEGIN
@@ -36,7 +35,7 @@ PROCESS(nrst, clk_in, stack_push, stack_pop)
 				stack_reg4 <= stack_reg5;
 				stack_reg5 <= stack_reg6;
 				stack_reg6 <= stack_reg7;
-				stack_reg7 <= zero;
+				stack_reg7 <= "0000000000000";
 
 			ELSIF stack_push = '1'  THEN
 				stack_reg7 <= stack_reg6;

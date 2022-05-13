@@ -1,78 +1,99 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
 
 ENTITY PC_reg IS
 	PORT (
-		nrst : IN STD_LOGIC; --Entrada  de  reset  assíncrono.  Quando  ativada  (nível  lógico  baixo),  os  registradores  PC  e 
-		--PCLATH deverão ser zerados. Esta entrada tem preferência sobre todas as outras.
+		nrst : IN STD_LOGIC; --Entrada  de  reset  ass?ncrono.  Quando  ativada  (n?vel  l?gico  baixo),  os  registradores  PC  e 
+		--PCLATH dever?o ser zerados. Esta entrada tem prefer?ncia sobre todas as outras.
 		clk_in : IN STD_LOGIC; --Entrada  de  clock  para  incremento  e  carga  dos  registradores.  O  incremento  ou  a  carga acontece na borda de subida do clock, desde que habilitados.
-		addr_in : IN STD_LOGIC_VECTOR(10 DOWNTO 0); --Entrada de dados para carga no registrador PC, com habilitação através de load_en. 
-		abus_in : IN STD_LOGIC_VECTOR(8 DOWNTO 0); --Entrada de endereçamento para PCL e para o registrador PCLATH. PCL deve ser escrito ou lido quando abus_in[6..0] = “0000010”.
-		--O registrador PCLATH deve ser escrito ou lido quando abus_in[6..0] = “0001010”. Dessa forma, nos dois casos, apenas os 7 bits menos significativos de abus_in devem ser usados.
-		-- Os outros dois bits não importam. 
-		dbus_in : IN STD_LOGIC_VECTOR(7 DOWNTO 0); --Entrada  de  dados  para  escrita  em  PCL  e  PCLATH, com habilitação  através de  wr_en, e endereçamento por abus_in.
-		inc_pc : IN STD_LOGIC; --Entrada de habilitação para incremento. Quando ativada (nível lógico alto), o registrador PC  deverá  ser  incrementado,
-		-- síncrono  com  clk_in.  Essa  entrada  tem  preferência  sobre load_pc e wr_en.
-		load_pc : IN STD_LOGIC; --Entrada  de  habilitação  para  carga.  Quando  ativada  (nível  lógico  alto),  os  bits  10  a  0  do 
-		--registrador PC devem ser carregados com o valor de addr_in e, ao mesmo tempo, os bits 12 a 11 de PC devem ser carregados com o conteúdo de PCLATH[4..3]. Esta entrada tem 
-		--preferência sobre wr_ena.
-		wr_en : IN STD_LOGIC; --Entrada de habilitação para escrita nos registradores. Quando ativada (nível lógico  alto), 
-		--PCL ou o registrador PCLATH será escrito, síncrono com clk_in, com o valor de dbus_in, 
-		--desde  que  o  endereço  correspondente,  conforme  especificado  acima,  esteja  presente  em 
-		--abus_in. Caso contrário, nenhuma ação será efetuada. Ao mesmo tempo que uma operação 
-		--de escrita em PCL, os bits 12 a 8 do registrador PC devem ser escritos com o conteúdo dos 5 bits menos significativos de PCLATH (bits 4 a 0). 
-		rd_en : IN STD_LOGIC; --Entrada  de  habilitação para leitura. Quando  ativada (nível lógico  alto), a  saída  dbus_out 
-		--deverá corresponder ao conteúdo da parte baixa de PC (bits 7 a 0 – chamados de PCL) ou 
-		--PCLATH,  desde  que  o  endereço  correspondente,  conforme  especificado  acima,  esteja 
-		--presente em abus_in. Quando desativada ou quando o endereço não corresponder a PCL 
-		--ou PCLATH, a saída deverá ficar em alta impedância (“ZZZZZZZZ”). 
-		stack_push : IN STD_LOGIC; --Entrada de habilitação para colocar valores na pilha. Quando ativada (nível lógico alto), o 
-		--conteúdo atual de PC deve ser transferido para a primeira posição da pilha. O 
-		--funcionamento  da  pilha  é  independente  das  entradas inc_pc, load_en  e  wr_en,  podendo, 
+		addr_in : IN STD_LOGIC_VECTOR(10 DOWNTO 0); --Entrada de dados para carga no registrador PC, com habilita??o atrav?s de load_en. 
+		abus_in : IN STD_LOGIC_VECTOR(8 DOWNTO 0); --Entrada de endere?amento para PCL e para o registrador PCLATH. PCL deve ser escrito ou lido quando abus_in[6..0] = ?0000010?.
+		--O registrador PCLATH deve ser escrito ou lido quando abus_in[6..0] = ?0001010?. Dessa forma, nos dois casos, apenas os 7 bits menos significativos de abus_in devem ser usados.
+		-- Os outros dois bits n?o importam. 
+		dbus_in : IN STD_LOGIC_VECTOR(7 DOWNTO 0); --Entrada  de  dados  para  escrita  em  PCL  e  PCLATH, com habilita??o  atrav?s de  wr_en, e endere?amento por abus_in.
+		inc_pc : IN STD_LOGIC; --Entrada de habilita??o para incremento. Quando ativada (n?vel l?gico alto), o registrador PC  dever?  ser  incrementado,
+		-- s?ncrono  com  clk_in.  Essa  entrada  tem  prefer?ncia  sobre load_pc e wr_en.
+		load_pc : IN STD_LOGIC; --Entrada  de  habilita??o  para  carga.  Quando  ativada  (n?vel  l?gico  alto),  os  bits  10  a  0  do 
+		--registrador PC devem ser carregados com o valor de addr_in e, ao mesmo tempo, os bits 12 a 11 de PC devem ser carregados com o conte?do de PCLATH[4..3]. Esta entrada tem 
+		--prefer?ncia sobre wr_ena.
+		wr_en : IN STD_LOGIC; --Entrada de habilita??o para escrita nos registradores. Quando ativada (n?vel l?gico  alto), 
+		--PCL ou o registrador PCLATH ser? escrito, s?ncrono com clk_in, com o valor de dbus_in, 
+		--desde  que  o  endere?o  correspondente,  conforme  especificado  acima,  esteja  presente  em 
+		--abus_in. Caso contr?rio, nenhuma a??o ser? efetuada. Ao mesmo tempo que uma opera??o 
+		--de escrita em PCL, os bits 12 a 8 do registrador PC devem ser escritos com o conte?do dos 5 bits menos significativos de PCLATH (bits 4 a 0). 
+		rd_en : IN STD_LOGIC; --Entrada  de  habilita??o para leitura. Quando  ativada (n?vel l?gico  alto), a  sa?da  dbus_out 
+		--dever? corresponder ao conte?do da parte baixa de PC (bits 7 a 0 ? chamados de PCL) ou 
+		--PCLATH,  desde  que  o  endere?o  correspondente,  conforme  especificado  acima,  esteja 
+		--presente em abus_in. Quando desativada ou quando o endere?o n?o corresponder a PCL 
+		--ou PCLATH, a sa?da dever? ficar em alta imped?ncia (?ZZZZZZZZ?). 
+		stack_push : IN STD_LOGIC; --Entrada de habilita??o para colocar valores na pilha. Quando ativada (n?vel l?gico alto), o 
+		--conte?do atual de PC deve ser transferido para a primeira posi??o da pilha. O 
+		--funcionamento  da  pilha  ?  independente  das  entradas inc_pc, load_en  e  wr_en,  podendo, 
 		--inclusive, ser ativada ao mesmo tempo que a entrada load_pc. 
-		stack_pop : IN STD_LOGIC; --Entrada de habilitação para retirar valores da pilha. Quando ativada (nível lógico alto), o 
-		--registrador  PC  deve  ser  carregado  com  o  conteúdo  da  primeira  posição  da  pilha.  Essa 
-		--entrada tem preferência sobre inc_pc, load_en e wr_en. 
-		nextpc_out : OUT STD_LOGIC_VECTOR(12 DOWNTO 0); --Saída  do  valor  a  ser  carregado  no  contador  (entrada  do  registrador  PC).  Essa  saída  está 
-		--sempre ativa, não dependendo de habilitação. Quando não for ocorrer mudança no valor 
+		stack_pop : IN STD_LOGIC; --Entrada de habilita??o para retirar valores da pilha. Quando ativada (n?vel l?gico alto), o 
+		--registrador  PC  deve  ser  carregado  com  o  conte?do  da  primeira  posi??o  da  pilha.  Essa 
+		--entrada tem prefer?ncia sobre inc_pc, load_en e wr_en. 
+		nextpc_out : OUT STD_LOGIC_VECTOR(12 DOWNTO 0); --Sa?da  do  valor  a  ser  carregado  no  contador  (entrada  do  registrador  PC).  Essa  sa?da  est? 
+		--sempre ativa, n?o dependendo de habilita??o. Quando n?o for ocorrer mudan?a no valor 
 		--do contador, ou seja, quando nenhuma das entradas stack_pop, inc_pc, load_en ou wr_en 
-		--estiver ativada, essa saída deverá corresponder ao valor atual do contador. 
-		dbus_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0) --Saída  de  dados  lidos  com  habilitação  através  de  rd_en  e  endereçamento  por  abus_in. 
-		--Quando não usada, deverá ficar em alta impedância (“ZZZZZZZZ”).
+		--estiver ativada, essa sa?da dever? corresponder ao valor atual do contador. 
+		stack_in : IN STD_LOGIC_VECTOR(12 DOWNTO 0); --Entrada de dados para a pilha. 
+		stack_out : OUT STD_LOGIC_VECTOR(12 DOWNTO 0); --Saída  correspondente  à  primeira  posição  da  pilha.  Essa  saída  está  sempre  ativa,  não 
+		--dependendo de habilitação
+		dbus_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0) --Sa?da  de  dados  lidos  com  habilita??o  atrav?s  de  rd_en  e  endere?amento  por  abus_in. 
+		--Quando n?o usada, dever? ficar em alta imped?ncia (?ZZZZZZZZ?).
 	);
 END ENTITY;
 
 ARCHITECTURE arch1 OF PC_reg IS
+SIGNAL stack_reg0 : STD_LOGIC_VECTOR(12 DOWNTO 0);
+	SIGNAL stack_reg1 : STD_LOGIC_VECTOR(12 DOWNTO 0);
+	SIGNAL stack_reg2 : STD_LOGIC_VECTOR(12 DOWNTO 0);
+	SIGNAL stack_reg3 : STD_LOGIC_VECTOR(12 DOWNTO 0);
+	SIGNAL stack_reg4 : STD_LOGIC_VECTOR(12 DOWNTO 0);
+	SIGNAL stack_reg5 : STD_LOGIC_VECTOR(12 DOWNTO 0);
+	SIGNAL stack_reg6 : STD_LOGIC_VECTOR(12 DOWNTO 0);
+	SIGNAL stack_reg7 : STD_LOGIC_VECTOR(12 DOWNTO 0);
 BEGIN
+	
+PROCESS(nrst, clk_in, stack_push, stack_pop)
+	BEGIN
+		IF nrst = '0' THEN --reset
+			stack_out <= (OTHERS => '0');
+		ELSIF RISING_EDGE(clk_in) AND (stack_pop = '1' OR stack_push = '1') THEN
+			IF stack_pop = '1' THEN --pop
+				stack_out <= stack_reg0;
+				stack_reg0 <= stack_reg1;
+				stack_reg1 <= stack_reg2;
+				stack_reg2 <= stack_reg3;
+				stack_reg3 <= stack_reg4;
+				stack_reg4 <= stack_reg5;
+				stack_reg5 <= stack_reg6;
+				stack_reg6 <= stack_reg7;
+				stack_reg7 <= "0000000000000";
+
+			ELSIF stack_push = '1'  THEN --push
+				stack_reg7 <= stack_reg6;
+				stack_reg6 <= stack_reg5;
+				stack_reg5 <= stack_reg4;
+				stack_reg4 <= stack_reg3;
+				stack_reg3 <= stack_reg2;
+				stack_reg2 <= stack_reg1;
+				stack_reg1 <= stack_reg0;
+				stack_reg0 <= stack_in;
+			END IF;
+		END IF;
+	END PROCESS;
+	
 PROCESS(nrst, clk_in) --
 	BEGIN
 		IF nrst = '0' THEN --reset
 		   dbus_out <= (OTHERS => '0');
 		   nextpc_out <= (OTHERS => '0');
 		ELSIF RISING_EDGE(clk_in) THEN
-			IF stack_push = '1' THEN 
-				stack_out(0) <= stack_in(0);
-				stack_out(1) <= stack_in(0);
-				stack_out(2) <= stack_in(1);
-				stack_out(3) <= stack_in(2);
-				stack_out(4) <= stack_in(3);
-				stack_out(5) <= stack_in(4);
-				stack_out(6) <= stack_in(5);
-				stack_out(7) <= stack_in(6);
-				stack_out(12 DOWNTO 7) <= "000000";
-			END IF;
-			IF stack_pop = '1' THEN
-				stack_out(0) <= stack_in(1);
-				stack_out(1) <= stack_in(2);
-				stack_out(2) <= stack_in(3);
-				stack_out(3) <= stack_in(4);
-				stack_out(4) <= stack_in(5);
-				stack_out(5) <= stack_in(6);
-				stack_out(6) <= stack_in(7);
-				stack_out(12 DOWNTO 7) <= "000000";
-			END IF;
 			IF inc_pc = '1' THEN
-				nextpc_out <= (stack_in + "0000000000001");
+				nextpc_out <= std_logic_vector(unsigned(stack_in)+1);
 			END IF;
 			IF load_pc = '1' THEN
 				nextpc_out(10 DOWNTO 0) <= addr_in;

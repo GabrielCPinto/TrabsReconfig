@@ -25,11 +25,17 @@ PORT (
 END ENTITY;
 
 ARCHITECTURE arch1 OF RAM_mem IS
+	TYPE memory_type IS ARRAY (0 to 79) OF STD_LOGIC_VECTOR (7 DOWNTO 0);
+	TYPE small_memory_type IS ARRAY (0 DOWNTO 15) OF STD_LOGIC_VECTOR (7 DOWNTO 0);	
+	SIGNAL mem0 : memory_type;
+	SIGNAL mem1 : memory_type;
+	SIGNAL mem2 : memory_type;
+	SIGNAL mem_com : small_memory_type;
 BEGIN
-	PROCESS(nrst)
+	PROCESS(nrst) --RESET GERAL
 		BEGIN
 		IF(nrst = '0') THEN
-			dbus_out <= (OTHERS => 0);
+			
 		END IF;
 	END PROCESS;
 END arch1;

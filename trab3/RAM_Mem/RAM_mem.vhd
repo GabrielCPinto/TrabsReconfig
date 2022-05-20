@@ -25,11 +25,29 @@ PORT (
 END ENTITY;
 
 ARCHITECTURE arch1 OF RAM_mem IS
+	TYPE memory_type IS ARRAY (0 to 79) OF STD_LOGIC_VECTOR (7 DOWNTO 0); --Array de 80 bytes
+	TYPE small_memory_type IS ARRAY (0 DOWNTO 15) OF STD_LOGIC_VECTOR (7 DOWNTO 0);	 --Array 16 bytes
+	
+	SIGNAL mem0 : memory_type; --Primeira área de memória
+	SIGNAL mem1 : memory_type; --Segunda área de memória
+	SIGNAL mem2 : memory_type; --Terceira área de memória
+	SIGNAL mem_com : small_memory_type; --Quarta área de memória
 BEGIN
-	PROCESS(nrst)
+	PROCESS(nrst, clk_in) 
 		BEGIN
-		IF(nrst = '0') THEN
-			dbus_out <= (OTHERS => '0');
+		
+		IF(nrst = '0') THEN  --Limpa toda área da RAM
+			FOR i IN 0 TO 79 LOOP
+				mem0(i) <= (OTHERS <= '0'); 
+				mem1(i) <= (OTHERS <= '0');
+				mem2(i) <= (OTHERS <= '0');
+			END LOOP;
+			
+			FOR i IN 0 TO 15 LOOP 
+				mem_com(i) <= (OTHERS <= '0');
+			END LOOP:
+		ELSIF RISING_EDGE(clk_in) THEN
+			
 		END IF;
 	END PROCESS;
 END arch1;

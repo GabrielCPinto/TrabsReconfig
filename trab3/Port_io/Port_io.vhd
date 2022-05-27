@@ -21,13 +21,13 @@ ENTITY Port_io IS
 --que  o  endereço  correspondente  esteja  presente  em  abus_in.  Quando  essa  entrada  estiver 
 --desativada ou quando o endereço não corresponder, a saída deverá ficar em alta impedância 
 --(“ZZZZZZZZ”).
-		dbus_out : IN STD_LOGIC_VECTOR(7 DOWNTO 0); --Barramento de saída de dados, com 8 bits. Habilitação através de rd_en e endereçamento 
+		dbus_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0); --Barramento de saída de dados, com 8 bits. Habilitação através de rd_en e endereçamento 
 --por abus_in. Durante as operações de leitura, comporta-se como saída. Quando não em uso, 
 --fica  em alta  impedância (“ZZZZZZZZ”).  A operação de  leitura  deve  ser completamente 
 --combinacional, ou seja, não depende de transição de clk_in.
 		port_io : INOUT STD_LOGIC_VECTOR(7 DOWNTO 0) --Porta bidirecional ou seja, modo = INOUT, com 8 bits. A direção será configurada, bit a 
 --bit, através do registrador tris_reg
-	--	port_addr : GENERIC STD_LOGIC; --Especifica o endereço de escrita no registrador port_reg (quando wr_en = ‘1’) ou 
+	--	port_addr : GENERIC STD_LOGIC_VECTOR(8 DOWNTO 0) --Especifica o endereço de escrita no registrador port_reg (quando wr_en = ‘1’) ou 
 --para leitura do latch (quando rd_en = ‘1’).
 	--	tris_addr : generic; --Especifica o endereço de escrita no registrador tris_reg (quando wr_en = ‘1’) ou 
 --para leitura do mesmo registrador (quando rd_en = ‘1’).
@@ -44,35 +44,24 @@ BEGIN
 	PROCESS(nrst, clk_in, dbus_in, wr_en)BEGIN--port_reg
 		IF nrst = '0' THEN
 		   port_io <= (OTHERS => '0');
-		ELSIF RISING_EDGE(clk_in) AND wr_en = '1' THEN
+		ELSIF RISING_EDGE(clk_in) AND (wr_en = '1') THEN
 			port_io <= dbus_in;
 		END IF;		
 	END PROCESS;
 
 	PROCESS(nrst, clk_in, dbus_in, wr_en)BEGIN--tris_reg
 		IF nrst = '0' THEN
-		   port_io <= (OTHERS => '1');
-		ELSIF RISING_EDGE(clk_in) AND wr_en = '1' THEN
-			port_io <= dbus_in;
+			--port_io <= (OTHERS => '1');
+		ELSIF RISING_EDGE(clk_in) AND (wr_en = '1') THEN
+			--port_io <= dbus_in;
 		END IF;		
 	END PROCESS;
 
 
 	PROCESS(port_io, rd_en)BEGIN--latch
-		IF nrst = '0' THEN
-		   port_io <= (OTHERS => '0');
-		ELSIF RISING_EDGE(clk_in) AND wr_en = '1' THEN
-			port_io <= dbus_in;
+		IF (rd_en = '0') THEN
+			dbus_out <= port_io;
 		END IF;		
-	END PROCESS;
-
-	-- Parte sequencial da máquina de estados:
-	PROCESS(nrst, clk_in)
-	BEGIN
-	IF nrst = '0' THEN
-	ELSIF RISING_EDGE(clk_in) THEN
-	
-	END IF;
 	END PROCESS;
 
 END arch1;

@@ -2,6 +2,17 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 
 ENTITY Port_io IS
+	GENERIC(
+	port_addr : integer := 64;--Especifica o endereço de escrita no registrador port_reg (quando wr_en = ‘1’) ou 
+--para leitura do latch (quando rd_en = ‘1’).
+	tris_addr : integer := 10;--Especifica o endereço de escrita no registrador tris_reg (quando wr_en = ‘1’) ou 
+--para leitura do mesmo registrador (quando rd_en = ‘1’).
+	alt_port_addr : integer := 25;--Endereço alternativo a port_addr. Quando não em uso, deve ser configurado com 
+--o mesmo valor de port_addr
+	alt_tris_addr : integer := 100--Endereço alternativo a tris_addr. Quando não em uso, deve ser configurado com o 
+--mesmo valor de tris_addr. 
+	
+	);
 	PORT (
 		nrst : IN STD_LOGIC; --Entrada de reset assíncrono. Quando ativada (nível lógico baixo),  o registrador port_reg 
 --deverá ter todos os seus bits zerados e o registrador tris_reg deverá ter todos os seus bits 
@@ -27,14 +38,6 @@ ENTITY Port_io IS
 --combinacional, ou seja, não depende de transição de clk_in.
 		port_io : INOUT STD_LOGIC_VECTOR(7 DOWNTO 0) --Porta bidirecional ou seja, modo = INOUT, com 8 bits. A direção será configurada, bit a 
 --bit, através do registrador tris_reg
-	--	port_addr : GENERIC STD_LOGIC_VECTOR(8 DOWNTO 0) --Especifica o endereço de escrita no registrador port_reg (quando wr_en = ‘1’) ou 
---para leitura do latch (quando rd_en = ‘1’).
-	--	tris_addr : generic; --Especifica o endereço de escrita no registrador tris_reg (quando wr_en = ‘1’) ou 
---para leitura do mesmo registrador (quando rd_en = ‘1’).
-	--	alt_port_addr : generic; --Endereço alternativo a port_addr. Quando não em uso, deve ser configurado com 
---o mesmo valor de port_addr
-	--	alt_tris_addr : generic --Endereço alternativo a tris_addr. Quando não em uso, deve ser configurado com o 
---mesmo valor de tris_addr. 
 	);
 END ENTITY;
 
@@ -44,7 +47,8 @@ BEGIN
 	PROCESS(nrst, clk_in, dbus_in, wr_en)BEGIN--port_reg
 		IF nrst = '0' THEN
 		   port_io <= (OTHERS => '0');
-		ELSIF RISING_EDGE(clk_in) AND (wr_en = '1') THEN
+		ELSIF RISING_EDGE(clk_in) AND 
+		(wr_en = '1' AND ((abus_in AND port_addr)OR(abus_in AND alt_port_addr))) THEN
 			port_io <= dbus_in;
 		END IF;		
 	END PROCESS;
@@ -52,14 +56,15 @@ BEGIN
 	PROCESS(nrst, clk_in, dbus_in, wr_en)BEGIN--tris_reg
 		IF nrst = '0' THEN
 			--port_io <= (OTHERS => '1');
-		ELSIF RISING_EDGE(clk_in) AND (wr_en = '1') THEN
+		ELSIF RISING_EDGE(clk_in) AND 
+		(wr_en = '1' AND ((abus_in AND tris_addr)OR(abus_in AND alt_tris_addr))) THEN
 			--port_io <= dbus_in;
 		END IF;		
 	END PROCESS;
 
 
 	PROCESS(port_io, rd_en)BEGIN--latch
-		IF (rd_en = '0') THEN
+		IF (rd_en = '0' AND ((abus_in AND port_addr)OR(abus_in AND alt_port_addr))) THEN
 			dbus_out <= port_io;
 		END IF;		
 	END PROCESS;

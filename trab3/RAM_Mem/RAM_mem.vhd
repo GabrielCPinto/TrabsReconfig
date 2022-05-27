@@ -1,53 +1,86 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
 
 ENTITY RAM_mem IS
 PORT (
-	nrst : IN STD_LOGIC; --Entrada de reset assÌncrono. Quando ativada (nÌvel lÛgico baixo), todos os bits da memÛria
---RAM dever„o ser zerados. Esta entrada tem preferÍncia sobre todas as outras.
-	clk_in : IN STD_LOGIC; --Entrada de clock do sistema. A escrita na memÛria acontece na borda de subida do clock,
+	nrst : IN STD_LOGIC; --Entrada de reset ass√≠ncrono. Quando ativada (n√≠vel l√≥gico baixo), todos os bits da mem√≥ria
+--RAM dever√£o ser zerados. Esta entrada tem prefer√™ncia sobre todas as outras.
+	clk_in : IN STD_LOGIC; --Entrada de clock do sistema. A escrita na mem√≥ria acontece na borda de subida do clock,
 --desde que habilitada.
-	wr_en : IN STD_LOGIC; --Entrada de habilitaÁ„o para escrita na memÛria. Quando ativada (nÌvel lÛgico alto), a
---memÛria ser· escrita, sÌncrona com clk_in, com o valor de dbus_in, desde que o endereÁo correspondente esteja 
---presente em abus_in, conforme especificado no item 3.3. Caso contr·rio, nenhuma aÁ„o ser· efetuada. 
-	rd_en : IN STD_LOGIC; --Entrada de habilitaÁ„o para leitura. Quando ativada (nÌvel lÛgico alto), a saÌda dbus_out
---dever· corresponder ao conte˙do da memÛria endereÁada. Quando desativada ou quando o endereÁo n„o corresponder 
---ao especificado no item 3.3, a saÌda dever· ficar em alta imped‚ncia (ìZZZZZZZZî). 
-	abus_in :  IN STD_LOGIC_VECTOR (8 DOWNTO 0); --Entrada de endereÁamento. Aponta a cÈlula de memÛria a ser 
---escrita ou lida, desde que habilitada. As faixas de endereÁo para cada ·rea de memÛria est„o definidas no item 3.3.
-	dbus_in :  IN STD_LOGIC_VECTOR (7 DOWNTO 0); --Entrada de dados para escrita na memÛria, com habilitaÁ„o 
---atravÈs de wr_en, e endereÁamento por abus_in.
-	dbus_out :  OUT STD_LOGIC_VECTOR (7 DOWNTO 0) --Barramento de saÌda de dados, com 8 bits. HabilitaÁ„o a
---travÈs de rd_en e endereÁamento por abus_in. Durante as operaÁıes de leitura, comporta-se como saÌda. 
---Quando n„o em uso, fica em alta imped‚ncia (ìZZZZZZZZî). A operaÁ„o de leitura deve ser completamente
---combinacional, ou seja, n„o depende de transiÁ„o de clk_in.
+	wr_en : IN STD_LOGIC; --Entrada de habilita√ß√£o para escrita na mem√≥ria. Quando ativada (n√≠vel l√≥gico alto), a
+--mem√≥ria ser√° escrita, s√≠ncrona com clk_in, com o valor de dbus_in, desde que o endere√ßo correspondente esteja 
+--presente em abus_in, conforme especificado no item 3.3. Caso contr√°rio, nenhuma a√ß√£o ser√° efetuada. 
+	rd_en : IN STD_LOGIC; --Entrada de habilita√ß√£o para leitura. Quando ativada (n√≠vel l√≥gico alto), a sa√≠da dbus_out
+--dever√° corresponder ao conte√∫do da mem√≥ria endere√ßada. Quando desativada ou quando o endere√ßo n√£o corresponder 
+--ao especificado no item 3.3, a sa√≠da dever√° ficar em alta imped√¢ncia (‚ÄúZZZZZZZZ‚Äù). 
+	abus_in :  IN STD_LOGIC_VECTOR (8 DOWNTO 0); --Entrada de endere√ßamento. Aponta a c√©lula de mem√≥ria a ser 
+--escrita ou lida, desde que habilitada. As faixas de endere√ßo para cada √°rea de mem√≥ria est√£o definidas no item 3.3.
+	dbus_in :  IN STD_LOGIC_VECTOR (7 DOWNTO 0); --Entrada de dados para escrita na mem√≥ria, com habilita√ß√£o 
+--atrav√©s de wr_en, e endere√ßamento por abus_in.
+	dbus_out :  OUT STD_LOGIC_VECTOR (7 DOWNTO 0) --Barramento de sa√≠da de dados, com 8 bits. Habilita√ß√£o a
+--trav√©s de rd_en e endere√ßamento por abus_in. Durante as opera√ß√µes de leitura, comporta-se como sa√≠da. 
+--Quando n√£o em uso, fica em alta imped√¢ncia (‚ÄúZZZZZZZZ‚Äù). A opera√ß√£o de leitura deve ser completamente
+--combinacional, ou seja, n√£o depende de transi√ß√£o de clk_in.
 );
 END ENTITY;
 
 ARCHITECTURE arch1 OF RAM_mem IS
-	TYPE memory_type IS ARRAY (0 to 79) OF STD_LOGIC_VECTOR (7 DOWNTO 0); --Array de 80 bytes
-	TYPE small_memory_type IS ARRAY (0 DOWNTO 15) OF STD_LOGIC_VECTOR (7 DOWNTO 0);	 --Array 16 bytes
+	TYPE memory_type0 IS ARRAY (32 TO 111) OF STD_LOGIC_VECTOR (7 DOWNTO 0); --Array de 80 bytes
+	TYPE memory_type1 IS ARRAY (160 TO 239) OF STD_LOGIC_VECTOR (7 DOWNTO 0); --Array de 80 bytes
+	TYPE memory_type2 IS ARRAY (288 TO 367) OF STD_LOGIC_VECTOR (7 DOWNTO 0); --Array de 80 bytes
+	TYPE small_memory_type IS ARRAY (112 TO 127) OF STD_LOGIC_VECTOR (7 DOWNTO 0);	 --Array 16 bytes
 	
-	SIGNAL mem0 : memory_type; --Primeira ·rea de memÛria
-	SIGNAL mem1 : memory_type; --Segunda ·rea de memÛria
-	SIGNAL mem2 : memory_type; --Terceira ·rea de memÛria
-	SIGNAL mem_com : small_memory_type; --Quarta ·rea de memÛria
+	SIGNAL mem0 : memory_type0; --Primeira √°rea de mem√≥ria
+	SIGNAL mem1 : memory_type1; --Segunda √°rea de mem√≥ria
+	SIGNAL mem2 : memory_type2; --Terceira √°rea de mem√≥ria
+	SIGNAL mem_com : small_memory_type; --Quarta √°rea de mem√≥ria
 BEGIN
 	PROCESS(nrst, clk_in) 
 		BEGIN
 		
-		IF(nrst = '0') THEN  --Limpa toda ·rea da RAM
-			FOR i IN 0 TO 79 LOOP
-				mem0(i) <= (OTHERS <= '0'); 
-				mem1(i) <= (OTHERS <= '0');
-				mem2(i) <= (OTHERS <= '0');
+		IF nrst = '0' THEN  --Limpa toda √°rea da RAM
+			FOR i IN 0 TO 79 LOOP --Loop das √°reas com 80bytes
+				mem0(i) <= (OTHERS => '0'); 
+				mem1(i) <= (OTHERS => '0');
+				mem2(i) <= (OTHERS => '0');
 			END LOOP;
 			
-			FOR i IN 0 TO 15 LOOP 
-				mem_com(i) <= (OTHERS <= '0');
-			END LOOP:
-		ELSIF RISING_EDGE(clk_in) THEN
+			FOR i IN 0 TO 15 LOOP --loop da √°rea com 16bytes
+				mem_com(i) <= (OTHERS => '0');
+			END LOOP;
+			
+		ELSIF RISING_EDGE(clk_in) AND wr_en = '1' THEN  --Escrita na memoria de forma sincrona
+            
+            IF abus_in >= x"20" AND abus_in <= x"6F" THEN --valida√ß√µes da √°rea de memoria selecionada
+				mem0(to_integer(unsigned(abus_in))) <= dbus_in; 
+            ELSIF abus_in >= x"A0" AND abus_in <= x"EF" THEN --valida√ß√µes da √°rea de memoria selecionada
+                mem1(to_integer(unsigned(abus_in))) <= dbus_in; 
+            ELSIF abus_in >= x"120" AND abus_in <= x"16F" THEN --valida√ß√µes da √°rea de memoria selecionada
+                mem2(to_integer(unsigned(abus_in))) <= dbus_in; 
+            ELSIF abus_in >= x"70" AND abus_in <= x"7F" THEN --valida√ß√µes da √°rea de memoria selecionada
+                mem_com(to_integer(unsigned(abus_in))) <= dbus_in; 
+            END IF;
 			
 		END IF;
 	END PROCESS;
+
+    PROCESS(rd_en)
+        BEGIN
+        IF rd_en = '0' THEN
+            dbus_out <= "ZZZZZZZZ";
+        ELSIF rd_en = '1' THEN
+
+            IF abus_in >= x"20" AND abus_in <= x"6F" THEN --valida√ß√µes da √°rea de memoria selecionada
+                dbus_out <= mem0(to_integer(unsigned(abus_in))); 
+            ELSIF abus_in >= x"A0" AND abus_in <= x"EF" THEN --valida√ß√µes da √°rea de memoria selecionada
+                dbus_out <= mem1(to_integer(unsigned(abus_in))); 
+            ELSIF abus_in >= x"120" AND abus_in <= x"16F" THEN --valida√ß√µes da √°rea de memoria selecionada
+                dbus_out <= mem2(to_integer(unsigned(abus_in))); 
+            ELSIF abus_in >= x"70" AND abus_in <= x"7F" THEN --valida√ß√µes da √°rea de memoria selecionada
+                dbus_out <= mem_com(to_integer(unsigned(abus_in))); 
+            END IF;
+
+        END IF;
+    END PROCESS;
 END arch1;

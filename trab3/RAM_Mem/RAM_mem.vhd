@@ -36,24 +36,28 @@ ARCHITECTURE arch1 OF RAM_mem IS
 	SIGNAL mem2 : memory_type2; --Terceira área de memória
 	SIGNAL mem_com : small_memory_type; --Quarta área de memória
 BEGIN
-	PROCESS(nrst, clk_in) 
+	PROCESS(nrst, clk_in, wr_en) 
 		BEGIN
 		
 		IF nrst = '0' THEN  --Limpa toda área da RAM
-			FOR i IN 0 TO 79 LOOP --Loop das áreas com 80bytes
+			FOR i IN 32 TO 111 LOOP --Loop das áreas com 80bytes
 				mem0(i) <= (OTHERS => '0'); 
+			END LOOP;
+			FOR i IN 160 TO 239 LOOP --Loop das áreas com 80bytes
 				mem1(i) <= (OTHERS => '0');
+			END LOOP;
+			FOR i IN 288 TO 367 LOOP --Loop das áreas com 80bytes
 				mem2(i) <= (OTHERS => '0');
 			END LOOP;
 			
-			FOR i IN 0 TO 15 LOOP --loop da área com 16bytes
+			FOR i IN 112 TO 127 LOOP --loop da área com 16bytes
 				mem_com(i) <= (OTHERS => '0');
 			END LOOP;
 			
 		ELSIF RISING_EDGE(clk_in) AND wr_en = '1' THEN  --Escrita na memoria de forma sincrona
             
-            IF abus_in >= x"20" AND abus_in <= x"6F" THEN --validações da área de memoria selecionada
-				mem0(to_integer(unsigned(abus_in))) <= dbus_in; 
+            IF x"20" <= abus_in AND abus_in <= x"6F" THEN --validações da área de memoria selecionada 
+				mem0(33) <= dbus_in; 
             ELSIF abus_in >= x"A0" AND abus_in <= x"EF" THEN --validações da área de memoria selecionada
                 mem1(to_integer(unsigned(abus_in))) <= dbus_in; 
             ELSIF abus_in >= x"120" AND abus_in <= x"16F" THEN --validações da área de memoria selecionada
@@ -65,14 +69,14 @@ BEGIN
 		END IF;
 	END PROCESS;
 
-    PROCESS(rd_en)
+    PROCESS(rd_en,clk_in)
         BEGIN
         IF rd_en = '0' THEN
             dbus_out <= "ZZZZZZZZ";
-        ELSIF rd_en = '1' THEN
+        ELSIF RISING_EDGE(clk_in) AND rd_en = '1' THEN
 
-            IF abus_in >= x"20" AND abus_in <= x"6F" THEN --validações da área de memoria selecionada
-                dbus_out <= mem0(to_integer(unsigned(abus_in))); 
+            IF x"20" <= abus_in AND abus_in <= x"6F" THEN --validações da área de memoria selecionada 
+                dbus_out <= mem0(33); 
             ELSIF abus_in >= x"A0" AND abus_in <= x"EF" THEN --validações da área de memoria selecionada
                 dbus_out <= mem1(to_integer(unsigned(abus_in))); 
             ELSIF abus_in >= x"120" AND abus_in <= x"16F" THEN --validações da área de memoria selecionada

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RAM_mem
-Thu May 19 22:20:06 2022
+Sun May 29 14:22:30 2022
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -13,8 +13,10 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Analysis & Synthesis Messages
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Analysis & Synthesis Messages
 
 
 
@@ -40,15 +42,15 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +------------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu May 19 22:20:06 2022        ;
+; Analysis & Synthesis Status        ; Successful - Sun May 29 14:22:30 2022        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; RAM_mem                                      ;
 ; Top-level Entity Name              ; RAM_mem                                      ;
 ; Family                             ; Cyclone II                                   ;
-; Total logic elements               ; 0                                            ;
-;     Total combinational functions  ; 0                                            ;
-;     Dedicated logic registers      ; 0                                            ;
-; Total registers                    ; 0                                            ;
+; Total logic elements               ; 1,252                                        ;
+;     Total combinational functions  ; 628                                          ;
+;     Dedicated logic registers      ; 632                                          ;
+; Total registers                    ; 632                                          ;
 ; Total pins                         ; 29                                           ;
 ; Total virtual pins                 ; 0                                            ;
 ; Total memory bits                  ; 0                                            ;
@@ -147,37 +149,42 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                     ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                        ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------+
-; RAM_mem.vhd                      ; yes             ; User VHDL File  ; d:/users/1203016/Desktop/Nova pasta (2)/RAM_mem.vhd ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                            ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                               ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------+
+; RAM_mem.vhd                      ; yes             ; User VHDL File  ; C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/trab3/RAM_Mem/RAM_mem.vhd ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------+
 
 
-+-----------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary         ;
-+---------------------------------------------+-------+
-; Resource                                    ; Usage ;
-+---------------------------------------------+-------+
-;                                             ;       ;
-; Total combinational functions               ; 0     ;
-; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 0     ;
-;     -- 3 input functions                    ; 0     ;
-;     -- <=2 input functions                  ; 0     ;
-;                                             ;       ;
-; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 0     ;
-;     -- arithmetic mode                      ; 0     ;
-;                                             ;       ;
-; Total registers                             ; 0     ;
-;     -- Dedicated logic registers            ; 0     ;
-;     -- I/O registers                        ; 0     ;
-;                                             ;       ;
-; I/O pins                                    ; 29    ;
-+---------------------------------------------+-------+
++------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary          ;
++---------------------------------------------+--------+
+; Resource                                    ; Usage  ;
++---------------------------------------------+--------+
+; Estimated Total logic elements              ; 1,252  ;
+;                                             ;        ;
+; Total combinational functions               ; 628    ;
+; Logic element usage by number of LUT inputs ;        ;
+;     -- 4 input functions                    ; 577    ;
+;     -- 3 input functions                    ; 36     ;
+;     -- <=2 input functions                  ; 15     ;
+;                                             ;        ;
+; Logic elements by mode                      ;        ;
+;     -- normal mode                          ; 628    ;
+;     -- arithmetic mode                      ; 0      ;
+;                                             ;        ;
+; Total registers                             ; 632    ;
+;     -- Dedicated logic registers            ; 632    ;
+;     -- I/O registers                        ; 0      ;
+;                                             ;        ;
+; I/O pins                                    ; 29     ;
+; Maximum fan-out node                        ; clk_in ;
+; Maximum fan-out                             ; 632    ;
+; Total fan-out                               ; 4990   ;
+; Average fan-out                             ; 3.87   ;
++---------------------------------------------+--------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -185,9 +192,818 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |RAM_mem                   ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 29   ; 0            ; |RAM_mem            ; work         ;
+; |RAM_mem                   ; 628 (628)         ; 632 (632)    ; 0           ; 0            ; 0       ; 0         ; 29   ; 0            ; |RAM_mem            ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                    ;
++-----------------------------------------+---------------------------------------------+
+; Register name                           ; Reason for Removal                          ;
++-----------------------------------------+---------------------------------------------+
+; mem2[320][0]                            ; Lost fanout                                 ;
+; mem2[336][0]                            ; Lost fanout                                 ;
+; mem2[352][0]                            ; Lost fanout                                 ;
+; mem2[304][0]                            ; Lost fanout                                 ;
+; mem2[328][0]                            ; Lost fanout                                 ;
+; mem2[344][0]                            ; Lost fanout                                 ;
+; mem2[360][0]                            ; Lost fanout                                 ;
+; mem2[312][0]                            ; Lost fanout                                 ;
+; mem2[324][0]                            ; Lost fanout                                 ;
+; mem2[340][0]                            ; Lost fanout                                 ;
+; mem2[356][0]                            ; Lost fanout                                 ;
+; mem2[308][0]                            ; Lost fanout                                 ;
+; mem2[332][0]                            ; Lost fanout                                 ;
+; mem2[348][0]                            ; Lost fanout                                 ;
+; mem2[364][0]                            ; Lost fanout                                 ;
+; mem2[316][0]                            ; Lost fanout                                 ;
+; mem2[322][0]                            ; Lost fanout                                 ;
+; mem2[338][0]                            ; Lost fanout                                 ;
+; mem2[354][0]                            ; Lost fanout                                 ;
+; mem2[306][0]                            ; Lost fanout                                 ;
+; mem2[330][0]                            ; Lost fanout                                 ;
+; mem2[346][0]                            ; Lost fanout                                 ;
+; mem2[362][0]                            ; Lost fanout                                 ;
+; mem2[314][0]                            ; Lost fanout                                 ;
+; mem2[326][0]                            ; Lost fanout                                 ;
+; mem2[342][0]                            ; Lost fanout                                 ;
+; mem2[358][0]                            ; Lost fanout                                 ;
+; mem2[310][0]                            ; Lost fanout                                 ;
+; mem2[334][0]                            ; Lost fanout                                 ;
+; mem2[350][0]                            ; Lost fanout                                 ;
+; mem2[366][0]                            ; Lost fanout                                 ;
+; mem2[318][0]                            ; Lost fanout                                 ;
+; mem2[321][0]                            ; Lost fanout                                 ;
+; mem2[337][0]                            ; Lost fanout                                 ;
+; mem2[353][0]                            ; Lost fanout                                 ;
+; mem2[305][0]                            ; Lost fanout                                 ;
+; mem2[329][0]                            ; Lost fanout                                 ;
+; mem2[345][0]                            ; Lost fanout                                 ;
+; mem2[361][0]                            ; Lost fanout                                 ;
+; mem2[313][0]                            ; Lost fanout                                 ;
+; mem2[325][0]                            ; Lost fanout                                 ;
+; mem2[341][0]                            ; Lost fanout                                 ;
+; mem2[357][0]                            ; Lost fanout                                 ;
+; mem2[309][0]                            ; Lost fanout                                 ;
+; mem2[333][0]                            ; Lost fanout                                 ;
+; mem2[349][0]                            ; Lost fanout                                 ;
+; mem2[365][0]                            ; Lost fanout                                 ;
+; mem2[317][0]                            ; Lost fanout                                 ;
+; mem2[323][0]                            ; Lost fanout                                 ;
+; mem2[339][0]                            ; Lost fanout                                 ;
+; mem2[355][0]                            ; Lost fanout                                 ;
+; mem2[307][0]                            ; Lost fanout                                 ;
+; mem2[331][0]                            ; Lost fanout                                 ;
+; mem2[347][0]                            ; Lost fanout                                 ;
+; mem2[363][0]                            ; Lost fanout                                 ;
+; mem2[315][0]                            ; Lost fanout                                 ;
+; mem2[327][0]                            ; Lost fanout                                 ;
+; mem2[343][0]                            ; Lost fanout                                 ;
+; mem2[359][0]                            ; Lost fanout                                 ;
+; mem2[311][0]                            ; Lost fanout                                 ;
+; mem2[335][0]                            ; Lost fanout                                 ;
+; mem2[351][0]                            ; Lost fanout                                 ;
+; mem2[367][0]                            ; Lost fanout                                 ;
+; mem2[319][0]                            ; Lost fanout                                 ;
+; mem2[320][1]                            ; Lost fanout                                 ;
+; mem2[336][1]                            ; Lost fanout                                 ;
+; mem2[352][1]                            ; Lost fanout                                 ;
+; mem2[304][1]                            ; Lost fanout                                 ;
+; mem2[328][1]                            ; Lost fanout                                 ;
+; mem2[344][1]                            ; Lost fanout                                 ;
+; mem2[360][1]                            ; Lost fanout                                 ;
+; mem2[312][1]                            ; Lost fanout                                 ;
+; mem2[324][1]                            ; Lost fanout                                 ;
+; mem2[340][1]                            ; Lost fanout                                 ;
+; mem2[356][1]                            ; Lost fanout                                 ;
+; mem2[308][1]                            ; Lost fanout                                 ;
+; mem2[332][1]                            ; Lost fanout                                 ;
+; mem2[348][1]                            ; Lost fanout                                 ;
+; mem2[364][1]                            ; Lost fanout                                 ;
+; mem2[316][1]                            ; Lost fanout                                 ;
+; mem2[322][1]                            ; Lost fanout                                 ;
+; mem2[338][1]                            ; Lost fanout                                 ;
+; mem2[354][1]                            ; Lost fanout                                 ;
+; mem2[306][1]                            ; Lost fanout                                 ;
+; mem2[330][1]                            ; Lost fanout                                 ;
+; mem2[346][1]                            ; Lost fanout                                 ;
+; mem2[362][1]                            ; Lost fanout                                 ;
+; mem2[314][1]                            ; Lost fanout                                 ;
+; mem2[326][1]                            ; Lost fanout                                 ;
+; mem2[342][1]                            ; Lost fanout                                 ;
+; mem2[358][1]                            ; Lost fanout                                 ;
+; mem2[310][1]                            ; Lost fanout                                 ;
+; mem2[334][1]                            ; Lost fanout                                 ;
+; mem2[350][1]                            ; Lost fanout                                 ;
+; mem2[366][1]                            ; Lost fanout                                 ;
+; mem2[318][1]                            ; Lost fanout                                 ;
+; mem2[321][1]                            ; Lost fanout                                 ;
+; mem2[337][1]                            ; Lost fanout                                 ;
+; mem2[353][1]                            ; Lost fanout                                 ;
+; mem2[305][1]                            ; Lost fanout                                 ;
+; mem2[329][1]                            ; Lost fanout                                 ;
+; mem2[345][1]                            ; Lost fanout                                 ;
+; mem2[361][1]                            ; Lost fanout                                 ;
+; mem2[313][1]                            ; Lost fanout                                 ;
+; mem2[325][1]                            ; Lost fanout                                 ;
+; mem2[341][1]                            ; Lost fanout                                 ;
+; mem2[357][1]                            ; Lost fanout                                 ;
+; mem2[309][1]                            ; Lost fanout                                 ;
+; mem2[333][1]                            ; Lost fanout                                 ;
+; mem2[349][1]                            ; Lost fanout                                 ;
+; mem2[365][1]                            ; Lost fanout                                 ;
+; mem2[317][1]                            ; Lost fanout                                 ;
+; mem2[323][1]                            ; Lost fanout                                 ;
+; mem2[339][1]                            ; Lost fanout                                 ;
+; mem2[355][1]                            ; Lost fanout                                 ;
+; mem2[307][1]                            ; Lost fanout                                 ;
+; mem2[331][1]                            ; Lost fanout                                 ;
+; mem2[347][1]                            ; Lost fanout                                 ;
+; mem2[363][1]                            ; Lost fanout                                 ;
+; mem2[315][1]                            ; Lost fanout                                 ;
+; mem2[327][1]                            ; Lost fanout                                 ;
+; mem2[343][1]                            ; Lost fanout                                 ;
+; mem2[359][1]                            ; Lost fanout                                 ;
+; mem2[311][1]                            ; Lost fanout                                 ;
+; mem2[335][1]                            ; Lost fanout                                 ;
+; mem2[351][1]                            ; Lost fanout                                 ;
+; mem2[367][1]                            ; Lost fanout                                 ;
+; mem2[319][1]                            ; Lost fanout                                 ;
+; mem2[320][2]                            ; Lost fanout                                 ;
+; mem2[336][2]                            ; Lost fanout                                 ;
+; mem2[352][2]                            ; Lost fanout                                 ;
+; mem2[304][2]                            ; Lost fanout                                 ;
+; mem2[328][2]                            ; Lost fanout                                 ;
+; mem2[344][2]                            ; Lost fanout                                 ;
+; mem2[360][2]                            ; Lost fanout                                 ;
+; mem2[312][2]                            ; Lost fanout                                 ;
+; mem2[324][2]                            ; Lost fanout                                 ;
+; mem2[340][2]                            ; Lost fanout                                 ;
+; mem2[356][2]                            ; Lost fanout                                 ;
+; mem2[308][2]                            ; Lost fanout                                 ;
+; mem2[332][2]                            ; Lost fanout                                 ;
+; mem2[348][2]                            ; Lost fanout                                 ;
+; mem2[364][2]                            ; Lost fanout                                 ;
+; mem2[316][2]                            ; Lost fanout                                 ;
+; mem2[322][2]                            ; Lost fanout                                 ;
+; mem2[338][2]                            ; Lost fanout                                 ;
+; mem2[354][2]                            ; Lost fanout                                 ;
+; mem2[306][2]                            ; Lost fanout                                 ;
+; mem2[330][2]                            ; Lost fanout                                 ;
+; mem2[346][2]                            ; Lost fanout                                 ;
+; mem2[362][2]                            ; Lost fanout                                 ;
+; mem2[314][2]                            ; Lost fanout                                 ;
+; mem2[326][2]                            ; Lost fanout                                 ;
+; mem2[342][2]                            ; Lost fanout                                 ;
+; mem2[358][2]                            ; Lost fanout                                 ;
+; mem2[310][2]                            ; Lost fanout                                 ;
+; mem2[334][2]                            ; Lost fanout                                 ;
+; mem2[350][2]                            ; Lost fanout                                 ;
+; mem2[366][2]                            ; Lost fanout                                 ;
+; mem2[318][2]                            ; Lost fanout                                 ;
+; mem2[321][2]                            ; Lost fanout                                 ;
+; mem2[337][2]                            ; Lost fanout                                 ;
+; mem2[353][2]                            ; Lost fanout                                 ;
+; mem2[305][2]                            ; Lost fanout                                 ;
+; mem2[329][2]                            ; Lost fanout                                 ;
+; mem2[345][2]                            ; Lost fanout                                 ;
+; mem2[361][2]                            ; Lost fanout                                 ;
+; mem2[313][2]                            ; Lost fanout                                 ;
+; mem2[325][2]                            ; Lost fanout                                 ;
+; mem2[341][2]                            ; Lost fanout                                 ;
+; mem2[357][2]                            ; Lost fanout                                 ;
+; mem2[309][2]                            ; Lost fanout                                 ;
+; mem2[333][2]                            ; Lost fanout                                 ;
+; mem2[349][2]                            ; Lost fanout                                 ;
+; mem2[365][2]                            ; Lost fanout                                 ;
+; mem2[317][2]                            ; Lost fanout                                 ;
+; mem2[323][2]                            ; Lost fanout                                 ;
+; mem2[339][2]                            ; Lost fanout                                 ;
+; mem2[355][2]                            ; Lost fanout                                 ;
+; mem2[307][2]                            ; Lost fanout                                 ;
+; mem2[331][2]                            ; Lost fanout                                 ;
+; mem2[347][2]                            ; Lost fanout                                 ;
+; mem2[363][2]                            ; Lost fanout                                 ;
+; mem2[315][2]                            ; Lost fanout                                 ;
+; mem2[327][2]                            ; Lost fanout                                 ;
+; mem2[343][2]                            ; Lost fanout                                 ;
+; mem2[359][2]                            ; Lost fanout                                 ;
+; mem2[311][2]                            ; Lost fanout                                 ;
+; mem2[335][2]                            ; Lost fanout                                 ;
+; mem2[351][2]                            ; Lost fanout                                 ;
+; mem2[367][2]                            ; Lost fanout                                 ;
+; mem2[319][2]                            ; Lost fanout                                 ;
+; mem2[320][3]                            ; Lost fanout                                 ;
+; mem2[336][3]                            ; Lost fanout                                 ;
+; mem2[352][3]                            ; Lost fanout                                 ;
+; mem2[304][3]                            ; Lost fanout                                 ;
+; mem2[328][3]                            ; Lost fanout                                 ;
+; mem2[344][3]                            ; Lost fanout                                 ;
+; mem2[360][3]                            ; Lost fanout                                 ;
+; mem2[312][3]                            ; Lost fanout                                 ;
+; mem2[324][3]                            ; Lost fanout                                 ;
+; mem2[340][3]                            ; Lost fanout                                 ;
+; mem2[356][3]                            ; Lost fanout                                 ;
+; mem2[308][3]                            ; Lost fanout                                 ;
+; mem2[332][3]                            ; Lost fanout                                 ;
+; mem2[348][3]                            ; Lost fanout                                 ;
+; mem2[364][3]                            ; Lost fanout                                 ;
+; mem2[316][3]                            ; Lost fanout                                 ;
+; mem2[322][3]                            ; Lost fanout                                 ;
+; mem2[338][3]                            ; Lost fanout                                 ;
+; mem2[354][3]                            ; Lost fanout                                 ;
+; mem2[306][3]                            ; Lost fanout                                 ;
+; mem2[330][3]                            ; Lost fanout                                 ;
+; mem2[346][3]                            ; Lost fanout                                 ;
+; mem2[362][3]                            ; Lost fanout                                 ;
+; mem2[314][3]                            ; Lost fanout                                 ;
+; mem2[326][3]                            ; Lost fanout                                 ;
+; mem2[342][3]                            ; Lost fanout                                 ;
+; mem2[358][3]                            ; Lost fanout                                 ;
+; mem2[310][3]                            ; Lost fanout                                 ;
+; mem2[334][3]                            ; Lost fanout                                 ;
+; mem2[350][3]                            ; Lost fanout                                 ;
+; mem2[366][3]                            ; Lost fanout                                 ;
+; mem2[318][3]                            ; Lost fanout                                 ;
+; mem2[321][3]                            ; Lost fanout                                 ;
+; mem2[337][3]                            ; Lost fanout                                 ;
+; mem2[353][3]                            ; Lost fanout                                 ;
+; mem2[305][3]                            ; Lost fanout                                 ;
+; mem2[329][3]                            ; Lost fanout                                 ;
+; mem2[345][3]                            ; Lost fanout                                 ;
+; mem2[361][3]                            ; Lost fanout                                 ;
+; mem2[313][3]                            ; Lost fanout                                 ;
+; mem2[325][3]                            ; Lost fanout                                 ;
+; mem2[341][3]                            ; Lost fanout                                 ;
+; mem2[357][3]                            ; Lost fanout                                 ;
+; mem2[309][3]                            ; Lost fanout                                 ;
+; mem2[333][3]                            ; Lost fanout                                 ;
+; mem2[349][3]                            ; Lost fanout                                 ;
+; mem2[365][3]                            ; Lost fanout                                 ;
+; mem2[317][3]                            ; Lost fanout                                 ;
+; mem2[323][3]                            ; Lost fanout                                 ;
+; mem2[339][3]                            ; Lost fanout                                 ;
+; mem2[355][3]                            ; Lost fanout                                 ;
+; mem2[307][3]                            ; Lost fanout                                 ;
+; mem2[331][3]                            ; Lost fanout                                 ;
+; mem2[347][3]                            ; Lost fanout                                 ;
+; mem2[363][3]                            ; Lost fanout                                 ;
+; mem2[315][3]                            ; Lost fanout                                 ;
+; mem2[327][3]                            ; Lost fanout                                 ;
+; mem2[343][3]                            ; Lost fanout                                 ;
+; mem2[359][3]                            ; Lost fanout                                 ;
+; mem2[311][3]                            ; Lost fanout                                 ;
+; mem2[335][3]                            ; Lost fanout                                 ;
+; mem2[351][3]                            ; Lost fanout                                 ;
+; mem2[367][3]                            ; Lost fanout                                 ;
+; mem2[319][3]                            ; Lost fanout                                 ;
+; mem2[320][4]                            ; Lost fanout                                 ;
+; mem2[336][4]                            ; Lost fanout                                 ;
+; mem2[352][4]                            ; Lost fanout                                 ;
+; mem2[304][4]                            ; Lost fanout                                 ;
+; mem2[328][4]                            ; Lost fanout                                 ;
+; mem2[344][4]                            ; Lost fanout                                 ;
+; mem2[360][4]                            ; Lost fanout                                 ;
+; mem2[312][4]                            ; Lost fanout                                 ;
+; mem2[324][4]                            ; Lost fanout                                 ;
+; mem2[340][4]                            ; Lost fanout                                 ;
+; mem2[356][4]                            ; Lost fanout                                 ;
+; mem2[308][4]                            ; Lost fanout                                 ;
+; mem2[332][4]                            ; Lost fanout                                 ;
+; mem2[348][4]                            ; Lost fanout                                 ;
+; mem2[364][4]                            ; Lost fanout                                 ;
+; mem2[316][4]                            ; Lost fanout                                 ;
+; mem2[322][4]                            ; Lost fanout                                 ;
+; mem2[338][4]                            ; Lost fanout                                 ;
+; mem2[354][4]                            ; Lost fanout                                 ;
+; mem2[306][4]                            ; Lost fanout                                 ;
+; mem2[330][4]                            ; Lost fanout                                 ;
+; mem2[346][4]                            ; Lost fanout                                 ;
+; mem2[362][4]                            ; Lost fanout                                 ;
+; mem2[314][4]                            ; Lost fanout                                 ;
+; mem2[326][4]                            ; Lost fanout                                 ;
+; mem2[342][4]                            ; Lost fanout                                 ;
+; mem2[358][4]                            ; Lost fanout                                 ;
+; mem2[310][4]                            ; Lost fanout                                 ;
+; mem2[334][4]                            ; Lost fanout                                 ;
+; mem2[350][4]                            ; Lost fanout                                 ;
+; mem2[366][4]                            ; Lost fanout                                 ;
+; mem2[318][4]                            ; Lost fanout                                 ;
+; mem2[321][4]                            ; Lost fanout                                 ;
+; mem2[337][4]                            ; Lost fanout                                 ;
+; mem2[353][4]                            ; Lost fanout                                 ;
+; mem2[305][4]                            ; Lost fanout                                 ;
+; mem2[329][4]                            ; Lost fanout                                 ;
+; mem2[345][4]                            ; Lost fanout                                 ;
+; mem2[361][4]                            ; Lost fanout                                 ;
+; mem2[313][4]                            ; Lost fanout                                 ;
+; mem2[325][4]                            ; Lost fanout                                 ;
+; mem2[341][4]                            ; Lost fanout                                 ;
+; mem2[357][4]                            ; Lost fanout                                 ;
+; mem2[309][4]                            ; Lost fanout                                 ;
+; mem2[333][4]                            ; Lost fanout                                 ;
+; mem2[349][4]                            ; Lost fanout                                 ;
+; mem2[365][4]                            ; Lost fanout                                 ;
+; mem2[317][4]                            ; Lost fanout                                 ;
+; mem2[323][4]                            ; Lost fanout                                 ;
+; mem2[339][4]                            ; Lost fanout                                 ;
+; mem2[355][4]                            ; Lost fanout                                 ;
+; mem2[307][4]                            ; Lost fanout                                 ;
+; mem2[331][4]                            ; Lost fanout                                 ;
+; mem2[347][4]                            ; Lost fanout                                 ;
+; mem2[363][4]                            ; Lost fanout                                 ;
+; mem2[315][4]                            ; Lost fanout                                 ;
+; mem2[327][4]                            ; Lost fanout                                 ;
+; mem2[343][4]                            ; Lost fanout                                 ;
+; mem2[359][4]                            ; Lost fanout                                 ;
+; mem2[311][4]                            ; Lost fanout                                 ;
+; mem2[335][4]                            ; Lost fanout                                 ;
+; mem2[351][4]                            ; Lost fanout                                 ;
+; mem2[367][4]                            ; Lost fanout                                 ;
+; mem2[319][4]                            ; Lost fanout                                 ;
+; mem2[320][5]                            ; Lost fanout                                 ;
+; mem2[336][5]                            ; Lost fanout                                 ;
+; mem2[352][5]                            ; Lost fanout                                 ;
+; mem2[304][5]                            ; Lost fanout                                 ;
+; mem2[328][5]                            ; Lost fanout                                 ;
+; mem2[344][5]                            ; Lost fanout                                 ;
+; mem2[360][5]                            ; Lost fanout                                 ;
+; mem2[312][5]                            ; Lost fanout                                 ;
+; mem2[324][5]                            ; Lost fanout                                 ;
+; mem2[340][5]                            ; Lost fanout                                 ;
+; mem2[356][5]                            ; Lost fanout                                 ;
+; mem2[308][5]                            ; Lost fanout                                 ;
+; mem2[332][5]                            ; Lost fanout                                 ;
+; mem2[348][5]                            ; Lost fanout                                 ;
+; mem2[364][5]                            ; Lost fanout                                 ;
+; mem2[316][5]                            ; Lost fanout                                 ;
+; mem2[322][5]                            ; Lost fanout                                 ;
+; mem2[338][5]                            ; Lost fanout                                 ;
+; mem2[354][5]                            ; Lost fanout                                 ;
+; mem2[306][5]                            ; Lost fanout                                 ;
+; mem2[330][5]                            ; Lost fanout                                 ;
+; mem2[346][5]                            ; Lost fanout                                 ;
+; mem2[362][5]                            ; Lost fanout                                 ;
+; mem2[314][5]                            ; Lost fanout                                 ;
+; mem2[326][5]                            ; Lost fanout                                 ;
+; mem2[342][5]                            ; Lost fanout                                 ;
+; mem2[358][5]                            ; Lost fanout                                 ;
+; mem2[310][5]                            ; Lost fanout                                 ;
+; mem2[334][5]                            ; Lost fanout                                 ;
+; mem2[350][5]                            ; Lost fanout                                 ;
+; mem2[366][5]                            ; Lost fanout                                 ;
+; mem2[318][5]                            ; Lost fanout                                 ;
+; mem2[321][5]                            ; Lost fanout                                 ;
+; mem2[337][5]                            ; Lost fanout                                 ;
+; mem2[353][5]                            ; Lost fanout                                 ;
+; mem2[305][5]                            ; Lost fanout                                 ;
+; mem2[329][5]                            ; Lost fanout                                 ;
+; mem2[345][5]                            ; Lost fanout                                 ;
+; mem2[361][5]                            ; Lost fanout                                 ;
+; mem2[313][5]                            ; Lost fanout                                 ;
+; mem2[325][5]                            ; Lost fanout                                 ;
+; mem2[341][5]                            ; Lost fanout                                 ;
+; mem2[357][5]                            ; Lost fanout                                 ;
+; mem2[309][5]                            ; Lost fanout                                 ;
+; mem2[333][5]                            ; Lost fanout                                 ;
+; mem2[349][5]                            ; Lost fanout                                 ;
+; mem2[365][5]                            ; Lost fanout                                 ;
+; mem2[317][5]                            ; Lost fanout                                 ;
+; mem2[323][5]                            ; Lost fanout                                 ;
+; mem2[339][5]                            ; Lost fanout                                 ;
+; mem2[355][5]                            ; Lost fanout                                 ;
+; mem2[307][5]                            ; Lost fanout                                 ;
+; mem2[331][5]                            ; Lost fanout                                 ;
+; mem2[347][5]                            ; Lost fanout                                 ;
+; mem2[363][5]                            ; Lost fanout                                 ;
+; mem2[315][5]                            ; Lost fanout                                 ;
+; mem2[327][5]                            ; Lost fanout                                 ;
+; mem2[343][5]                            ; Lost fanout                                 ;
+; mem2[359][5]                            ; Lost fanout                                 ;
+; mem2[311][5]                            ; Lost fanout                                 ;
+; mem2[335][5]                            ; Lost fanout                                 ;
+; mem2[351][5]                            ; Lost fanout                                 ;
+; mem2[367][5]                            ; Lost fanout                                 ;
+; mem2[319][5]                            ; Lost fanout                                 ;
+; mem2[320][6]                            ; Lost fanout                                 ;
+; mem2[336][6]                            ; Lost fanout                                 ;
+; mem2[352][6]                            ; Lost fanout                                 ;
+; mem2[304][6]                            ; Lost fanout                                 ;
+; mem2[328][6]                            ; Lost fanout                                 ;
+; mem2[344][6]                            ; Lost fanout                                 ;
+; mem2[360][6]                            ; Lost fanout                                 ;
+; mem2[312][6]                            ; Lost fanout                                 ;
+; mem2[324][6]                            ; Lost fanout                                 ;
+; mem2[340][6]                            ; Lost fanout                                 ;
+; mem2[356][6]                            ; Lost fanout                                 ;
+; mem2[308][6]                            ; Lost fanout                                 ;
+; mem2[332][6]                            ; Lost fanout                                 ;
+; mem2[348][6]                            ; Lost fanout                                 ;
+; mem2[364][6]                            ; Lost fanout                                 ;
+; mem2[316][6]                            ; Lost fanout                                 ;
+; mem2[322][6]                            ; Lost fanout                                 ;
+; mem2[338][6]                            ; Lost fanout                                 ;
+; mem2[354][6]                            ; Lost fanout                                 ;
+; mem2[306][6]                            ; Lost fanout                                 ;
+; mem2[330][6]                            ; Lost fanout                                 ;
+; mem2[346][6]                            ; Lost fanout                                 ;
+; mem2[362][6]                            ; Lost fanout                                 ;
+; mem2[314][6]                            ; Lost fanout                                 ;
+; mem2[326][6]                            ; Lost fanout                                 ;
+; mem2[342][6]                            ; Lost fanout                                 ;
+; mem2[358][6]                            ; Lost fanout                                 ;
+; mem2[310][6]                            ; Lost fanout                                 ;
+; mem2[334][6]                            ; Lost fanout                                 ;
+; mem2[350][6]                            ; Lost fanout                                 ;
+; mem2[366][6]                            ; Lost fanout                                 ;
+; mem2[318][6]                            ; Lost fanout                                 ;
+; mem2[321][6]                            ; Lost fanout                                 ;
+; mem2[337][6]                            ; Lost fanout                                 ;
+; mem2[353][6]                            ; Lost fanout                                 ;
+; mem2[305][6]                            ; Lost fanout                                 ;
+; mem2[329][6]                            ; Lost fanout                                 ;
+; mem2[345][6]                            ; Lost fanout                                 ;
+; mem2[361][6]                            ; Lost fanout                                 ;
+; mem2[313][6]                            ; Lost fanout                                 ;
+; mem2[325][6]                            ; Lost fanout                                 ;
+; mem2[341][6]                            ; Lost fanout                                 ;
+; mem2[357][6]                            ; Lost fanout                                 ;
+; mem2[309][6]                            ; Lost fanout                                 ;
+; mem2[333][6]                            ; Lost fanout                                 ;
+; mem2[349][6]                            ; Lost fanout                                 ;
+; mem2[365][6]                            ; Lost fanout                                 ;
+; mem2[317][6]                            ; Lost fanout                                 ;
+; mem2[323][6]                            ; Lost fanout                                 ;
+; mem2[339][6]                            ; Lost fanout                                 ;
+; mem2[355][6]                            ; Lost fanout                                 ;
+; mem2[307][6]                            ; Lost fanout                                 ;
+; mem2[331][6]                            ; Lost fanout                                 ;
+; mem2[347][6]                            ; Lost fanout                                 ;
+; mem2[363][6]                            ; Lost fanout                                 ;
+; mem2[315][6]                            ; Lost fanout                                 ;
+; mem2[327][6]                            ; Lost fanout                                 ;
+; mem2[343][6]                            ; Lost fanout                                 ;
+; mem2[359][6]                            ; Lost fanout                                 ;
+; mem2[311][6]                            ; Lost fanout                                 ;
+; mem2[335][6]                            ; Lost fanout                                 ;
+; mem2[351][6]                            ; Lost fanout                                 ;
+; mem2[367][6]                            ; Lost fanout                                 ;
+; mem2[319][6]                            ; Lost fanout                                 ;
+; mem2[320][7]                            ; Lost fanout                                 ;
+; mem2[336][7]                            ; Lost fanout                                 ;
+; mem2[352][7]                            ; Lost fanout                                 ;
+; mem2[304][7]                            ; Lost fanout                                 ;
+; mem2[328][7]                            ; Lost fanout                                 ;
+; mem2[344][7]                            ; Lost fanout                                 ;
+; mem2[360][7]                            ; Lost fanout                                 ;
+; mem2[312][7]                            ; Lost fanout                                 ;
+; mem2[324][7]                            ; Lost fanout                                 ;
+; mem2[340][7]                            ; Lost fanout                                 ;
+; mem2[356][7]                            ; Lost fanout                                 ;
+; mem2[308][7]                            ; Lost fanout                                 ;
+; mem2[332][7]                            ; Lost fanout                                 ;
+; mem2[348][7]                            ; Lost fanout                                 ;
+; mem2[364][7]                            ; Lost fanout                                 ;
+; mem2[316][7]                            ; Lost fanout                                 ;
+; mem2[322][7]                            ; Lost fanout                                 ;
+; mem2[338][7]                            ; Lost fanout                                 ;
+; mem2[354][7]                            ; Lost fanout                                 ;
+; mem2[306][7]                            ; Lost fanout                                 ;
+; mem2[330][7]                            ; Lost fanout                                 ;
+; mem2[346][7]                            ; Lost fanout                                 ;
+; mem2[362][7]                            ; Lost fanout                                 ;
+; mem2[314][7]                            ; Lost fanout                                 ;
+; mem2[326][7]                            ; Lost fanout                                 ;
+; mem2[342][7]                            ; Lost fanout                                 ;
+; mem2[358][7]                            ; Lost fanout                                 ;
+; mem2[310][7]                            ; Lost fanout                                 ;
+; mem2[334][7]                            ; Lost fanout                                 ;
+; mem2[350][7]                            ; Lost fanout                                 ;
+; mem2[366][7]                            ; Lost fanout                                 ;
+; mem2[318][7]                            ; Lost fanout                                 ;
+; mem2[321][7]                            ; Lost fanout                                 ;
+; mem2[337][7]                            ; Lost fanout                                 ;
+; mem2[353][7]                            ; Lost fanout                                 ;
+; mem2[305][7]                            ; Lost fanout                                 ;
+; mem2[329][7]                            ; Lost fanout                                 ;
+; mem2[345][7]                            ; Lost fanout                                 ;
+; mem2[361][7]                            ; Lost fanout                                 ;
+; mem2[313][7]                            ; Lost fanout                                 ;
+; mem2[325][7]                            ; Lost fanout                                 ;
+; mem2[341][7]                            ; Lost fanout                                 ;
+; mem2[357][7]                            ; Lost fanout                                 ;
+; mem2[309][7]                            ; Lost fanout                                 ;
+; mem2[333][7]                            ; Lost fanout                                 ;
+; mem2[349][7]                            ; Lost fanout                                 ;
+; mem2[365][7]                            ; Lost fanout                                 ;
+; mem2[317][7]                            ; Lost fanout                                 ;
+; mem2[323][7]                            ; Lost fanout                                 ;
+; mem2[339][7]                            ; Lost fanout                                 ;
+; mem2[355][7]                            ; Lost fanout                                 ;
+; mem2[307][7]                            ; Lost fanout                                 ;
+; mem2[331][7]                            ; Lost fanout                                 ;
+; mem2[347][7]                            ; Lost fanout                                 ;
+; mem2[363][7]                            ; Lost fanout                                 ;
+; mem2[315][7]                            ; Lost fanout                                 ;
+; mem2[327][7]                            ; Lost fanout                                 ;
+; mem2[343][7]                            ; Lost fanout                                 ;
+; mem2[359][7]                            ; Lost fanout                                 ;
+; mem2[311][7]                            ; Lost fanout                                 ;
+; mem2[335][7]                            ; Lost fanout                                 ;
+; mem2[351][7]                            ; Lost fanout                                 ;
+; mem2[367][7]                            ; Lost fanout                                 ;
+; mem2[319][7]                            ; Lost fanout                                 ;
+; mem2[293][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[301][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[291][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[299][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[289][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[297][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[295][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[303][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[290][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[298][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[292][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[300][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[288][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[296][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[294][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[302][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[293][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[301][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[291][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[299][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[289][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[297][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[295][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[303][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[290][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[298][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[292][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[300][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[288][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[296][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[294][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[302][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[293][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[301][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[291][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[299][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[289][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[297][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[295][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[303][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[290][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[298][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[292][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[300][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[288][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[296][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[294][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[302][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[293][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[301][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[291][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[299][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[289][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[297][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[295][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[303][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[290][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[298][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[292][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[300][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[288][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[296][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[294][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[302][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[293][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[301][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[291][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[299][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[289][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[297][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[295][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[303][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[290][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[298][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[292][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[300][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[288][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[296][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[294][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[302][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[293][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[301][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[291][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[299][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[289][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[297][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[295][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[303][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[290][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[298][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[292][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[300][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[288][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[296][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[294][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[302][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[293][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[301][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[291][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[299][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[289][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[297][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[295][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[303][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[290][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[298][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[292][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[300][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[288][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[296][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[294][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[302][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[293][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[301][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[291][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[299][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[289][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[297][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[295][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[303][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[290][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[298][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[292][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[300][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[288][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[296][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[294][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[302][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[126][0]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[127][0]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem1[236][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[232][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[230][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[226][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[228][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[224][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[222][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[238][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[234][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[237][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[233][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[231][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[227][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[229][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[225][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[223][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[239][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[235][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[126][1]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[127][1]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem1[236][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[232][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[230][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[226][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[228][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[224][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[222][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[238][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[234][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[235][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[233][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[231][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[229][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[227][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[225][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[223][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[239][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[237][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[126][2]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[127][2]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem1[236][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[232][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[230][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[226][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[228][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[224][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[222][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[238][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[234][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[237][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[233][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[231][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[227][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[229][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[225][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[223][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[239][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[235][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[126][3]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[127][3]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem1[236][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[232][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[230][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[226][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[228][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[224][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[222][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[238][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[234][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[235][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[233][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[231][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[229][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[227][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[225][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[223][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[239][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[237][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[126][4]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[127][4]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem1[236][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[232][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[230][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[226][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[228][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[224][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[222][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[238][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[234][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[237][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[233][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[231][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[227][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[229][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[225][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[223][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[239][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[235][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[126][5]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[127][5]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem1[236][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[232][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[230][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[226][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[228][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[224][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[222][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[238][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[234][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[235][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[233][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[231][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[229][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[227][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[225][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[223][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[239][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[237][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[126][6]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[127][6]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem1[236][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[232][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[230][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[226][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[228][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[224][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[222][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[238][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[234][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[237][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[233][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[231][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[227][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[229][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[225][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[223][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[239][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[235][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[126][7]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[127][7]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem1[236][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[232][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[230][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[226][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[228][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[224][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[222][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[238][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[234][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[235][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[233][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[231][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[229][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[227][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[225][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[223][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[239][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[237][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; Total Number of Removed Registers = 800 ;                                             ;
++-----------------------------------------+---------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -195,14 +1011,23 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
+; Total registers                              ; 632   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Synchronous Load   ; 8     ;
+; Number of registers using Asynchronous Clear ; 624   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 632   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 177:1              ; 8 bits    ; 944 LEs       ; 944 LEs              ; 0 LEs                  ; Yes        ; |RAM_mem|dbus_out[0]~reg0  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
 +-------------------------------+
@@ -211,52 +1036,534 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Thu May 19 22:20:05 2022
+    Info: Processing started: Sun May 29 14:22:24 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RAM_mem -c RAM_mem
 Info: Found 2 design units, including 1 entities, in source file ram_mem.vhd
     Info: Found design unit 1: RAM_mem-arch1
     Info: Found entity 1: RAM_mem
 Info: Elaborating entity "RAM_mem" for the top level hierarchy
-Warning (10445): VHDL Subtype or Type Declaration warning at RAM_mem.vhd(29): subtype or type has null range
-Warning (10541): VHDL Signal Declaration warning at RAM_mem.vhd(20): used implicit default value for signal "dbus_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning: Output pins are stuck at VCC or GND
-    Warning (13410): Pin "dbus_out[0]" is stuck at GND
-    Warning (13410): Pin "dbus_out[1]" is stuck at GND
-    Warning (13410): Pin "dbus_out[2]" is stuck at GND
-    Warning (13410): Pin "dbus_out[3]" is stuck at GND
-    Warning (13410): Pin "dbus_out[4]" is stuck at GND
-    Warning (13410): Pin "dbus_out[5]" is stuck at GND
-    Warning (13410): Pin "dbus_out[6]" is stuck at GND
-    Warning (13410): Pin "dbus_out[7]" is stuck at GND
-Warning: Design contains 21 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "nrst"
-    Warning (15610): No output dependent on input pin "clk_in"
-    Warning (15610): No output dependent on input pin "wr_en"
-    Warning (15610): No output dependent on input pin "rd_en"
-    Warning (15610): No output dependent on input pin "abus_in[0]"
-    Warning (15610): No output dependent on input pin "abus_in[1]"
-    Warning (15610): No output dependent on input pin "abus_in[2]"
-    Warning (15610): No output dependent on input pin "abus_in[3]"
-    Warning (15610): No output dependent on input pin "abus_in[4]"
-    Warning (15610): No output dependent on input pin "abus_in[5]"
-    Warning (15610): No output dependent on input pin "abus_in[6]"
-    Warning (15610): No output dependent on input pin "abus_in[7]"
-    Warning (15610): No output dependent on input pin "abus_in[8]"
-    Warning (15610): No output dependent on input pin "dbus_in[0]"
-    Warning (15610): No output dependent on input pin "dbus_in[1]"
-    Warning (15610): No output dependent on input pin "dbus_in[2]"
-    Warning (15610): No output dependent on input pin "dbus_in[3]"
-    Warning (15610): No output dependent on input pin "dbus_in[4]"
-    Warning (15610): No output dependent on input pin "dbus_in[5]"
-    Warning (15610): No output dependent on input pin "dbus_in[6]"
-    Warning (15610): No output dependent on input pin "dbus_in[7]"
-Info: Implemented 29 device resources after synthesis - the final resource count might be different
+Warning (10631): VHDL Process Statement warning at RAM_mem.vhd(39): inferring latch(es) for signal or variable "mem0", which holds its previous value in one or more paths through the process
+Info: 512 registers lost all their fanouts during netlist optimizations. The first 512 are displayed below.
+    Info: Register "mem2[320][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[336][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[352][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[304][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[328][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[344][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[360][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[312][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[324][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[340][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[356][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[308][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[332][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[348][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[364][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[316][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[322][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[338][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[354][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[306][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[330][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[346][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[362][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[314][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[326][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[342][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[358][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[310][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[334][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[350][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[366][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[318][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[321][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[337][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[353][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[305][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[329][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[345][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[361][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[313][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[325][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[341][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[357][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[309][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[333][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[349][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[365][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[317][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[323][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[339][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[355][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[307][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[331][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[347][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[363][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[315][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[327][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[343][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[359][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[311][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[335][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[351][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[367][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[319][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[320][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[336][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[352][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[304][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[328][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[344][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[360][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[312][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[324][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[340][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[356][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[308][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[332][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[348][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[364][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[316][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[322][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[338][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[354][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[306][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[330][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[346][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[362][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[314][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[326][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[342][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[358][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[310][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[334][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[350][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[366][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[318][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[321][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[337][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[353][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[305][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[329][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[345][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[361][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[313][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[325][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[341][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[357][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[309][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[333][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[349][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[365][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[317][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[323][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[339][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[355][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[307][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[331][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[347][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[363][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[315][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[327][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[343][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[359][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[311][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[335][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[351][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[367][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[319][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[320][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[336][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[352][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[304][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[328][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[344][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[360][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[312][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[324][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[340][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[356][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[308][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[332][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[348][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[364][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[316][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[322][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[338][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[354][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[306][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[330][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[346][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[362][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[314][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[326][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[342][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[358][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[310][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[334][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[350][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[366][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[318][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[321][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[337][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[353][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[305][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[329][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[345][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[361][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[313][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[325][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[341][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[357][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[309][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[333][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[349][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[365][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[317][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[323][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[339][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[355][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[307][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[331][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[347][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[363][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[315][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[327][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[343][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[359][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[311][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[335][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[351][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[367][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[319][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[320][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[336][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[352][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[304][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[328][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[344][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[360][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[312][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[324][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[340][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[356][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[308][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[332][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[348][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[364][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[316][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[322][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[338][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[354][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[306][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[330][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[346][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[362][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[314][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[326][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[342][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[358][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[310][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[334][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[350][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[366][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[318][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[321][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[337][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[353][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[305][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[329][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[345][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[361][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[313][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[325][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[341][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[357][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[309][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[333][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[349][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[365][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[317][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[323][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[339][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[355][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[307][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[331][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[347][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[363][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[315][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[327][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[343][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[359][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[311][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[335][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[351][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[367][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[319][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[320][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[336][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[352][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[304][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[328][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[344][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[360][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[312][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[324][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[340][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[356][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[308][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[332][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[348][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[364][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[316][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[322][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[338][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[354][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[306][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[330][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[346][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[362][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[314][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[326][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[342][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[358][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[310][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[334][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[350][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[366][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[318][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[321][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[337][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[353][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[305][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[329][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[345][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[361][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[313][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[325][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[341][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[357][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[309][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[333][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[349][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[365][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[317][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[323][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[339][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[355][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[307][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[331][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[347][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[363][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[315][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[327][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[343][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[359][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[311][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[335][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[351][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[367][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[319][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[320][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[336][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[352][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[304][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[328][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[344][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[360][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[312][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[324][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[340][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[356][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[308][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[332][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[348][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[364][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[316][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[322][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[338][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[354][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[306][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[330][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[346][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[362][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[314][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[326][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[342][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[358][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[310][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[334][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[350][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[366][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[318][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[321][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[337][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[353][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[305][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[329][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[345][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[361][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[313][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[325][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[341][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[357][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[309][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[333][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[349][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[365][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[317][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[323][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[339][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[355][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[307][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[331][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[347][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[363][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[315][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[327][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[343][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[359][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[311][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[335][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[351][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[367][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[319][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[320][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[336][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[352][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[304][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[328][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[344][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[360][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[312][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[324][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[340][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[356][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[308][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[332][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[348][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[364][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[316][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[322][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[338][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[354][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[306][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[330][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[346][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[362][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[314][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[326][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[342][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[358][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[310][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[334][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[350][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[366][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[318][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[321][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[337][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[353][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[305][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[329][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[345][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[361][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[313][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[325][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[341][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[357][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[309][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[333][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[349][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[365][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[317][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[323][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[339][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[355][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[307][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[331][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[347][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[363][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[315][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[327][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[343][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[359][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[311][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[335][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[351][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[367][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[319][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[320][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[336][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[352][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[304][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[328][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[344][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[360][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[312][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[324][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[340][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[356][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[308][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[332][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[348][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[364][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[316][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[322][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[338][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[354][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[306][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[330][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[346][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[362][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[314][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[326][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[342][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[358][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[310][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[334][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[350][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[366][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[318][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[321][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[337][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[353][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[305][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[329][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[345][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[361][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[313][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[325][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[341][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[357][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[309][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[333][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[349][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[365][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[317][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[323][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[339][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[355][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[307][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[331][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[347][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[363][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[315][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[327][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[343][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[359][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[311][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[335][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[351][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[367][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "mem2[319][7]" lost all its fanouts during netlist optimizations.
+Info: Implemented 1281 device resources after synthesis - the final resource count might be different
     Info: Implemented 21 input pins
     Info: Implemented 8 output pins
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 33 warnings
-    Info: Peak virtual memory: 237 megabytes
-    Info: Processing ended: Thu May 19 22:20:06 2022
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Implemented 1252 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 245 megabytes
+    Info: Processing ended: Sun May 29 14:22:30 2022
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:07
 
 

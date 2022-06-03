@@ -4,39 +4,22 @@ USE ieee.numeric_std.all;
 -------------------------------------------------------
 ENTITY w_reg IS
 PORT (
-nclr : IN STD_LOGIC;
-clk : IN STD_LOGIC;
-nce : IN STD_LOGIC;
-r_nw : IN STD_LOGIC;
-addr : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
-dio : INOUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+nrst : IN STD_LOGIC;
+clk_in : IN STD_LOGIC;
+wr_en : IN STD_LOGIC;
+d_in : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+w_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
 );
 END ENTITY;
 
 ARCHITECTURE arch1 OF w_reg IS
-TYPE mem_type IS ARRAY(0 TO 31) OF
-STD_LOGIC_VECTOR(7 DOWNTO 0);
-SIGNAL mem_reg : mem_type;
-SIGNAL addr_int : INTEGER RANGE 0 TO 31;
 BEGIN
------------ Conversão:
-addr_int <= TO_INTEGER(UNSIGNED(addr));
-
-
------------ Escrita:
-PROCESS(nclr, clk)
+PROCESS(nrst, clk_in, wr_en, d_in)
 BEGIN
-IF nclr = '0' THEN
-mem_reg <= (OTHERS => (OTHERS => '0'));
-ELSIF RISING_EDGE(clk) THEN
-IF nce = '0' AND r_nw = '0' THEN
-mem_reg(addr_int) <= dio;
-END IF;
+IF nrst = '0' THEN
+w_out <= (OTHERS => '0');
+ELSIF RISING_EDGE(clk_in) AND wr_en = '1' THEN
+w_out <= d_in;
 END IF;
 END PROCESS;
-
------------ Leitura:
-dio <= mem_reg(addr_int)
-WHEN nce = '0' AND r_nw = '1' ELSE
-(OTHERS => 'Z');
 END arch1;

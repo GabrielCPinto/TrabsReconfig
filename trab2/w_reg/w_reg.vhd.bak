@@ -36,12 +36,7 @@ END IF;
 END PROCESS;
 
 ----------- Leitura:
-PROCESS(nce, r_nw, mem_reg, addr_int)
-BEGIN
-IF nce = '0' AND r_nw = '1' THEN
-dio <= mem_reg(addr_int);
-ELSE
-dio <= (OTHERS => 'Z');
-END IF;
-END PROCESS;
+dio <= mem_reg(addr_int)
+WHEN nce = '0' AND r_nw = '1' ELSE
+(OTHERS => 'Z');
 END arch1;

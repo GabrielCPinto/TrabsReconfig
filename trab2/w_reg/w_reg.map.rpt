@@ -1,5 +1,5 @@
 Analysis & Synthesis report for w_reg
-Thu Apr 28 21:55:54 2022
+Sat Jun 04 20:14:22 2022
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -14,8 +14,7 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Multiplexer Restructuring Statistics (Restructuring Performed)
- 10. Analysis & Synthesis Messages
+  9. Analysis & Synthesis Messages
 
 
 
@@ -41,16 +40,16 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +------------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Apr 28 21:55:54 2022        ;
+; Analysis & Synthesis Status        ; Successful - Sat Jun 04 20:14:22 2022        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; w_reg                                        ;
 ; Top-level Entity Name              ; w_reg                                        ;
 ; Family                             ; Cyclone II                                   ;
-; Total logic elements               ; 473                                          ;
-;     Total combinational functions  ; 217                                          ;
-;     Dedicated logic registers      ; 256                                          ;
-; Total registers                    ; 256                                          ;
-; Total pins                         ; 17                                           ;
+; Total logic elements               ; 8                                            ;
+;     Total combinational functions  ; 0                                            ;
+;     Dedicated logic registers      ; 8                                            ;
+; Total registers                    ; 8                                            ;
+; Total pins                         ; 19                                           ;
 ; Total virtual pins                 ; 0                                            ;
 ; Total memory bits                  ; 0                                            ;
 ; Embedded Multiplier 9-bit elements ; 0                                            ;
@@ -148,42 +147,42 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+-----------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                          ;
-+----------------------------------+-----------------+-----------------+------------------------------------------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path             ;
-+----------------------------------+-----------------+-----------------+------------------------------------------+
-; w_reg.vhd                        ; yes             ; User VHDL File  ; d:/users/1215055/Desktop/w_reg/w_reg.vhd ;
-+----------------------------------+-----------------+-----------------+------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                        ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                           ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------------+
+; w_reg.vhd                        ; yes             ; User VHDL File  ; C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/trab2/w_reg/w_reg.vhd ;
++----------------------------------+-----------------+-----------------+------------------------------------------------------------------------+
 
 
-+-----------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary         ;
-+---------------------------------------------+-------+
-; Resource                                    ; Usage ;
-+---------------------------------------------+-------+
-; Estimated Total logic elements              ; 473   ;
-;                                             ;       ;
-; Total combinational functions               ; 217   ;
-; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 208   ;
-;     -- 3 input functions                    ; 8     ;
-;     -- <=2 input functions                  ; 1     ;
-;                                             ;       ;
-; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 217   ;
-;     -- arithmetic mode                      ; 0     ;
-;                                             ;       ;
-; Total registers                             ; 256   ;
-;     -- Dedicated logic registers            ; 256   ;
-;     -- I/O registers                        ; 0     ;
-;                                             ;       ;
-; I/O pins                                    ; 17    ;
-; Maximum fan-out node                        ; clk   ;
-; Maximum fan-out                             ; 256   ;
-; Total fan-out                               ; 1898  ;
-; Average fan-out                             ; 3.87  ;
-+---------------------------------------------+-------+
++------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary          ;
++---------------------------------------------+--------+
+; Resource                                    ; Usage  ;
++---------------------------------------------+--------+
+; Estimated Total logic elements              ; 8      ;
+;                                             ;        ;
+; Total combinational functions               ; 0      ;
+; Logic element usage by number of LUT inputs ;        ;
+;     -- 4 input functions                    ; 0      ;
+;     -- 3 input functions                    ; 0      ;
+;     -- <=2 input functions                  ; 0      ;
+;                                             ;        ;
+; Logic elements by mode                      ;        ;
+;     -- normal mode                          ; 0      ;
+;     -- arithmetic mode                      ; 0      ;
+;                                             ;        ;
+; Total registers                             ; 8      ;
+;     -- Dedicated logic registers            ; 8      ;
+;     -- I/O registers                        ; 0      ;
+;                                             ;        ;
+; I/O pins                                    ; 19     ;
+; Maximum fan-out node                        ; clk_in ;
+; Maximum fan-out                             ; 8      ;
+; Total fan-out                               ; 40     ;
+; Average fan-out                             ; 1.48   ;
++---------------------------------------------+--------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -191,7 +190,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |w_reg                     ; 217 (217)         ; 256 (256)    ; 0           ; 0            ; 0       ; 0         ; 17   ; 0            ; |w_reg              ; work         ;
+; |w_reg                     ; 0 (0)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 19   ; 0            ; |w_reg              ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -201,23 +200,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 256   ;
+; Total registers                              ; 8     ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 256   ;
+; Number of registers using Asynchronous Clear ; 8     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 256   ;
+; Number of registers using Clock Enable       ; 8     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
-
-
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 32:1               ; 8 bits    ; 168 LEs       ; 168 LEs              ; 0 LEs                  ; No         ; |w_reg|Mux7                ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
 +-------------------------------+
@@ -226,21 +216,20 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Thu Apr 28 21:55:52 2022
+    Info: Processing started: Sat Jun 04 20:14:21 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off w_reg -c w_reg
 Info: Found 2 design units, including 1 entities, in source file w_reg.vhd
     Info: Found design unit 1: w_reg-arch1
     Info: Found entity 1: w_reg
 Info: Elaborating entity "w_reg" for the top level hierarchy
-Info: Implemented 490 device resources after synthesis - the final resource count might be different
-    Info: Implemented 9 input pins
-    Info: Implemented 0 output pins
-    Info: Implemented 8 bidirectional pins
-    Info: Implemented 473 logic cells
+Info: Implemented 27 device resources after synthesis - the final resource count might be different
+    Info: Implemented 11 input pins
+    Info: Implemented 8 output pins
+    Info: Implemented 8 logic cells
 Info: Quartus II Analysis & Synthesis was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 243 megabytes
-    Info: Processing ended: Thu Apr 28 21:55:54 2022
-    Info: Elapsed time: 00:00:02
+    Info: Peak virtual memory: 240 megabytes
+    Info: Processing ended: Sat Jun 04 20:14:22 2022
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:02
 
 

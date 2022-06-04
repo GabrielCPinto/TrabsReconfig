@@ -23,6 +23,7 @@ ENTITY FSR_reg IS
 END ENTITY;
 
 ARCHITECTURE arch1 OF FSR_reg IS
+SIGNAL ler : STD_LOGIC_VECTOR(7 DOWNTO 0);
 BEGIN
 PROCESS(nrst, clk_in, abus_in, dbus_in, wr_en, rd_en)
 	BEGIN
@@ -31,10 +32,11 @@ PROCESS(nrst, clk_in, abus_in, dbus_in, wr_en, rd_en)
 		-- escrita
 		ELSIF RISING_EDGE(clk_in) AND abus_in(6 DOWNTO 0) = "0000100" AND wr_en = '1' THEN
 			fsr_out <= dbus_in;
+			ler <= dbus_in;
 		END IF;		
 		--leitura
 		IF abus_in(6 DOWNTO 0) = "0000100" AND rd_en = '1' THEN
-			dbus_out <= dbus_in;
+			dbus_out <= ler;
 		ELSE --caso rd_en = 0
 			dbus_out <= "ZZZZZZZZ";
 		END IF;

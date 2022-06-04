@@ -1,0 +1,7 @@
+v 4
+file . "test.vhd" "b5b3e7abd4d3254bd97aba766c4f0296d3d94372" "20220604231026.500":
+  entity test at 1( 0) + 0 on 53;
+  architecture arctest of test at 7( 73) + 0 on 54;
+file . "control_unit.vhd" "c85e602fb03066b5a8891bd21e2ead17976fd795" "20220604231023.508":
+  entity control_unity at 1( 0) + 0 on 51;
+  architecture arch1 of control_unity at 28( 843) + 0 on 52;

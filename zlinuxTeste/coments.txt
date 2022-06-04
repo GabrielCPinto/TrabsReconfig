@@ -1,0 +1,14 @@
+--tudo que for registrar F pode assumir q � memoira
+
+
+-- TODOS as instruções que contem F nos bist precisam habilitar a leitura da memoria?
+-- Como funciona a ROM
+-- como ela interage com BUSMUX
+-- como fazer leitura e escrita no mesmo ciclo
+
+--ROM responsavel por guardar a sequencia de isntruções do programa. (NAO É ESCRITA)
+--PC_reg, gerenecia qual posção da memoria ROM eu estou no momento
+--PORT's gerenciadors de I/O
+--STATUS_reg server para controlar o resultado das operções feitas pela ula z -> zero c->carry
+--FSR serve para selecionar o endereço da RAM (Banco de registradores interno)
+--Barramento de controle conta para todomundo se esta sendo feito leitura ou escritastatus_z

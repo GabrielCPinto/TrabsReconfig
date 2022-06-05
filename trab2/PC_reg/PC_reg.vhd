@@ -1,6 +1,7 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.numeric_std.all;
+USE ieee.std_logic_unsigned.all;
 
 ENTITY PC_reg IS
 	PORT (
@@ -37,16 +38,15 @@ ENTITY PC_reg IS
 		nextpc_out : OUT STD_LOGIC_VECTOR(12 DOWNTO 0); --Sa?da  do  valor  a  ser  carregado  no  contador  (entrada  do  registrador  PC).  Essa  sa?da  est? 
 		--sempre ativa, n?o dependendo de habilita??o. Quando n?o for ocorrer mudan?a no valor 
 		--do contador, ou seja, quando nenhuma das entradas stack_pop, inc_pc, load_en ou wr_en 
-		--estiver ativada, essa sa?da dever? corresponder ao valor atual do contador. 
-		stack_in : IN STD_LOGIC_VECTOR(12 DOWNTO 0); --Entrada de dados para a pilha. 
-		stack_out : OUT STD_LOGIC_VECTOR(12 DOWNTO 0); --Saída  correspondente  à  primeira  posição  da  pilha.  Essa  saída  está  sempre  ativa,  não 
-		--dependendo de habilitação
+		--estiver ativada, essa sa?da dever? corresponder ao valor atual do contador.
 		dbus_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0) --Sa?da  de  dados  lidos  com  habilita??o  atrav?s  de  rd_en  e  endere?amento  por  abus_in. 
 		--Quando n?o usada, dever? ficar em alta imped?ncia (?ZZZZZZZZ?).
 	);
 END ENTITY;
 
 ARCHITECTURE arch1 OF PC_reg IS
+	SIGNAL pc : STD_LOGIC_VECTOR(12 DOWNTO 0);
+	SIGNAL pclatch : STD_LOGIC_VECTOR(7 DOWNTO 0);
 SIGNAL stack_reg0 : STD_LOGIC_VECTOR(12 DOWNTO 0);
 	SIGNAL stack_reg1 : STD_LOGIC_VECTOR(12 DOWNTO 0);
 	SIGNAL stack_reg2 : STD_LOGIC_VECTOR(12 DOWNTO 0);
@@ -55,15 +55,27 @@ SIGNAL stack_reg0 : STD_LOGIC_VECTOR(12 DOWNTO 0);
 	SIGNAL stack_reg5 : STD_LOGIC_VECTOR(12 DOWNTO 0);
 	SIGNAL stack_reg6 : STD_LOGIC_VECTOR(12 DOWNTO 0);
 	SIGNAL stack_reg7 : STD_LOGIC_VECTOR(12 DOWNTO 0);
+	CONSTANT one  : STD_LOGIC_VECTOR(12 DOWNTO 0) := "0000000000001";
 BEGIN
 	
-PROCESS(nrst, clk_in, stack_push, stack_pop)
-	BEGIN
-		IF nrst = '0' THEN --reset
-			stack_out <= (OTHERS => '0');
-		ELSIF RISING_EDGE(clk_in) AND (stack_pop = '1' OR stack_push = '1') THEN
+PROCESS(nrst, clk_in, inc_pc, load_pc, wr_en, abus_in, stack_push, stack_pop)--PC, o PCL é PC(7...0)
+BEGIN
+
+IF nrst = '0' THEN
+pc <= (OTHERS => '0');
+ELSIF RISING_EDGE(clk_in) AND inc_pc ='1' THEN
+pc <= pc + one;
+ELSIF RISING_EDGE(clk_in) AND load_pc = '1' THEN
+pc(10 downto 0) <= addr_in;
+pc(12 downto 11) <= pclatch(4 downto 3);
+ELSIF RISING_EDGE(clk_in) AND wr_en = '1' AND abus_in(6 downto 0) = "0000010" THEN
+pc(7 downto 0) <= dbus_in;
+pc(12 downto 8) <= pc(4 downto 0);
+END IF;
+
+IF RISING_EDGE(clk_in) AND (stack_pop = '1' OR stack_push = '1') THEN
 			IF stack_pop = '1' THEN --pop
-				stack_out <= stack_reg0;
+				pc <= stack_reg0;
 				stack_reg0 <= stack_reg1;
 				stack_reg1 <= stack_reg2;
 				stack_reg2 <= stack_reg3;
@@ -81,37 +93,38 @@ PROCESS(nrst, clk_in, stack_push, stack_pop)
 				stack_reg3 <= stack_reg2;
 				stack_reg2 <= stack_reg1;
 				stack_reg1 <= stack_reg0;
-				stack_reg0 <= stack_in;
+				stack_reg0 <= pc;
 			END IF;
 		END IF;
+END PROCESS;
+	
+PROCESS(nrst, clk_in, wr_en, abus_in)--PCLATCH
+BEGIN
+IF nrst = '0' THEN
+pclatch <= (OTHERS => '0');
+ELSIF RISING_EDGE(clk_in) AND wr_en = '1' AND abus_in(6 downto 0) = "0001010" THEN
+pclatch <= dbus_in;
+END IF;
+END PROCESS;	
+	
+PROCESS(clk_in, rd_en, abus_in)
+	BEGIN
+	IF RISING_EDGE(clk_in) AND rd_en = '1' AND abus_in(6 downto 0) = "0000010" THEN
+		dbus_out <= pc(7 downto 0);
+	ELSIF RISING_EDGE(clk_in) AND rd_en = '1' AND abus_in(6 downto 0) = "0001010" THEN
+		dbus_out <= pclatch(7 downto 0);
+	ELSIF RISING_EDGE(clk_in) THEN
+		dbus_out <= "ZZZZZZZZ";
+	END IF;
 	END PROCESS;
 	
-PROCESS(nrst, clk_in) --
+PROCESS(stack_pop, inc_pc, rd_en, wr_en )
 	BEGIN
-		IF nrst = '0' THEN --reset
-		   dbus_out <= (OTHERS => '0');
-		   nextpc_out <= (OTHERS => '0');
-		ELSIF RISING_EDGE(clk_in) THEN
-			IF inc_pc = '1' THEN
-				nextpc_out <= std_logic_vector(unsigned(stack_in)+1);
-			END IF;
-			IF load_pc = '1' THEN
-				nextpc_out(10 DOWNTO 0) <= addr_in;
-				nextpc_out(12 DOWNTO 11) <= dbus_in(4 DOWNTO 3);
-			END IF;
-			IF abus_in(6 DOWNTO 0) = "0000010" AND wr_en = '1' THEN --Escrita em PCL
-				nextpc_out(7 DOWNTO 0) <= dbus_in;
-				nextpc_out(12 DOWNTO 8) <= dbus_in(4 DOWNTO 0);
-			ELSIF abus_in(6 DOWNTO 0) = "0001010" AND wr_en = '1' THEN --Escrita em PCLath
-				dbus_out <= dbus_in;
-			END IF;
-			IF abus_in(6 DOWNTO 0) = "0000010" AND rd_en = '1' THEN --Leitura em PCL
-				dbus_out <= dbus_in;
-			ELSIF abus_in(6 DOWNTO 0) = "0001010" AND rd_en = '1' THEN --Leitura em PCLath
-				dbus_out <= dbus_in;
-			ELSE
-				dbus_out <= "ZZZZZZZZ";
-			END IF;
-		END IF;
+	IF stack_pop = '0' AND inc_pc = '0' AND rd_en = '0' AND wr_en = '0' THEN --essa saída deverá corresponder ao valor atual do contador
+		nextpc_out <= pc;
+	--ELSE
+		--nextpc_out <= pc;
+	END IF;
 	END PROCESS;
+	
 END arch1;

@@ -1,6 +1,7 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 USE ieee.std_logic_unsigned.all;
+USE ieee.numeric_std.all;
 
 ENTITY alu IS
 	PORT (
@@ -19,6 +20,7 @@ END ENTITY;
 ARCHITECTURE arch OF alu IS
 	SIGNAL aux  : STD_LOGIC_VECTOR(8 DOWNTO 0);
 	SIGNAL aux2 : STD_LOGIC_VECTOR(4 DOWNTO 0);
+	SIGNAL aux3 : STD_LOGIC_VECTOR(7 DOWNTO 0);
 	CONSTANT zero : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
 	CONSTANT one  : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000001";	
 	CONSTANT OP_OR   : STD_LOGIC_VECTOR (3 DOWNTO 0) := "0000";
@@ -39,9 +41,16 @@ ARCHITECTURE arch OF alu IS
 	CONSTANT PASS_B  : STD_LOGIC_VECTOR (3 DOWNTO 0) := "1111";
 	
 BEGIN
+	--aux3 <= a_in; 
+	--WITH op_sel SELECT
+		
+		--aux3(to_integer(unsigned(bit_sel))) <= '0' WHEN OP_BC,
+		--aux3(to_integer(unsigned(bit_sel))) <= '1' WHEN OP_BS,
+		--'0' WHEN OTHERS;
+	
 	WITH op_sel SELECT
-		aux <= '0' & (a_in OR b_in)  WHEN OP_OR, 	--OR
-			   '0' & (a_in AND b_in) WHEN OP_AND,	--AND
+		aux <= '0' & (a_in OR b_in)  WHEN "0000", 	--OR
+			   '0' & (a_in AND b_in) WHEN "0001",	--AND
 			   '0' & (a_in XOR b_in) WHEN OP_XOR,	--XOR
 			   '0' & (NOT a_in) 	 WHEN OP_COM,	--COM
 			   (('0' & a_in) + ('0' & b_in)) WHEN OP_ADD,	--ADD

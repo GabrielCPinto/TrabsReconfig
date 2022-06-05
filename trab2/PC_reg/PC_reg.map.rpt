@@ -1,5 +1,5 @@
 Analysis & Synthesis report for PC_reg
-Sat May 14 09:16:58 2022
+Sun Jun 05 16:44:01 2022
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -13,8 +13,8 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Inverted Register Statistics
+  8. User-Specified and Inferred Latches
+  9. General Register Statistics
  10. Multiplexer Restructuring Statistics (Restructuring Performed)
  11. Analysis & Synthesis Messages
 
@@ -42,16 +42,16 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +------------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat May 14 09:16:58 2022        ;
+; Analysis & Synthesis Status        ; Successful - Sun Jun 05 16:44:01 2022        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; PC_reg                                       ;
 ; Top-level Entity Name              ; PC_reg                                       ;
 ; Family                             ; Cyclone II                                   ;
-; Total logic elements               ; 164                                          ;
-;     Total combinational functions  ; 136                                          ;
-;     Dedicated logic registers      ; 146                                          ;
-; Total registers                    ; 146                                          ;
-; Total pins                         ; 83                                           ;
+; Total logic elements               ; 205                                          ;
+;     Total combinational functions  ; 190                                          ;
+;     Dedicated logic registers      ; 141                                          ;
+; Total registers                    ; 141                                          ;
+; Total pins                         ; 57                                           ;
 ; Total virtual pins                 ; 0                                            ;
 ; Total memory bits                  ; 0                                            ;
 ; Embedded Multiplier 9-bit elements ; 0                                            ;
@@ -163,27 +163,27 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+--------+
 ; Resource                                    ; Usage  ;
 +---------------------------------------------+--------+
-; Estimated Total logic elements              ; 164    ;
+; Estimated Total logic elements              ; 205    ;
 ;                                             ;        ;
-; Total combinational functions               ; 136    ;
+; Total combinational functions               ; 190    ;
 ; Logic element usage by number of LUT inputs ;        ;
-;     -- 4 input functions                    ; 5      ;
-;     -- 3 input functions                    ; 104    ;
-;     -- <=2 input functions                  ; 27     ;
+;     -- 4 input functions                    ; 32     ;
+;     -- 3 input functions                    ; 130    ;
+;     -- <=2 input functions                  ; 28     ;
 ;                                             ;        ;
 ; Logic elements by mode                      ;        ;
-;     -- normal mode                          ; 124    ;
+;     -- normal mode                          ; 178    ;
 ;     -- arithmetic mode                      ; 12     ;
 ;                                             ;        ;
-; Total registers                             ; 146    ;
-;     -- Dedicated logic registers            ; 146    ;
+; Total registers                             ; 141    ;
+;     -- Dedicated logic registers            ; 141    ;
 ;     -- I/O registers                        ; 0      ;
 ;                                             ;        ;
-; I/O pins                                    ; 83     ;
+; I/O pins                                    ; 57     ;
 ; Maximum fan-out node                        ; clk_in ;
-; Maximum fan-out                             ; 146    ;
-; Total fan-out                               ; 913    ;
-; Average fan-out                             ; 2.50   ;
+; Maximum fan-out                             ; 141    ;
+; Total fan-out                               ; 1030   ;
+; Average fan-out                             ; 2.65   ;
 +---------------------------------------------+--------+
 
 
@@ -192,9 +192,32 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |PC_reg                    ; 136 (136)         ; 146 (146)    ; 0           ; 0            ; 0       ; 0         ; 83   ; 0            ; |PC_reg             ; work         ;
+; |PC_reg                    ; 190 (190)         ; 141 (141)    ; 0           ; 0            ; 0       ; 0         ; 57   ; 0            ; |PC_reg             ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                ;
++-----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------+------------------------+
+; nextpc_out[0]$latch                                 ; process_3           ; yes                    ;
+; nextpc_out[1]$latch                                 ; process_3           ; yes                    ;
+; nextpc_out[2]$latch                                 ; process_3           ; yes                    ;
+; nextpc_out[3]$latch                                 ; process_3           ; yes                    ;
+; nextpc_out[4]$latch                                 ; process_3           ; yes                    ;
+; nextpc_out[5]$latch                                 ; process_3           ; yes                    ;
+; nextpc_out[6]$latch                                 ; process_3           ; yes                    ;
+; nextpc_out[7]$latch                                 ; process_3           ; yes                    ;
+; nextpc_out[8]$latch                                 ; process_3           ; yes                    ;
+; nextpc_out[9]$latch                                 ; process_3           ; yes                    ;
+; nextpc_out[10]$latch                                ; process_3           ; yes                    ;
+; nextpc_out[11]$latch                                ; process_3           ; yes                    ;
+; nextpc_out[12]$latch                                ; process_3           ; yes                    ;
+; Number of user-specified and inferred latches = 13  ;                     ;                        ;
++-----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
 +------------------------------------------------------+
@@ -202,43 +225,25 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 146   ;
+; Total registers                              ; 141   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 11    ;
-; Number of registers using Asynchronous Clear ; 42    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 21    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 130   ;
+; Number of registers using Clock Enable       ; 125   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+--------------------------------------------------+
-; Inverted Register Statistics                     ;
-+----------------------------------------+---------+
-; Inverted Register                      ; Fan out ;
-+----------------------------------------+---------+
-; dbus_out[0]~en                         ; 1       ;
-; dbus_out[1]~en                         ; 1       ;
-; dbus_out[2]~en                         ; 1       ;
-; dbus_out[3]~en                         ; 1       ;
-; dbus_out[4]~en                         ; 1       ;
-; dbus_out[5]~en                         ; 1       ;
-; dbus_out[6]~en                         ; 1       ;
-; dbus_out[7]~en                         ; 1       ;
-; Total number of inverted registers = 8 ;         ;
-+----------------------------------------+---------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                            ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output  ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------+
-; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |PC_reg|stack_reg7[12]      ;
-; 3:1                ; 91 bits   ; 182 LEs       ; 91 LEs               ; 91 LEs                 ; Yes        ; |PC_reg|stack_reg0[1]       ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |PC_reg|nextpc_out[12]~reg0 ;
-; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |PC_reg|nextpc_out[10]~reg0 ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |PC_reg|stack_reg7[6]      ;
+; 3:1                ; 91 bits   ; 182 LEs       ; 91 LEs               ; 91 LEs                 ; Yes        ; |PC_reg|stack_reg0[9]      ;
+; 7:1                ; 13 bits   ; 52 LEs        ; 39 LEs               ; 13 LEs                 ; Yes        ; |PC_reg|pc[1]              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
 +-------------------------------+
@@ -247,34 +252,38 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Sat May 14 09:16:56 2022
+    Info: Processing started: Sun Jun 05 16:44:00 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off PC_reg -c PC_reg
 Info: Found 2 design units, including 1 entities, in source file pc_reg.vhd
     Info: Found design unit 1: PC_reg-arch1
     Info: Found entity 1: PC_reg
 Info: Elaborating entity "PC_reg" for the top level hierarchy
-Info: Registers with preset signals will power-up high
-Info: DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
-Critical Warning: Ignored Power-Up Level option on the following registers
-    Critical Warning (18010): Register dbus_out[0]~en will power up to High
-    Critical Warning (18010): Register dbus_out[1]~en will power up to High
-    Critical Warning (18010): Register dbus_out[2]~en will power up to High
-    Critical Warning (18010): Register dbus_out[3]~en will power up to High
-    Critical Warning (18010): Register dbus_out[4]~en will power up to High
-    Critical Warning (18010): Register dbus_out[5]~en will power up to High
-    Critical Warning (18010): Register dbus_out[6]~en will power up to High
-    Critical Warning (18010): Register dbus_out[7]~en will power up to High
+Warning (10492): VHDL Process Statement warning at PC_reg.vhd(124): signal "pc" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at PC_reg.vhd(121): inferring latch(es) for signal or variable "nextpc_out", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "nextpc_out[0]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[1]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[2]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[3]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[4]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[5]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[6]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[7]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[8]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[9]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[10]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[11]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[12]" at PC_reg.vhd(121)
 Warning: Design contains 2 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "abus_in[7]"
     Warning (15610): No output dependent on input pin "abus_in[8]"
-Info: Implemented 248 device resources after synthesis - the final resource count might be different
-    Info: Implemented 49 input pins
-    Info: Implemented 34 output pins
-    Info: Implemented 165 logic cells
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 12 warnings
-    Info: Peak virtual memory: 239 megabytes
-    Info: Processing ended: Sat May 14 09:16:58 2022
-    Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:01
+Info: Implemented 263 device resources after synthesis - the final resource count might be different
+    Info: Implemented 36 input pins
+    Info: Implemented 21 output pins
+    Info: Implemented 206 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 240 megabytes
+    Info: Processing ended: Sun Jun 05 16:44:01 2022
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:02
 
 

@@ -49,8 +49,8 @@ BEGIN
 		--'0' WHEN OTHERS;
 	
 	WITH op_sel SELECT
-		aux <= '0' & (a_in OR b_in)  WHEN "0000", 	--OR
-			   '0' & (a_in AND b_in) WHEN "0001",	--AND
+		aux <= '0' & (a_in OR b_in)  WHEN OP_OR, 	--OR
+			   '0' & (a_in AND b_in) WHEN OP_AND,	--AND
 			   '0' & (a_in XOR b_in) WHEN OP_XOR,	--XOR
 			   '0' & (NOT a_in) 	 WHEN OP_COM,	--COM
 			   (('0' & a_in) + ('0' & b_in)) WHEN OP_ADD,	--ADD

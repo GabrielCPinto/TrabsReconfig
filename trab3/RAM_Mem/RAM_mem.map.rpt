@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RAM_mem
-Sun May 29 14:22:30 2022
+Thu Jun 09 16:18:27 2022
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -42,15 +42,15 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +------------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun May 29 14:22:30 2022        ;
+; Analysis & Synthesis Status        ; Successful - Thu Jun 09 16:18:27 2022        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; RAM_mem                                      ;
 ; Top-level Entity Name              ; RAM_mem                                      ;
 ; Family                             ; Cyclone II                                   ;
-; Total logic elements               ; 1,252                                        ;
-;     Total combinational functions  ; 628                                          ;
-;     Dedicated logic registers      ; 632                                          ;
-; Total registers                    ; 632                                          ;
+; Total logic elements               ; 2,432                                        ;
+;     Total combinational functions  ; 1,176                                        ;
+;     Dedicated logic registers      ; 1,264                                        ;
+; Total registers                    ; 1264                                         ;
 ; Total pins                         ; 29                                           ;
 ; Total virtual pins                 ; 0                                            ;
 ; Total memory bits                  ; 0                                            ;
@@ -163,27 +163,27 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+--------+
 ; Resource                                    ; Usage  ;
 +---------------------------------------------+--------+
-; Estimated Total logic elements              ; 1,252  ;
+; Estimated Total logic elements              ; 2,432  ;
 ;                                             ;        ;
-; Total combinational functions               ; 628    ;
+; Total combinational functions               ; 1176   ;
 ; Logic element usage by number of LUT inputs ;        ;
-;     -- 4 input functions                    ; 577    ;
-;     -- 3 input functions                    ; 36     ;
-;     -- <=2 input functions                  ; 15     ;
+;     -- 4 input functions                    ; 1107   ;
+;     -- 3 input functions                    ; 41     ;
+;     -- <=2 input functions                  ; 28     ;
 ;                                             ;        ;
 ; Logic elements by mode                      ;        ;
-;     -- normal mode                          ; 628    ;
+;     -- normal mode                          ; 1176   ;
 ;     -- arithmetic mode                      ; 0      ;
 ;                                             ;        ;
-; Total registers                             ; 632    ;
-;     -- Dedicated logic registers            ; 632    ;
+; Total registers                             ; 1264   ;
+;     -- Dedicated logic registers            ; 1264   ;
 ;     -- I/O registers                        ; 0      ;
 ;                                             ;        ;
 ; I/O pins                                    ; 29     ;
 ; Maximum fan-out node                        ; clk_in ;
-; Maximum fan-out                             ; 632    ;
-; Total fan-out                               ; 4990   ;
-; Average fan-out                             ; 3.87   ;
+; Maximum fan-out                             ; 1264   ;
+; Total fan-out                               ; 9663   ;
+; Average fan-out                             ; 3.91   ;
 +---------------------------------------------+--------+
 
 
@@ -192,7 +192,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |RAM_mem                   ; 628 (628)         ; 632 (632)    ; 0           ; 0            ; 0       ; 0         ; 29   ; 0            ; |RAM_mem            ; work         ;
+; |RAM_mem                   ; 1176 (1176)       ; 1264 (1264)  ; 0           ; 0            ; 0       ; 0         ; 29   ; 0            ; |RAM_mem            ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -202,6 +202,22 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------------------------+---------------------------------------------+
 ; Register name                           ; Reason for Removal                          ;
 +-----------------------------------------+---------------------------------------------+
+; mem_com[126][0]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[127][0]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[126][1]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[127][1]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[126][2]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[127][2]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[126][3]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[127][3]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[126][4]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[127][4]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[126][5]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[127][5]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[126][6]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[127][6]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[126][7]                         ; Stuck at GND due to stuck port clock_enable ;
+; mem_com[127][7]                         ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[320][0]                            ; Lost fanout                                 ;
 ; mem2[336][0]                            ; Lost fanout                                 ;
 ; mem2[352][0]                            ; Lost fanout                                 ;
@@ -714,289 +730,273 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; mem2[351][7]                            ; Lost fanout                                 ;
 ; mem2[367][7]                            ; Lost fanout                                 ;
 ; mem2[319][7]                            ; Lost fanout                                 ;
-; mem2[293][0]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[301][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[291][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[299][0]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[289][0]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[297][0]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[295][0]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[303][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[290][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[298][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[293][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[301][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[292][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[300][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[289][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[297][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[288][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[296][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[295][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[303][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[294][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[302][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[293][1]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[301][1]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[291][1]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[299][1]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[289][1]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[297][1]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[295][1]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[303][1]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[290][1]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[298][1]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[292][1]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[300][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[291][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[299][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[290][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[298][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[289][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[297][1]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[288][1]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[296][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[295][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[303][1]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[294][1]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[302][1]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[293][2]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[301][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[291][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[299][2]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[289][2]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[297][2]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[295][2]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[303][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[290][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[298][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[293][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[301][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[292][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[300][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[289][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[297][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[288][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[296][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[295][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[303][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[294][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[302][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[293][3]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[301][3]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[291][3]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[299][3]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[289][3]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[297][3]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[295][3]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[303][3]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[290][3]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[298][3]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[292][3]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[300][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[291][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[299][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[290][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[298][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[289][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[297][3]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[288][3]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[296][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[295][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[303][3]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[294][3]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[302][3]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[293][4]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[301][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[291][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[299][4]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[289][4]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[297][4]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[295][4]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[303][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[290][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[298][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[293][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[301][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[292][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[300][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[289][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[297][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[288][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[296][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[295][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[303][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[294][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[302][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[293][5]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[301][5]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[291][5]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[299][5]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[289][5]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[297][5]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[295][5]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[303][5]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[290][5]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[298][5]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[292][5]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[300][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[291][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[299][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[290][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[298][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[289][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[297][5]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[288][5]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[296][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[295][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[303][5]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[294][5]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[302][5]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[293][6]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[301][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[291][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[299][6]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[289][6]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[297][6]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[295][6]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[303][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[290][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[298][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[293][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[301][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[292][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[300][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[289][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[297][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[288][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[296][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[295][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[303][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[294][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[302][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[293][7]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[301][7]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[291][7]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[299][7]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[289][7]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[297][7]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[295][7]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[303][7]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[290][7]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem2[298][7]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[292][7]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[300][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[291][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[299][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[290][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[298][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[289][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[297][7]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[288][7]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[296][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[295][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem2[303][7]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[294][7]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem2[302][7]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem_com[126][0]                         ; Stuck at GND due to stuck port clock_enable ;
-; mem_com[127][0]                         ; Stuck at GND due to stuck port clock_enable ;
-; mem1[236][0]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[232][0]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[230][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[234][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[226][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[236][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[228][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[232][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[224][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[222][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[238][0]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[234][0]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[237][0]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[233][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[230][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[231][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[227][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[237][0]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[233][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[229][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[225][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[223][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[239][0]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[235][0]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem_com[126][1]                         ; Stuck at GND due to stuck port clock_enable ;
-; mem_com[127][1]                         ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[236][1]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[232][1]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[230][1]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[226][1]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[228][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[234][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[226][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[232][1]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[224][1]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[222][1]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[238][1]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[234][1]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[235][1]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[233][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[230][1]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[231][1]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[229][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[235][1]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[233][1]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[227][1]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[225][1]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[223][1]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[239][1]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[237][1]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem_com[126][2]                         ; Stuck at GND due to stuck port clock_enable ;
-; mem_com[127][2]                         ; Stuck at GND due to stuck port clock_enable ;
-; mem1[236][2]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[232][2]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[230][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[234][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[226][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[236][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[228][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[232][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[224][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[222][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[238][2]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[234][2]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[237][2]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[233][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[230][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[231][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[227][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[237][2]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[233][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[229][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[225][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[223][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[239][2]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[235][2]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem_com[126][3]                         ; Stuck at GND due to stuck port clock_enable ;
-; mem_com[127][3]                         ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[236][3]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[232][3]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[230][3]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[226][3]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[228][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[234][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[226][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[232][3]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[224][3]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[222][3]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[238][3]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[234][3]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[235][3]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[233][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[230][3]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[231][3]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[229][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[235][3]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[233][3]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[227][3]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[225][3]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[223][3]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[239][3]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[237][3]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem_com[126][4]                         ; Stuck at GND due to stuck port clock_enable ;
-; mem_com[127][4]                         ; Stuck at GND due to stuck port clock_enable ;
-; mem1[236][4]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[232][4]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[230][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[234][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[226][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[236][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[228][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[232][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[224][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[222][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[238][4]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[234][4]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[237][4]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[233][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[230][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[231][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[227][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[237][4]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[233][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[229][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[225][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[223][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[239][4]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[235][4]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem_com[126][5]                         ; Stuck at GND due to stuck port clock_enable ;
-; mem_com[127][5]                         ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[236][5]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[232][5]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[230][5]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[226][5]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[228][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[234][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[226][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[232][5]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[224][5]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[222][5]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[238][5]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[234][5]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[235][5]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[233][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[230][5]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[231][5]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[229][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[235][5]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[233][5]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[227][5]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[225][5]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[223][5]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[239][5]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[237][5]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem_com[126][6]                         ; Stuck at GND due to stuck port clock_enable ;
-; mem_com[127][6]                         ; Stuck at GND due to stuck port clock_enable ;
-; mem1[236][6]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[232][6]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[230][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[234][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[226][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[236][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[228][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[232][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[224][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[222][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[238][6]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[234][6]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[237][6]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[233][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[230][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[231][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[227][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[237][6]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[233][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[229][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[225][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[223][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[239][6]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[235][6]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem_com[126][7]                         ; Stuck at GND due to stuck port clock_enable ;
-; mem_com[127][7]                         ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[236][7]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[232][7]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[230][7]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[226][7]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[228][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[234][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[226][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[232][7]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[224][7]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[222][7]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[238][7]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[234][7]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[235][7]                            ; Stuck at GND due to stuck port clock_enable ;
-; mem1[233][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[230][7]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[231][7]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[229][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[235][7]                            ; Stuck at GND due to stuck port clock_enable ;
+; mem1[233][7]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[227][7]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[225][7]                            ; Stuck at GND due to stuck port clock_enable ;
 ; mem1[223][7]                            ; Stuck at GND due to stuck port clock_enable ;
@@ -1011,12 +1011,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 632   ;
+; Total registers                              ; 1264  ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 8     ;
-; Number of registers using Asynchronous Clear ; 624   ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 1256  ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 632   ;
+; Number of registers using Clock Enable       ; 1264  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -1026,7 +1026,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 177:1              ; 8 bits    ; 944 LEs       ; 944 LEs              ; 0 LEs                  ; Yes        ; |RAM_mem|dbus_out[0]~reg0  ;
+; 256:1              ; 8 bits    ; 1360 LEs      ; 1360 LEs             ; 0 LEs                  ; Yes        ; |RAM_mem|dbus_out[0]~reg0  ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
@@ -1036,13 +1036,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Sun May 29 14:22:24 2022
+    Info: Processing started: Thu Jun 09 16:18:11 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RAM_mem -c RAM_mem
 Info: Found 2 design units, including 1 entities, in source file ram_mem.vhd
     Info: Found design unit 1: RAM_mem-arch1
     Info: Found entity 1: RAM_mem
 Info: Elaborating entity "RAM_mem" for the top level hierarchy
-Warning (10631): VHDL Process Statement warning at RAM_mem.vhd(39): inferring latch(es) for signal or variable "mem0", which holds its previous value in one or more paths through the process
 Info: 512 registers lost all their fanouts during netlist optimizations. The first 512 are displayed below.
     Info: Register "mem2[320][0]" lost all its fanouts during netlist optimizations.
     Info: Register "mem2[336][0]" lost all its fanouts during netlist optimizations.
@@ -1556,14 +1555,14 @@ Info: 512 registers lost all their fanouts during netlist optimizations. The fir
     Info: Register "mem2[351][7]" lost all its fanouts during netlist optimizations.
     Info: Register "mem2[367][7]" lost all its fanouts during netlist optimizations.
     Info: Register "mem2[319][7]" lost all its fanouts during netlist optimizations.
-Info: Implemented 1281 device resources after synthesis - the final resource count might be different
+Info: Implemented 2461 device resources after synthesis - the final resource count might be different
     Info: Implemented 21 input pins
     Info: Implemented 8 output pins
-    Info: Implemented 1252 logic cells
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 245 megabytes
-    Info: Processing ended: Sun May 29 14:22:30 2022
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:07
+    Info: Implemented 2432 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 248 megabytes
+    Info: Processing ended: Thu Jun 09 16:18:27 2022
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:14
 
 

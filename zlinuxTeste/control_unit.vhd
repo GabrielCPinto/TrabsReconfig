@@ -45,16 +45,16 @@ ARCHITECTURE arch1 OF control_unity IS
 	CONSTANT ULA_PASS_A   : STD_LOGIC_VECTOR (3 DOWNTO 0) := "1110";
 	CONSTANT ULA_PASS_B   : STD_LOGIC_VECTOR (3 DOWNTO 0) := "1111";
 
-	--------------Maquina de estados------------------------------
+	--------------MAQUINA DE ESTADOS------------------------------
 	TYPE state_type IS (rst, fetch_only, fet_dec_ex);
 	SIGNAL pres_state 	: state_type;	
 	SIGNAL next_state 	: state_type;
 
 	---------BYTE-ORIENTED FILE REGISTER OPERATIONS-----------------------
-	CONSTANT ADDWF		: STD_LOGIC_VECTOR(5 DOWNTO 0) := "000111"; --6
-	CONSTANT ANDWF		: STD_LOGIC_VECTOR(5 DOWNTO 0) := "000101"; --6
-	CONSTANT CLRF		: STD_LOGIC_VECTOR(6 DOWNTO 0) := "0000011";
-	CONSTANT CLRW		: STD_LOGIC_VECTOR(6 DOWNTO 0) := "0000010";
+	CONSTANT ADDWF		: STD_LOGIC_VECTOR(5 DOWNTO 0) := "000111"; 
+	CONSTANT ANDWF		: STD_LOGIC_VECTOR(5 DOWNTO 0) := "000101"; 
+	CONSTANT CLRF		: STD_LOGIC_VECTOR(6 DOWNTO 0) := "0000011"; 
+	CONSTANT CLRW		: STD_LOGIC_VECTOR(6 DOWNTO 0) := "0000010"; 
 	CONSTANT COMF		: STD_LOGIC_VECTOR(5 DOWNTO 0) := "001001";
 	CONSTANT DECF		: STD_LOGIC_VECTOR(5 DOWNTO 0) := "000011";
 	CONSTANT DECFSZ		: STD_LOGIC_VECTOR(5 DOWNTO 0) := "001011";
@@ -168,173 +168,297 @@ BEGIN
 				wr_z_en <= '1';
 
 	-----------------------------------------------------
-	--        //* 3- CLRW => Clear W
+	--        //* 4- CLRW => Clear W
 	-----------------------------------------------------
-
-			ELSIF instr(13 DOWNTO 8) = CLRW THEN
-				op_sel <= "1000";
+			ELSIF instr(13 DOWNTO 7) = CLRW THEN
+				op_sel <= ULA_CLR;
 				wr_z_en <= '1';
+
+	-----------------------------------------------------
+	--        //* 5- COMF => Complement f
+	-----------------------------------------------------
 			ELSIF instr(13 DOWNTO 8) = COMF THEN
 				rd_en <= '1';
-				op_sel <= "0011";
+				op_sel <= ULA_COM;
 				wr_z_en <= '1';
-			ELSIF instr(13 DOWNTO 8) = DECF THEN
+
+				IF instr(7) = '0' THEN wr_w_reg_en <= '1';
+				ELSE wr_en <= '1';
+				END IF;
+
+
+	-----------------------------------------------------
+	--        //* 6- DECF => Decrement f
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = DECF THEN
 				rd_en <= '1';
-				op_sel <= "0111";
+				op_sel <= ULA_DEC;
 				wr_z_en <= '1';
-			ELSIF instr(13 DOWNTO 8) = DECFSZ THEN
+
+				IF instr(7) = '0' THEN wr_w_reg_en <= '1';
+				ELSE wr_en <= '1';
+				END IF;
+	-----------------------------------------------------
+	--        //* 7- DECFSZ => Decrement f, Skip if 0
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = DECFSZ THEN
 				rd_en <= '1';
-				op_sel <= "0111";
+				op_sel <= ULA_DEC;
 				wr_z_en <= '1';
 			
-				IF instr(7) = '0' THEN 
-					wr_w_reg_en <= '1';
-				ELSE 
-					wr_en <= '1';
+				IF instr(7) = '0' THEN wr_w_reg_en <= '1';
+				ELSE wr_en <= '1';
 				END IF;
 			
 				IF alu_z = '1' THEN
 					next_state <= fetch_only;
 					load_pc <= '1';
 				END IF;
-			ELSIF instr(13 DOWNTO 8) = INCF THEN
+	-----------------------------------------------------
+	--        //* 8- INCF => Increment f
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = INCF THEN
 				rd_en <= '1';
-				op_sel <= "0110";
+				op_sel <= ULA_INC;
 				wr_z_en <= '1';
-			ELSIF instr(13 DOWNTO 8) = INCFSZ THEN
-				rd_en <= '1';
-				op_sel <= "0100";
-				wr_z_en <= '1';
-				IF instr(7) = '0' THEN 
-					wr_w_reg_en <= '1';
-				ELSE 
-					wr_en <= '1';
+
+				IF instr(7) = '0' THEN wr_w_reg_en <= '1';
+				ELSE wr_en <= '1';
 				END IF;
+	-----------------------------------------------------
+	--        //* 9- INCFSZ => Increment f, Skip if 0
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = INCFSZ THEN
+				rd_en <= '1';
+				op_sel <= ULA_INC;
+				wr_z_en <= '1';
+				
+				IF instr(7) = '0' THEN wr_w_reg_en <= '1';
+				ELSE wr_en <= '1';
+				END IF;
+
 				IF alu_z = '1' THEN
 					next_state <= fetch_only;
 					load_pc <= '1';
 				END IF;
-			ELSIF instr(13 DOWNTO 8) = IORWF THEN
+	-----------------------------------------------------
+	--        //* 10- IORLW => Inclusive OR Literal with W
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = IORWF THEN
 				rd_en <= '1';
-				op_sel <= "0000";
+				op_sel <= ULA_OR;
 				wr_z_en <= '1';
-			ELSIF instr(13 DOWNTO 8) = MOVF THEN
-				op_sel <= "1110";
+	-----------------------------------------------------
+	--        //* 11- MOVF => Move f
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = MOVF THEN
+				op_sel <= ULA_PASS_A;
 				wr_z_en <= '1';
-			ELSIF instr(13 DOWNTO 8) = MOVWF THEN
-				op_sel <= "1111";
+
+				IF instr(7) = '0' THEN wr_w_reg_en <= '1';
+				ELSE wr_en <= '1';
+				END IF;
+	-----------------------------------------------------
+	--        //* 12- MOVWF => Move W to f
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 7) = MOVWF THEN
+				lit_sel <= '1';
+				op_sel <= ULA_PASS_B;
 				wr_en <= '1';
-			ELSIF instr(13 DOWNTO 8) = NOP THEN
-				--NOP
-			ELSIF instr(13 DOWNTO 8) = RLF THEN
+	-----------------------------------------------------
+	--        //* 13- NOP => No Operation
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 0) = NOP THEN
+				--Consumo de ciclo de clock
+	-----------------------------------------------------
+	--        //* 14- RLF => Rotate Left f through Carry
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = RLF THEN
 				rd_en <= '1';
-				op_sel <= "1010";
+				op_sel <= ULA_RL;
 				wr_c_en <= '1';
-			ELSIF instr(13 DOWNTO 8) = RRF THEN
+
+				IF instr(7) = '0' THEN wr_w_reg_en <= '1';
+				ELSE wr_en <= '1';
+				END IF;
+	-----------------------------------------------------
+	--        //* 15- RRF => Rotate Right f through Carry
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = RRF THEN
 				rd_en <= '1';
-				op_sel <= "1011";
+				op_sel <= ULA_RR;
 				wr_c_en <= '1';
-			
-			ELSIF instr(13 DOWNTO 8) = SUBWF THEN
+
+				IF instr(7) = '0' THEN wr_w_reg_en <= '1';
+				ELSE wr_en <= '1';
+				END IF;
+	-----------------------------------------------------
+	--        //* 16- SUBWF => Subtract W from f
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = SUBWF THEN
 				rd_en <= '1';
-				op_sel <= "0101";
+				op_sel <= ULA_SUB;
 				wr_c_en <= '1';
 				wr_dc_en <= '1';
 				wr_z_en <= '1';
-			ELSIF instr(13 DOWNTO 8) = SWAPF THEN
-				rd_en <= '1';
-				op_sel <= "1001";
-				wr_c_en <= '1';
-			ELSIF instr(13 DOWNTO 8) = XORWF THEN
-				rd_en <= '1';
-				op_sel <= "0010";
-				wr_z_en <= '1';
-				IF output_direction = '0' THEN
-					wr_w_reg_en <= '1';
-				ELSE
-					wr_en <= '1';
+
+				IF instr(7) = '0' THEN wr_w_reg_en <= '1';
+				ELSE wr_en <= '1';
 				END IF;
-			ELSIF instr(13 DOWNTO 8) = BCF THEN
+	-----------------------------------------------------
+	--        //* 17- SWAPF => Swap Nibbles in f
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = SWAPF THEN
 				rd_en <= '1';
-				bit_sel <=  intr(9 DOWNTO 7);
-				op_sel <= "1100";
+				op_sel <= ULA_SWAP;
+				wr_c_en <= '1';
+
+				IF instr(7) = '0' THEN wr_w_reg_en <= '1';
+				ELSE wr_en <= '1';
+				END IF;
+	-----------------------------------------------------
+	--        //* 18- XORWF => Exclusive OR Literal with W
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = XORWF THEN
+				rd_en <= '1';
+				lit_sel <= '1';
+				op_sel <= ULA_XOR;
+				wr_z_en <= '1';
+				
+	-----------------------------------------------------
+	--        //* 19- BCF => Bit Clear f
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 9) = BCF THEN
+				rd_en <= '1';
+				bit_sel <=  instr(9 DOWNTO 7);
+				op_sel <= ULA_BC;
 				wr_en <= '1';
-			ELSIF instr(13 DOWNTO 8) = BSF THEN
+	-----------------------------------------------------
+	--        //* 20- BSF => Bit Set f
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 9) = BSF THEN
 				rd_en <= '1';
-				op_sel <= "1101";
+				op_sel <= ULA_RR;
 				bit_sel <= instr(9 DOWNTO 7);
 				wr_en <= '1';
-			ELSIF instr(13 DOWNTO 8) = BTFSC THEN
+	-----------------------------------------------------
+	--        //* 21- BTFSC =>  Bit Test f, Skip if Clear
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 9) = BTFSC THEN
 				rd_en <= '1';
-				bit_sel <=  intr(9 DOWNTO 7);
-				op_sel <= "1101";
+				bit_sel <=  instr(9 DOWNTO 7);
+				op_sel <= ULA_BS;
+
 				IF alu_z = '0' THEN
 					next_state <= fetch_only;
 				END IF;
-			ELSIF instr(13 DOWNTO 8) = BTFSS THEN
+	-----------------------------------------------------
+	--        //* 22- BTFSS => Bit Test f, Skip if Set
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 9) = BTFSS THEN
 				rd_en <= '1';
-				bit_sel <=  intr(9 DOWNTO 7);
-				op_sel <= "1101";
+				bit_sel <=  instr(9 DOWNTO 7);
+				op_sel <= ULA_BS;
+
 				IF alu_z = '1' THEN
 					next_state <= fetch_only;
 				END IF;
-			ELSIF instr(13 DOWNTO 8) = ADDLW THEN
+	-----------------------------------------------------
+	--        //* 23- ADDLW => Add Literal and W
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = ADDLW THEN
 				lit_sel <= '1';
-				op_sel <= "0100";
+				op_sel <= ULA_ADD;
 				wr_w_reg_en <= '1';
-			ELSIF instr(13 DOWNTO 8) = ANDLW THEN
+	-----------------------------------------------------
+	--        //* 24- ANDLW => AND Literal with W
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = ANDLW THEN
 				lit_sel <= '1';
-				op_sel <= "0001";
+				op_sel <= ULA_AND;
 				wr_w_reg_en <= '1';
-			ELSIF instr(13 DOWNTO 8) = CALL THEN
+	-----------------------------------------------------
+	--        //* 25- CALL => Call Subroutine
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = CALL THEN
 				stack_push <= '1';
 				lit_sel <= '1';
-				op_sel <= "1110";
+				op_sel <= ULA_PASS_A;
 				load_pc <= '1';
 				inc_pc <= '0';
 				next_state <= fetch_only;
-			ELSIF instr(13 DOWNTO 8) = CLRWDT THEN
+	-----------------------------------------------------
+	--        //* 26- CLRWDT => No Operation
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = CLRWDT THEN
 				--NOP
-			ELSIF instr(13 DOWNTO 8) = GOTO THEN
+	-----------------------------------------------------
+	--        //* 27- GOTO => Unconditional Branch
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = GOTO THEN
 				lit_sel <= '1';
-				op_sel <= "1110";
+				op_sel <= ULA_PASS_A;
 				load_pc <= '1';
 				inc_pc <= '0';
 				next_state <= fetch_only;
-			ELSIF instr(13 DOWNTO 8) = IORLW THEN
+	-----------------------------------------------------
+	--        //* 28- IORLW =>  Inclusive OR Literal with W
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = IORLW THEN
 				lit_sel <= '1';
-				op_sel <= "0000";
+				op_sel <= ULA_OR;
 				wr_w_reg_en <= '1';
-			ELSIF instr(13 DOWNTO 8) = MOVLW THEN
+	-----------------------------------------------------
+	--        //* 29- MOVLW => Move Literal to W
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = MOVLW THEN
 				lit_sel <= '1';
-				op_sel <= "1110";
+				op_sel <= ULA_PASS_A;
 				wr_w_reg_en <= '1';
-			ELSIF instr(13 DOWNTO 8) = RETFIE THEN
+	-----------------------------------------------------
+	--        //* 30- RETFIE => No Operation
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = RETFIE THEN
 				--NOP
-			ELSIF instr(13 DOWNTO 8) = RETLW THEN
+	-----------------------------------------------------
+	--        //* 31- RETLW => Return from Interrupt
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = RETLW THEN
 				lit_sel <= '1';
-				op_sel <= "1110";
+				op_sel <= ULA_PASS_A;
 				wr_w_reg_en <= '1';
 				stack_pop <= '1';
 				load_pc <= '1';
 				inc_pc <= '0';
 				next_state <= fetch_only;
-			ELSIF instr(13 DOWNTO 8) = RET_URN THEN
+	-----------------------------------------------------
+	--        //* 32- RETURN => Return from Subroutine
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = RET_URN THEN
 				stack_pop <= '1';
 				load_pc <= '1';
 				next_state <= fetch_only;
-			ELSIF instr(13 DOWNTO 8) = SLEEP THEN
+	-----------------------------------------------------
+	--        //* 33- SLEEP => No Operation
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = SLEEP THEN
 				--NOP
-			ELSIF instr(13 DOWNTO 8) = SUBLW THEN
+	-----------------------------------------------------
+	--        //* 34- SUBLW => Subtract W from Literal
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = SUBLW THEN
 				lit_sel <= '1';
-				op_sel <= "0101";
+				op_sel <= ULA_SUB;
 				wr_w_reg_en <= '1';
 				wr_c_en <= '1';
 				wr_dc_en <= '1';
 				wr_z_en <= '1';
-			ELSIF instr(13 DOWNTO 8) = XORLW THEN
+	-----------------------------------------------------
+	--        //* 35- XORLW => Exclusive OR Literal with W
+	-----------------------------------------------------
+				ELSIF instr(13 DOWNTO 8) = XORLW THEN
 				lit_sel <= '1';
-				op_sel <= "0010";
+				op_sel <= ULA_XOR;
 				wr_w_reg_en <= '1';
 				wr_z_en <= '1';
 			END IF;

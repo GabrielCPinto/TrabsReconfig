@@ -23,6 +23,7 @@ ARCHITECTURE arch OF alu IS
 	SIGNAL aux3 : STD_LOGIC_VECTOR(7 DOWNTO 0);
 	CONSTANT zero : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
 	CONSTANT one  : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000001";	
+	signal bitsel  : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000001";
 	CONSTANT OP_OR   : STD_LOGIC_VECTOR (3 DOWNTO 0) := "0000";
 	CONSTANT OP_AND  : STD_LOGIC_VECTOR (3 DOWNTO 0) := "0001";	
 	CONSTANT OP_XOR  : STD_LOGIC_VECTOR (3 DOWNTO 0) := "0010";
@@ -40,13 +41,12 @@ ARCHITECTURE arch OF alu IS
 	CONSTANT PASS_A  : STD_LOGIC_VECTOR (3 DOWNTO 0) := "1110";
 	CONSTANT PASS_B  : STD_LOGIC_VECTOR (3 DOWNTO 0) := "1111";
 	
-BEGIN
-	--aux3 <= a_in; 
-	--WITH op_sel SELECT
-		
-		--aux3(to_integer(unsigned(bit_sel))) <= '0' WHEN OP_BC,
-		--aux3(to_integer(unsigned(bit_sel))) <= '1' WHEN OP_BS,
-		--'0' WHEN OTHERS;
+BEGIN 
+	bitsel <= STD_LOGIC_VECTOR(shift_left(unsigned(one), (to_integer(unsigned(bit_sel)))));  
+	aux3 <= a_in + bitsel WHEN ((OP_BS = op_sel) AND (a_in(to_integer(unsigned(bit_sel)))) = '0') ELSE
+			a_in - bitsel WHEN ((OP_BC = op_sel) AND (a_in(to_integer(unsigned(bit_sel)))) = '1') ELSE
+			a_in;
+	--aux3 <= a_in - bitsel WHEN ((OP_BS = op_sel) AND (a_in(to_integer(unsigned(bit_sel)))) = '1');
 	
 	WITH op_sel SELECT
 		aux <= '0' & (a_in OR b_in)  WHEN OP_OR, 	--OR
@@ -61,8 +61,8 @@ BEGIN
 			   '0' & (a_in(3 DOWNTO 0) & a_in(7 DOWNTO 4)) WHEN OP_SWAP, --SWAP
 			   (a_in(7) & a_in(6 DOWNTO 0) & c_in) 	 WHEN OP_RL,   --RL
 			   (a_in(0) & c_in & a_in(7 DOWNTO 1)) 	 WHEN OP_RR,   --RR
-			   '0' & "00000000" WHEN OP_BC, --BC!!!
-			   '0' & "00000000" WHEN OP_BS, --BS!!!
+			   '0' & aux3 WHEN OP_BC, --BC!!!
+			   '0' & aux3 WHEN OP_BS, --BS!!!
 			   '0' & (a_in) WHEN PASS_A, --PASS_A
 			   '0' & (b_in) WHEN PASS_B; --PASS_A
 			   

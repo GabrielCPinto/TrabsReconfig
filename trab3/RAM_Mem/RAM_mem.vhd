@@ -73,7 +73,7 @@ BEGIN
         BEGIN
         IF rd_en = '0' THEN
             dbus_out <= "ZZZZZZZZ";
-        ELSIF RISING_EDGE(clk_in) AND rd_en = '1' THEN
+        ELSIF rd_en = '1' THEN
 
             IF x"20" <= abus_in AND abus_in <= x"6F" THEN --validações da área de memoria selecionada 
                 dbus_out <= mem0(to_integer(unsigned(abus_in))); 

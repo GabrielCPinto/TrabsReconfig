@@ -1,5 +1,5 @@
 Analysis & Synthesis report for control_unit
-Thu Jun 09 20:42:44 2022
+Thu Jun 09 20:46:27 2022
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -42,7 +42,7 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +------------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Jun 09 20:42:44 2022        ;
+; Analysis & Synthesis Status        ; Successful - Thu Jun 09 20:46:27 2022        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; control_unit                                 ;
 ; Top-level Entity Name              ; control_unit                                 ;
@@ -239,8 +239,35 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Thu Jun 09 20:42:42 2022
+    Info: Processing started: Thu Jun 09 20:46:25 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off control_unit -c control_unit
+Info: Found 2 design units, including 1 entities, in source file /users/1203016/desktop/trab_final_git/trabsreconfig/trab3/ram_mem/ram_mem.vhd
+    Info: Found design unit 1: RAM_mem-arch1
+    Info: Found entity 1: RAM_mem
+Info: Found 2 design units, including 1 entities, in source file /users/1203016/desktop/trab_final_git/trabsreconfig/trab3/port_io/port_io.vhd
+    Info: Found design unit 1: Port_io-arch1
+    Info: Found entity 1: Port_io
+Info: Found 2 design units, including 1 entities, in source file /users/1203016/desktop/trab_final_git/trabsreconfig/trab2/w_reg/w_reg.vhd
+    Info: Found design unit 1: w_reg-arch1
+    Info: Found entity 1: w_reg
+Info: Found 2 design units, including 1 entities, in source file /users/1203016/desktop/trab_final_git/trabsreconfig/trab2/status_reg/status_reg.vhd
+    Info: Found design unit 1: Status_reg-arch1
+    Info: Found entity 1: Status_reg
+Info: Found 2 design units, including 1 entities, in source file /users/1203016/desktop/trab_final_git/trabsreconfig/trab2/stack/stack.vhd
+    Info: Found design unit 1: Stack-arch1
+    Info: Found entity 1: Stack
+Info: Found 2 design units, including 1 entities, in source file /users/1203016/desktop/trab_final_git/trabsreconfig/trab2/pc_reg/pc_reg.vhd
+    Info: Found design unit 1: PC_reg-arch1
+    Info: Found entity 1: PC_reg
+Info: Found 2 design units, including 1 entities, in source file /users/1203016/desktop/trab_final_git/trabsreconfig/trab2/fsr_reg/fsr_reg.vhd
+    Info: Found design unit 1: FSR_reg-arch1
+    Info: Found entity 1: FSR_reg
+Info: Found 2 design units, including 1 entities, in source file /users/1203016/desktop/trab_final_git/trabsreconfig/trab1/mux/addr_mux.vhd
+    Info: Found design unit 1: addr_mux-arch
+    Info: Found entity 1: addr_mux
+Info: Found 2 design units, including 1 entities, in source file /users/1203016/desktop/trab_final_git/trabsreconfig/trab1/alu/alu.vhd
+    Info: Found design unit 1: alu-arch
+    Info: Found entity 1: alu
 Info: Found 2 design units, including 1 entities, in source file control_unit.vhd
     Info: Found design unit 1: control_unit-arch1
     Info: Found entity 1: control_unit
@@ -273,9 +300,9 @@ Info: Implemented 129 device resources after synthesis - the final resource coun
     Info: Implemented 18 output pins
     Info: Implemented 94 logic cells
 Info: Quartus II Analysis & Synthesis was successful. 0 errors, 23 warnings
-    Info: Peak virtual memory: 239 megabytes
-    Info: Processing ended: Thu Jun 09 20:42:44 2022
+    Info: Peak virtual memory: 240 megabytes
+    Info: Processing ended: Thu Jun 09 20:46:27 2022
     Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Total CPU time (on all processors): 00:00:03
 
 

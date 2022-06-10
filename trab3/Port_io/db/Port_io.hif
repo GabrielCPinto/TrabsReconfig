@@ -31,7 +31,7 @@ ON
 # case_insensitive
 # source_file
 port_io.vhd
-d99690aaef305eede5b184429d5461
+a65874208ceaab204381557edefa8bad
 5
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -45,19 +45,19 @@ ON
 }
 # user_parameter {
 port_addr
-011000110
-PARAMETER_UNSIGNED_BIN
-DEF
-tris_addr
-100111001
+000000001
 PARAMETER_UNSIGNED_BIN
 DEF
 alt_port_addr
-011000110
+000000010
+PARAMETER_UNSIGNED_BIN
+DEF
+tris_addr
+000000011
 PARAMETER_UNSIGNED_BIN
 DEF
 alt_tris_addr
-100111001
+000000100
 PARAMETER_UNSIGNED_BIN
 DEF
 }
@@ -65,7 +65,7 @@ DEF
 |
 }
 # lmf
-f:|quartus|altera|91sp2|quartus|lmf|maxplus2.lmf
+c:|altera|91sp2|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
 # macro_sequence
 

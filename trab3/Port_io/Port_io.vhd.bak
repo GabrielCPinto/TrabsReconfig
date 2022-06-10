@@ -47,7 +47,7 @@ SIGNAL t_reg : STD_LOGIC_VECTOR(7 DOWNTO 0);
 
 BEGIN
 
-	PROCESS(nrst, clk_in, dbus_in, wr_en, abus_in)BEGIN--port_reg & tris_reg
+	PROCESS(nrst, clk_in, dbus_in, wr_en, abus_in, p_reg)BEGIN--port_reg & tris_reg
 		IF nrst = '0' THEN
 		   p_reg <= (OTHERS => '0');
 		ELSIF RISING_EDGE(clk_in) AND 

@@ -24,7 +24,7 @@ ARCHITECTURE port_io_arch OF port_io IS
 	SIGNAL tris_reg: STD_LOGIC_VECTOR(7 DOWNTO 0);
 	SIGNAL latch: STD_LOGIC_VECTOR(7 DOWNTO 0);
 BEGIN
-	PROCESS(clk_in, nrst, wr_en, abus_in, rd_en)
+	PROCESS(clk_in, nrst, wr_en, abus_in, rd_en,tris_reg,port_reg,latch,port_io)
 	BEGIN
 		IF nrst = '0' THEN
 			port_reg <= (OTHERS => '0');

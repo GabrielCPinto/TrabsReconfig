@@ -1,5 +1,5 @@
 Analysis & Synthesis report for control_unit
-Thu Jun 09 20:46:27 2022
+Tue Jun 21 13:13:10 2022
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -42,13 +42,13 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +------------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Jun 09 20:46:27 2022        ;
+; Analysis & Synthesis Status        ; Successful - Tue Jun 21 13:13:10 2022        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; control_unit                                 ;
 ; Top-level Entity Name              ; control_unit                                 ;
 ; Family                             ; Cyclone II                                   ;
-; Total logic elements               ; 94                                           ;
-;     Total combinational functions  ; 93                                           ;
+; Total logic elements               ; 177                                          ;
+;     Total combinational functions  ; 176                                          ;
 ;     Dedicated logic registers      ; 3                                            ;
 ; Total registers                    ; 3                                            ;
 ; Total pins                         ; 35                                           ;
@@ -149,42 +149,42 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                           ;
-+----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                              ;
-+----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------------+
-; control_unit.vhd                 ; yes             ; User VHDL File  ; d:/users/1203016/Desktop/trab_final_git/TrabsReconfig/trab4/control_unit/control_unit.vhd ;
-+----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                      ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                         ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------+
+; control_unit.vhd                 ; yes             ; User VHDL File  ; C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/trab4/control_unit/control_unit.vhd ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------+
 
 
-+--------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary            ;
-+---------------------------------------------+----------+
-; Resource                                    ; Usage    ;
-+---------------------------------------------+----------+
-; Estimated Total logic elements              ; 94       ;
-;                                             ;          ;
-; Total combinational functions               ; 93       ;
-; Logic element usage by number of LUT inputs ;          ;
-;     -- 4 input functions                    ; 67       ;
-;     -- 3 input functions                    ; 20       ;
-;     -- <=2 input functions                  ; 6        ;
-;                                             ;          ;
-; Logic elements by mode                      ;          ;
-;     -- normal mode                          ; 93       ;
-;     -- arithmetic mode                      ; 0        ;
-;                                             ;          ;
-; Total registers                             ; 3        ;
-;     -- Dedicated logic registers            ; 3        ;
-;     -- I/O registers                        ; 0        ;
-;                                             ;          ;
-; I/O pins                                    ; 35       ;
-; Maximum fan-out node                        ; instr[9] ;
-; Maximum fan-out                             ; 29       ;
-; Total fan-out                               ; 360      ;
-; Average fan-out                             ; 2.75     ;
-+---------------------------------------------+----------+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 177       ;
+;                                             ;           ;
+; Total combinational functions               ; 176       ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 124       ;
+;     -- 3 input functions                    ; 42        ;
+;     -- <=2 input functions                  ; 10        ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 176       ;
+;     -- arithmetic mode                      ; 0         ;
+;                                             ;           ;
+; Total registers                             ; 3         ;
+;     -- Dedicated logic registers            ; 3         ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 35        ;
+; Maximum fan-out node                        ; instr[13] ;
+; Maximum fan-out                             ; 50        ;
+; Total fan-out                               ; 668       ;
+; Average fan-out                             ; 3.12      ;
++---------------------------------------------+-----------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -192,7 +192,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |control_unit              ; 93 (93)           ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 35   ; 0            ; |control_unit       ; work         ;
+; |control_unit              ; 176 (176)         ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 35   ; 0            ; |control_unit       ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -229,7 +229,8 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |control_unit|next_state   ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |control_unit|wr_w_reg_en  ;
+; 286:1              ; 2 bits    ; 380 LEs       ; 246 LEs              ; 134 LEs                ; No         ; |control_unit|wr_dc_en     ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
@@ -239,70 +240,47 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Thu Jun 09 20:46:25 2022
+    Info: Processing started: Tue Jun 21 13:13:07 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off control_unit -c control_unit
-Info: Found 2 design units, including 1 entities, in source file /users/1203016/desktop/trab_final_git/trabsreconfig/trab3/ram_mem/ram_mem.vhd
+Info: Found 2 design units, including 1 entities, in source file /users/gabriel/desktop/vhdl/trabsreconfig-main/trab3/ram_mem/ram_mem.vhd
     Info: Found design unit 1: RAM_mem-arch1
     Info: Found entity 1: RAM_mem
-Info: Found 2 design units, including 1 entities, in source file /users/1203016/desktop/trab_final_git/trabsreconfig/trab3/port_io/port_io.vhd
-    Info: Found design unit 1: Port_io-arch1
-    Info: Found entity 1: Port_io
-Info: Found 2 design units, including 1 entities, in source file /users/1203016/desktop/trab_final_git/trabsreconfig/trab2/w_reg/w_reg.vhd
+Info: Found 2 design units, including 1 entities, in source file /users/gabriel/desktop/vhdl/trabsreconfig-main/trab3/port_io/port_io.vhd
+    Info: Found design unit 1: port_io-port_io_arch
+    Info: Found entity 1: port_io
+Info: Found 2 design units, including 1 entities, in source file /users/gabriel/desktop/vhdl/trabsreconfig-main/trab2/w_reg/w_reg.vhd
     Info: Found design unit 1: w_reg-arch1
     Info: Found entity 1: w_reg
-Info: Found 2 design units, including 1 entities, in source file /users/1203016/desktop/trab_final_git/trabsreconfig/trab2/status_reg/status_reg.vhd
+Info: Found 2 design units, including 1 entities, in source file /users/gabriel/desktop/vhdl/trabsreconfig-main/trab2/status_reg/status_reg.vhd
     Info: Found design unit 1: Status_reg-arch1
     Info: Found entity 1: Status_reg
-Info: Found 2 design units, including 1 entities, in source file /users/1203016/desktop/trab_final_git/trabsreconfig/trab2/stack/stack.vhd
+Info: Found 2 design units, including 1 entities, in source file /users/gabriel/desktop/vhdl/trabsreconfig-main/trab2/stack/stack.vhd
     Info: Found design unit 1: Stack-arch1
     Info: Found entity 1: Stack
-Info: Found 2 design units, including 1 entities, in source file /users/1203016/desktop/trab_final_git/trabsreconfig/trab2/pc_reg/pc_reg.vhd
+Info: Found 2 design units, including 1 entities, in source file /users/gabriel/desktop/vhdl/trabsreconfig-main/trab2/pc_reg/pc_reg.vhd
     Info: Found design unit 1: PC_reg-arch1
     Info: Found entity 1: PC_reg
-Info: Found 2 design units, including 1 entities, in source file /users/1203016/desktop/trab_final_git/trabsreconfig/trab2/fsr_reg/fsr_reg.vhd
+Info: Found 2 design units, including 1 entities, in source file /users/gabriel/desktop/vhdl/trabsreconfig-main/trab2/fsr_reg/fsr_reg.vhd
     Info: Found design unit 1: FSR_reg-arch1
     Info: Found entity 1: FSR_reg
-Info: Found 2 design units, including 1 entities, in source file /users/1203016/desktop/trab_final_git/trabsreconfig/trab1/mux/addr_mux.vhd
+Info: Found 2 design units, including 1 entities, in source file /users/gabriel/desktop/vhdl/trabsreconfig-main/trab1/mux/addr_mux.vhd
     Info: Found design unit 1: addr_mux-arch
     Info: Found entity 1: addr_mux
-Info: Found 2 design units, including 1 entities, in source file /users/1203016/desktop/trab_final_git/trabsreconfig/trab1/alu/alu.vhd
+Info: Found 2 design units, including 1 entities, in source file /users/gabriel/desktop/vhdl/trabsreconfig-main/trab1/alu/alu.vhd
     Info: Found design unit 1: alu-arch
     Info: Found entity 1: alu
 Info: Found 2 design units, including 1 entities, in source file control_unit.vhd
     Info: Found design unit 1: control_unit-arch1
     Info: Found entity 1: control_unit
 Info: Elaborating entity "control_unit" for the top level hierarchy
-Warning (10492): VHDL Process Statement warning at control_unit.vhd(213): signal "alu_z" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at control_unit.vhd(240): signal "alu_z" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10620): VHDL warning at control_unit.vhd(331): comparison between unequal length operands always returns FALSE
-Warning (10620): VHDL warning at control_unit.vhd(339): comparison between unequal length operands always returns FALSE
-Warning (10620): VHDL warning at control_unit.vhd(347): comparison between unequal length operands always returns FALSE
-Warning (10620): VHDL warning at control_unit.vhd(358): comparison between unequal length operands always returns FALSE
-Warning (10620): VHDL warning at control_unit.vhd(369): comparison between unequal length operands always returns FALSE
-Warning (10620): VHDL warning at control_unit.vhd(383): comparison between unequal length operands always returns FALSE
-Warning (10620): VHDL warning at control_unit.vhd(393): comparison between unequal length operands always returns FALSE
-Warning (10620): VHDL warning at control_unit.vhd(398): comparison between unequal length operands always returns FALSE
-Warning (10620): VHDL warning at control_unit.vhd(414): comparison between unequal length operands always returns FALSE
-Warning (10620): VHDL warning at control_unit.vhd(421): comparison between unequal length operands always returns FALSE
-Warning (10620): VHDL warning at control_unit.vhd(426): comparison between unequal length operands always returns FALSE
-Warning (10620): VHDL warning at control_unit.vhd(437): comparison between unequal length operands always returns FALSE
-Warning (10620): VHDL warning at control_unit.vhd(444): comparison between unequal length operands always returns FALSE
-Warning (10620): VHDL warning at control_unit.vhd(449): comparison between unequal length operands always returns FALSE
-Warning: Output pins are stuck at VCC or GND
-    Warning (13410): Pin "bit_sel[0]" is stuck at GND
-    Warning (13410): Pin "bit_sel[1]" is stuck at GND
-    Warning (13410): Pin "bit_sel[2]" is stuck at GND
-    Warning (13410): Pin "inc_pc" is stuck at VCC
-    Warning (13410): Pin "stack_push" is stuck at GND
-    Warning (13410): Pin "stack_pop" is stuck at GND
-Info: Implemented 129 device resources after synthesis - the final resource count might be different
+Info: Implemented 212 device resources after synthesis - the final resource count might be different
     Info: Implemented 17 input pins
     Info: Implemented 18 output pins
-    Info: Implemented 94 logic cells
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 23 warnings
-    Info: Peak virtual memory: 240 megabytes
-    Info: Processing ended: Thu Jun 09 20:46:27 2022
-    Info: Elapsed time: 00:00:02
+    Info: Implemented 177 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 241 megabytes
+    Info: Processing ended: Tue Jun 21 13:13:10 2022
+    Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:03
 
 

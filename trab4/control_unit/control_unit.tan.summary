@@ -5,8 +5,8 @@ Timing Analyzer Summary
 Type           : Worst-case tsu
 Slack          : N/A
 Required Time  : None
-Actual Time    : 5.515 ns
-From           : instr[9]
+Actual Time    : 10.807 ns
+From           : instr[10]
 To             : pres_state.fetch_only
 From Clock     : --
 To Clock       : clk
@@ -15,9 +15,9 @@ Failed Paths   : 0
 Type           : Worst-case tco
 Slack          : N/A
 Required Time  : None
-Actual Time    : 11.260 ns
+Actual Time    : 9.456 ns
 From           : pres_state.fet_dec_ex
-To             : wr_dc_en
+To             : wr_c_en
 From Clock     : clk
 To Clock       : --
 Failed Paths   : 0
@@ -25,9 +25,9 @@ Failed Paths   : 0
 Type           : Worst-case tpd
 Slack          : N/A
 Required Time  : None
-Actual Time    : 21.211 ns
-From           : instr[0]
-To             : wr_z_en
+Actual Time    : 17.928 ns
+From           : instr[10]
+To             : rd_en
 From Clock     : --
 To Clock       : --
 Failed Paths   : 0
@@ -35,9 +35,9 @@ Failed Paths   : 0
 Type           : Worst-case th
 Slack          : N/A
 Required Time  : None
-Actual Time    : -0.913 ns
-From           : instr[13]
-To             : pres_state.fetch_only
+Actual Time    : -2.096 ns
+From           : instr[9]
+To             : pres_state.fet_dec_ex
 From Clock     : --
 To Clock       : clk
 Failed Paths   : 0
@@ -46,8 +46,8 @@ Type           : Clock Setup: 'clk'
 Slack          : N/A
 Required Time  : None
 Actual Time    : Restricted to 420.17 MHz ( period = 2.380 ns )
-From           : pres_state.rst
-To             : pres_state.fetch_only
+From           : pres_state.fet_dec_ex
+To             : pres_state.fet_dec_ex
 From Clock     : clk
 To Clock       : clk
 Failed Paths   : 0

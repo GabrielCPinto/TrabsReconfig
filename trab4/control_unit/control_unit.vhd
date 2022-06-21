@@ -104,7 +104,7 @@ BEGIN
 		END IF;
 	END PROCESS;
 
-	PROCESS(nrst, pres_state, instr)
+	PROCESS(nrst, pres_state, instr, alu_z)
 	BEGIN
 		op_sel		<= "----";  --Codigo da operação (ULA)
 		bit_sel		<= "---";	--bit selecionado para operação (ULA)
@@ -212,6 +212,7 @@ BEGIN
 			
 				IF alu_z = '1' THEN
 					next_state <= fetch_only;
+					inc_pc <= '0';
 					load_pc <= '1';
 				END IF;
 	-----------------------------------------------------
@@ -239,10 +240,11 @@ BEGIN
 
 				IF alu_z = '1' THEN
 					next_state <= fetch_only;
+					inc_pc <= '0';
 					load_pc <= '1';
 				END IF;
 	-----------------------------------------------------
-	--        //* 10- IORLW => Inclusive OR Literal with W
+	--        //* 10- IORWF => Inclusive OR Literal with W
 	-----------------------------------------------------
 				ELSIF instr(13 DOWNTO 8) = IORWF THEN
 				rd_en <= '1';
@@ -328,7 +330,7 @@ BEGIN
 	-----------------------------------------------------
 	--        //* 19- BCF => Bit Clear f
 	-----------------------------------------------------
-				ELSIF instr(13 DOWNTO 9) = BCF THEN
+				ELSIF instr(13 DOWNTO 10) = BCF THEN
 				rd_en <= '1';
 				bit_sel <=  instr(9 DOWNTO 7);
 				op_sel <= ULA_BC;
@@ -336,7 +338,7 @@ BEGIN
 	-----------------------------------------------------
 	--        //* 20- BSF => Bit Set f
 	-----------------------------------------------------
-				ELSIF instr(13 DOWNTO 9) = BSF THEN
+				ELSIF instr(13 DOWNTO 10) = BSF THEN
 				rd_en <= '1';
 				op_sel <= ULA_RR;
 				bit_sel <= instr(9 DOWNTO 7);
@@ -344,7 +346,7 @@ BEGIN
 	-----------------------------------------------------
 	--        //* 21- BTFSC =>  Bit Test f, Skip if Clear
 	-----------------------------------------------------
-				ELSIF instr(13 DOWNTO 9) = BTFSC THEN
+				ELSIF instr(13 DOWNTO 10) = BTFSC THEN
 				rd_en <= '1';
 				bit_sel <=  instr(9 DOWNTO 7);
 				op_sel <= ULA_BS;
@@ -355,7 +357,7 @@ BEGIN
 	-----------------------------------------------------
 	--        //* 22- BTFSS => Bit Test f, Skip if Set
 	-----------------------------------------------------
-				ELSIF instr(13 DOWNTO 9) = BTFSS THEN
+				ELSIF instr(13 DOWNTO 10) = BTFSS THEN
 				rd_en <= '1';
 				bit_sel <=  instr(9 DOWNTO 7);
 				op_sel <= ULA_BS;
@@ -366,7 +368,7 @@ BEGIN
 	-----------------------------------------------------
 	--        //* 23- ADDLW => Add Literal and W
 	-----------------------------------------------------
-				ELSIF instr(13 DOWNTO 8) = ADDLW THEN
+				ELSIF instr(13 DOWNTO 9) = ADDLW THEN
 				lit_sel <= '1';
 				op_sel <= ULA_ADD;
 				wr_w_reg_en <= '1';
@@ -380,7 +382,7 @@ BEGIN
 	-----------------------------------------------------
 	--        //* 25- CALL => Call Subroutine
 	-----------------------------------------------------
-				ELSIF instr(13 DOWNTO 8) = CALL THEN
+				ELSIF instr(13 DOWNTO 11) = CALL THEN
 				stack_push <= '1';
 				lit_sel <= '1';
 				op_sel <= ULA_PASS_A;
@@ -390,12 +392,12 @@ BEGIN
 	-----------------------------------------------------
 	--        //* 26- CLRWDT => No Operation
 	-----------------------------------------------------
-				ELSIF instr(13 DOWNTO 8) = CLRWDT THEN
+				ELSIF instr(13 DOWNTO 0) = CLRWDT THEN
 				--NOP
 	-----------------------------------------------------
 	--        //* 27- GOTO => Unconditional Branch
 	-----------------------------------------------------
-				ELSIF instr(13 DOWNTO 8) = GOTO THEN
+				ELSIF instr(13 DOWNTO 11) = GOTO THEN
 				lit_sel <= '1';
 				op_sel <= ULA_PASS_A;
 				load_pc <= '1';
@@ -411,19 +413,19 @@ BEGIN
 	-----------------------------------------------------
 	--        //* 29- MOVLW => Move Literal to W
 	-----------------------------------------------------
-				ELSIF instr(13 DOWNTO 8) = MOVLW THEN
+				ELSIF instr(13 DOWNTO 10) = MOVLW THEN
 				lit_sel <= '1';
 				op_sel <= ULA_PASS_A;
 				wr_w_reg_en <= '1';
 	-----------------------------------------------------
 	--        //* 30- RETFIE => No Operation
 	-----------------------------------------------------
-				ELSIF instr(13 DOWNTO 8) = RETFIE THEN
+				ELSIF instr(13 DOWNTO 0) = RETFIE THEN
 				--NOP
 	-----------------------------------------------------
 	--        //* 31- RETLW => Return from Interrupt
 	-----------------------------------------------------
-				ELSIF instr(13 DOWNTO 8) = RETLW THEN
+				ELSIF instr(13 DOWNTO 10) = RETLW THEN
 				lit_sel <= '1';
 				op_sel <= ULA_PASS_A;
 				wr_w_reg_en <= '1';
@@ -434,19 +436,19 @@ BEGIN
 	-----------------------------------------------------
 	--        //* 32- RETURN => Return from Subroutine
 	-----------------------------------------------------
-				ELSIF instr(13 DOWNTO 8) = RET_URN THEN
+				ELSIF instr(13 DOWNTO 0) = RET_URN THEN
 				stack_pop <= '1';
 				load_pc <= '1';
 				next_state <= fetch_only;
 	-----------------------------------------------------
 	--        //* 33- SLEEP => No Operation
 	-----------------------------------------------------
-				ELSIF instr(13 DOWNTO 8) = SLEEP THEN
+				ELSIF instr(13 DOWNTO 0) = SLEEP THEN
 				--NOP
 	-----------------------------------------------------
 	--        //* 34- SUBLW => Subtract W from Literal
 	-----------------------------------------------------
-				ELSIF instr(13 DOWNTO 8) = SUBLW THEN
+				ELSIF instr(13 DOWNTO 9) = SUBLW THEN
 				lit_sel <= '1';
 				op_sel <= ULA_SUB;
 				wr_w_reg_en <= '1';

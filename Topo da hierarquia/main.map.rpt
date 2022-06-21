@@ -1,5 +1,5 @@
 Analysis & Synthesis report for main
-Fri Jun 17 20:15:15 2022
+Tue Jun 21 13:18:57 2022
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -10,7 +10,25 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. State Machine - |main|control_unit:inst|pres_state
+ 10. User-Specified and Inferred Latches
+ 11. Registers Removed During Synthesis
+ 12. Removed Registers Triggering Further Register Optimizations
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Source assignments for Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated
+ 17. Parameter Settings for User Entity Instance: Rom:inst5
+ 18. Parameter Settings for User Entity Instance: Rom:inst5|altsyncram:altsyncram_component
+ 19. Parameter Settings for User Entity Instance: BUSMUX:inst11
+ 20. Parameter Settings for User Entity Instance: port_io:inst10
+ 21. Parameter Settings for User Entity Instance: port_io:inst2
+ 22. altsyncram Parameter Settings by Entity Instance
+ 23. Analysis & Synthesis Messages
 
 
 
@@ -36,20 +54,20 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +------------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Fri Jun 17 20:15:15 2022            ;
+; Analysis & Synthesis Status        ; Successful - Tue Jun 21 13:18:57 2022        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; main                                         ;
 ; Top-level Entity Name              ; main                                         ;
 ; Family                             ; Cyclone II                                   ;
-; Total logic elements               ; N/A until Partition Merge                    ;
-;     Total combinational functions  ; N/A until Partition Merge                    ;
-;     Dedicated logic registers      ; N/A until Partition Merge                    ;
-; Total registers                    ; N/A until Partition Merge                    ;
-; Total pins                         ; N/A until Partition Merge                    ;
-; Total virtual pins                 ; N/A until Partition Merge                    ;
-; Total memory bits                  ; N/A until Partition Merge                    ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                    ;
-; Total PLLs                         ; N/A until Partition Merge                    ;
+; Total logic elements               ; 3,176                                        ;
+;     Total combinational functions  ; 1,739                                        ;
+;     Dedicated logic registers      ; 1,580                                        ;
+; Total registers                    ; 1580                                         ;
+; Total pins                         ; 65                                           ;
+; Total virtual pins                 ; 0                                            ;
+; Total memory bits                  ; 57,344                                       ;
+; Embedded Multiplier 9-bit elements ; 0                                            ;
+; Total PLLs                         ; 0                                            ;
 +------------------------------------+----------------------------------------------+
 
 
@@ -143,13 +161,1031 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                           ;
++----------------------------------------+-----------------+------------------------------------------+--------------------------------------------------------------------------------------------+
+; File Name with User-Entered Path       ; Used in Netlist ; File Type                                ; File Name with Absolute Path                                                               ;
++----------------------------------------+-----------------+------------------------------------------+--------------------------------------------------------------------------------------------+
+; ../Rom/Rom.tdf                         ; yes             ; User Wizard-Generated File               ; C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/Rom/Rom.tdf                               ;
+; ../trab4/control_unit/control_unit.vhd ; yes             ; User VHDL File                           ; C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/trab4/control_unit/control_unit.vhd       ;
+; ../trab3/RAM_Mem/RAM_mem.vhd           ; yes             ; User VHDL File                           ; C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/trab3/RAM_Mem/RAM_mem.vhd                 ;
+; ../trab3/Port_io/Port_io.vhd           ; yes             ; User VHDL File                           ; C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/trab3/Port_io/Port_io.vhd                 ;
+; ../trab2/Status_reg/Status_reg.vhd     ; yes             ; User VHDL File                           ; C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/trab2/Status_reg/Status_reg.vhd           ;
+; ../trab2/PC_reg/PC_reg.vhd             ; yes             ; User VHDL File                           ; C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/trab2/PC_reg/PC_reg.vhd                   ;
+; ../trab2/FSR_reg/FSR_reg.vhd           ; yes             ; User VHDL File                           ; C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/trab2/FSR_reg/FSR_reg.vhd                 ;
+; ../trab1/mux/addr_mux.vhd              ; yes             ; User VHDL File                           ; C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/trab1/mux/addr_mux.vhd                    ;
+; ../trab1/alu/alu.vhd                   ; yes             ; User VHDL File                           ; C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/trab1/alu/alu.vhd                         ;
+; ../trab2/w_reg/w_reg.vhd               ; yes             ; User VHDL File                           ; C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/trab2/w_reg/w_reg.vhd                     ;
+; altsyncram.inc                         ; yes             ; Auto-Found AHDL File                     ; f:/quartus/altera/91sp2/quartus/libraries/megafunctions/altsyncram.inc                     ;
+; main.bdf                               ; yes             ; Auto-Found Block Diagram/Schematic File  ; C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/Topo da hierarquia/main.bdf               ;
+; altsyncram.tdf                         ; yes             ; Megafunction                             ; f:/quartus/altera/91sp2/quartus/libraries/megafunctions/altsyncram.tdf                     ;
+; db/altsyncram_g561.tdf                 ; yes             ; Auto-Generated Megafunction              ; C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/Topo da hierarquia/db/altsyncram_g561.tdf ;
+; program memory.mif                     ; yes             ; Auto-Found Memory Initialization File    ; C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/Topo da hierarquia/program memory.mif     ;
+; busmux.tdf                             ; yes             ; Megafunction                             ; f:/quartus/altera/91sp2/quartus/libraries/megafunctions/busmux.tdf                         ;
+; lpm_mux.tdf                            ; yes             ; Megafunction                             ; f:/quartus/altera/91sp2/quartus/libraries/megafunctions/lpm_mux.tdf                        ;
+; db/mux_smc.tdf                         ; yes             ; Auto-Generated Megafunction              ; C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/Topo da hierarquia/db/mux_smc.tdf         ;
++----------------------------------------+-----------------+------------------------------------------+--------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 3,176 ;
+;                                             ;       ;
+; Total combinational functions               ; 1739  ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 1422  ;
+;     -- 3 input functions                    ; 200   ;
+;     -- <=2 input functions                  ; 117   ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 1720  ;
+;     -- arithmetic mode                      ; 19    ;
+;                                             ;       ;
+; Total registers                             ; 1580  ;
+;     -- Dedicated logic registers            ; 1580  ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 65    ;
+; Total memory bits                           ; 57344 ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 1594  ;
+; Total fan-out                               ; 12968 ;
+; Average fan-out                             ; 3.82  ;
++---------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                   ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                            ; Library Name ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------+--------------+
+; |main                                     ; 1739 (0)          ; 1580 (0)     ; 57344       ; 0            ; 0       ; 0         ; 65   ; 0            ; |main                                                                          ; work         ;
+;    |FSR_reg:inst3|                        ; 3 (3)             ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|FSR_reg:inst3                                                            ;              ;
+;    |PC_reg:inst4|                         ; 178 (178)         ; 125 (125)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|PC_reg:inst4                                                             ; work         ;
+;    |RAM_mem:inst1|                        ; 1229 (1229)       ; 1392 (1392)  ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|RAM_mem:inst1                                                            ;              ;
+;    |Rom:inst5|                            ; 0 (0)             ; 0 (0)        ; 57344       ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|Rom:inst5                                                                ; work         ;
+;       |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 57344       ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|Rom:inst5|altsyncram:altsyncram_component                                ; work         ;
+;          |altsyncram_g561:auto_generated| ; 0 (0)             ; 0 (0)        ; 57344       ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated ; work         ;
+;    |Status_reg:inst6|                     ; 2 (2)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|Status_reg:inst6                                                         ; work         ;
+;    |addr_mux:inst9|                       ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|addr_mux:inst9                                                           ; work         ;
+;    |alu:inst8|                            ; 108 (108)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|alu:inst8                                                                ; work         ;
+;    |busmux:inst11|                        ; 9 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|busmux:inst11                                                            ;              ;
+;       |lpm_mux:$00000|                    ; 9 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|busmux:inst11|lpm_mux:$00000                                             ;              ;
+;          |mux_smc:auto_generated|         ; 9 (9)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|busmux:inst11|lpm_mux:$00000|mux_smc:auto_generated                      ;              ;
+;    |control_unit:inst|                    ; 158 (158)         ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|control_unit:inst                                                        ;              ;
+;    |port_io:inst10|                       ; 19 (19)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|port_io:inst10                                                           ;              ;
+;    |port_io:inst2|                        ; 19 (19)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|port_io:inst2                                                            ;              ;
+;    |w_reg:inst7|                          ; 0 (0)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |main|w_reg:inst7                                                              ;              ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                 ;
++-------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+------------------------------------------+
+; Name                                                                                ; Type ; Mode ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF                                      ;
++-------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+------------------------------------------+
+; Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 4096         ; 14           ; --           ; --           ; 57344 ; ../Topo da hierarquia/program memory.mif ;
++-------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+------------------------------------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------+
+; State Machine - |main|control_unit:inst|pres_state                                     ;
++-----------------------+-----------------------+-----------------------+----------------+
+; Name                  ; pres_state.fet_dec_ex ; pres_state.fetch_only ; pres_state.rst ;
++-----------------------+-----------------------+-----------------------+----------------+
+; pres_state.rst        ; 0                     ; 0                     ; 0              ;
+; pres_state.fetch_only ; 0                     ; 1                     ; 1              ;
+; pres_state.fet_dec_ex ; 1                     ; 0                     ; 1              ;
++-----------------------+-----------------------+-----------------------+----------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                      ;
++-----------------------------------------------------+---------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal       ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------------+------------------------+
+; PC_reg:inst4|nextpc_out[0]                          ; PC_reg:inst4|process_3    ; yes                    ;
+; PC_reg:inst4|nextpc_out[1]                          ; PC_reg:inst4|process_3    ; yes                    ;
+; PC_reg:inst4|nextpc_out[2]                          ; PC_reg:inst4|process_3    ; yes                    ;
+; PC_reg:inst4|nextpc_out[3]                          ; PC_reg:inst4|process_3    ; yes                    ;
+; PC_reg:inst4|nextpc_out[4]                          ; PC_reg:inst4|process_3    ; yes                    ;
+; PC_reg:inst4|nextpc_out[5]                          ; PC_reg:inst4|process_3    ; yes                    ;
+; PC_reg:inst4|nextpc_out[6]                          ; PC_reg:inst4|process_3    ; yes                    ;
+; PC_reg:inst4|nextpc_out[7]                          ; PC_reg:inst4|process_3    ; yes                    ;
+; PC_reg:inst4|nextpc_out[8]                          ; PC_reg:inst4|process_3    ; yes                    ;
+; PC_reg:inst4|nextpc_out[9]                          ; PC_reg:inst4|process_3    ; yes                    ;
+; PC_reg:inst4|nextpc_out[10]                         ; PC_reg:inst4|process_3    ; yes                    ;
+; PC_reg:inst4|nextpc_out[11]                         ; PC_reg:inst4|process_3    ; yes                    ;
+; RAM_mem:inst1|dbus_out[2]$latch                     ; RAM_mem:inst1|dbus_out[0] ; yes                    ;
+; RAM_mem:inst1|dbus_out[0]_12701                     ; RAM_mem:inst1|dbus_out[0] ; yes                    ;
+; RAM_mem:inst1|dbus_out[1]$latch                     ; RAM_mem:inst1|dbus_out[0] ; yes                    ;
+; RAM_mem:inst1|dbus_out[0]$latch                     ; RAM_mem:inst1|dbus_out[0] ; yes                    ;
+; RAM_mem:inst1|dbus_out[3]$latch                     ; RAM_mem:inst1|dbus_out[0] ; yes                    ;
+; RAM_mem:inst1|dbus_out[6]$latch                     ; RAM_mem:inst1|dbus_out[0] ; yes                    ;
+; RAM_mem:inst1|dbus_out[5]$latch                     ; RAM_mem:inst1|dbus_out[0] ; yes                    ;
+; RAM_mem:inst1|dbus_out[4]$latch                     ; RAM_mem:inst1|dbus_out[0] ; yes                    ;
+; RAM_mem:inst1|dbus_out[7]$latch                     ; RAM_mem:inst1|dbus_out[0] ; yes                    ;
+; Number of user-specified and inferred latches = 21  ;                           ;                        ;
++-----------------------------------------------------+---------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++---------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                    ;
++-----------------------------------------+---------------------------------------------+
+; Register name                           ; Reason for Removal                          ;
++-----------------------------------------+---------------------------------------------+
+; RAM_mem:inst1|mem2[304][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[312][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[308][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[316][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[306][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[314][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[310][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[318][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[305][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[313][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[309][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[317][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[307][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[315][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[311][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[319][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[304][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[312][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[308][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[316][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[306][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[314][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[310][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[318][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[305][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[313][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[309][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[317][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[307][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[315][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[311][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[319][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[304][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[312][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[308][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[316][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[306][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[314][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[310][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[318][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[305][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[313][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[309][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[317][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[307][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[315][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[311][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[319][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[304][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[312][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[308][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[316][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[306][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[314][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[310][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[318][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[305][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[313][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[309][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[317][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[307][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[315][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[311][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[319][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[304][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[312][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[308][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[316][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[306][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[314][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[310][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[318][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[305][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[313][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[309][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[317][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[307][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[315][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[311][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[319][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[304][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[312][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[308][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[316][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[306][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[314][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[310][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[318][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[305][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[313][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[309][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[317][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[307][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[315][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[311][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[319][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[304][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[312][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[308][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[316][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[306][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[314][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[310][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[318][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[305][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[313][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[309][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[317][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[307][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[315][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[311][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[319][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[304][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[312][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[308][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[316][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[306][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[314][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[310][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[318][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[305][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[313][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[309][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[317][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[307][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[315][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[311][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[319][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem_com[126][7]           ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem_com[127][7]           ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem_com[126][6]           ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem_com[127][6]           ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem_com[126][5]           ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem_com[127][5]           ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem_com[126][4]           ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem_com[127][4]           ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem_com[126][3]           ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem_com[127][3]           ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem_com[126][2]           ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem_com[127][2]           ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem_com[126][1]           ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem_com[127][1]           ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem_com[126][0]           ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem_com[127][0]           ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[320][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[336][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[352][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[328][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[344][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[360][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[324][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[340][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[356][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[332][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[348][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[364][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[322][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[338][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[354][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[330][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[346][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[362][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[326][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[342][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[358][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[334][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[350][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[366][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[321][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[337][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[353][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[329][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[345][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[361][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[325][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[341][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[357][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[333][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[349][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[365][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[323][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[339][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[355][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[331][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[347][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[363][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[327][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[343][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[359][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[335][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[351][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[367][7]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[320][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[336][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[352][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[328][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[344][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[360][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[324][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[340][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[356][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[332][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[348][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[364][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[322][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[338][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[354][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[330][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[346][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[362][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[326][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[342][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[358][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[334][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[350][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[366][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[321][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[337][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[353][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[329][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[345][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[361][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[325][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[341][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[357][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[333][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[349][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[365][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[323][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[339][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[355][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[331][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[347][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[363][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[327][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[343][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[359][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[335][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[351][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[367][6]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[320][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[336][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[352][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[328][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[344][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[360][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[324][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[340][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[356][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[332][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[348][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[364][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[322][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[338][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[354][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[330][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[346][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[362][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[326][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[342][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[358][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[334][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[350][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[366][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[321][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[337][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[353][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[329][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[345][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[361][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[325][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[341][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[357][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[333][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[349][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[365][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[323][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[339][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[355][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[331][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[347][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[363][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[327][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[343][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[359][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[335][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[351][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[367][5]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[320][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[336][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[352][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[328][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[344][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[360][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[324][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[340][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[356][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[332][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[348][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[364][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[322][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[338][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[354][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[330][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[346][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[362][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[326][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[342][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[358][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[334][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[350][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[366][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[321][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[337][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[353][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[329][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[345][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[361][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[325][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[341][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[357][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[333][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[349][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[365][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[323][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[339][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[355][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[331][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[347][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[363][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[327][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[343][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[359][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[335][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[351][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[367][4]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[320][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[336][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[352][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[328][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[344][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[360][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[324][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[340][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[356][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[332][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[348][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[364][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[322][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[338][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[354][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[330][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[346][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[362][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[326][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[342][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[358][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[334][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[350][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[366][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[321][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[337][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[353][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[329][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[345][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[361][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[325][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[341][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[357][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[333][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[349][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[365][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[323][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[339][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[355][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[331][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[347][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[363][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[327][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[343][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[359][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[335][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[351][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[367][3]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[320][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[336][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[352][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[328][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[344][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[360][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[324][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[340][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[356][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[332][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[348][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[364][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[322][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[338][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[354][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[330][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[346][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[362][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[326][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[342][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[358][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[334][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[350][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[366][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[321][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[337][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[353][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[329][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[345][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[361][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[325][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[341][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[357][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[333][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[349][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[365][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[323][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[339][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[355][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[331][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[347][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[363][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[327][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[343][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[359][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[335][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[351][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[367][2]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[320][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[336][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[352][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[328][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[344][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[360][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[324][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[340][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[356][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[332][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[348][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[364][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[322][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[338][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[354][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[330][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[346][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[362][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[326][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[342][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[358][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[334][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[350][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[366][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[321][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[337][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[353][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[329][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[345][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[361][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[325][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[341][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[357][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[333][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[349][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[365][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[323][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[339][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[355][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[331][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[347][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[363][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[327][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[343][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[359][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[335][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[351][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[367][1]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[320][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[336][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[352][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[328][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[344][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[360][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[324][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[340][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[356][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[332][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[348][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[364][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[322][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[338][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[354][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[330][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[346][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[362][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[326][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[342][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[358][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[334][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[350][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[366][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[321][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[337][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[353][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[329][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[345][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[361][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[325][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[341][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[357][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[333][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[349][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[365][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[323][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[339][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[355][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[331][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[347][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[363][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[327][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[343][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[359][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[335][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[351][0]              ; Lost fanout                                 ;
+; RAM_mem:inst1|mem2[367][0]              ; Lost fanout                                 ;
+; PC_reg:inst4|pc[12]                     ; Lost fanout                                 ;
+; PC_reg:inst4|stack_reg0[12]             ; Lost fanout                                 ;
+; PC_reg:inst4|stack_reg1[12]             ; Lost fanout                                 ;
+; PC_reg:inst4|stack_reg2[12]             ; Lost fanout                                 ;
+; PC_reg:inst4|stack_reg3[12]             ; Lost fanout                                 ;
+; PC_reg:inst4|stack_reg4[12]             ; Lost fanout                                 ;
+; PC_reg:inst4|stack_reg5[12]             ; Lost fanout                                 ;
+; PC_reg:inst4|stack_reg6[12]             ; Lost fanout                                 ;
+; PC_reg:inst4|stack_reg7[12]             ; Lost fanout                                 ;
+; PC_reg:inst4|dbus_out[0]~en             ; Merged with PC_reg:inst4|dbus_out[2]~en     ;
+; PC_reg:inst4|dbus_out[1]~en             ; Merged with PC_reg:inst4|dbus_out[2]~en     ;
+; PC_reg:inst4|dbus_out[3]~en             ; Merged with PC_reg:inst4|dbus_out[2]~en     ;
+; PC_reg:inst4|dbus_out[4]~en             ; Merged with PC_reg:inst4|dbus_out[2]~en     ;
+; PC_reg:inst4|dbus_out[5]~en             ; Merged with PC_reg:inst4|dbus_out[2]~en     ;
+; PC_reg:inst4|dbus_out[6]~en             ; Merged with PC_reg:inst4|dbus_out[2]~en     ;
+; PC_reg:inst4|dbus_out[7]~en             ; Merged with PC_reg:inst4|dbus_out[2]~en     ;
+; RAM_mem:inst1|mem2[293][2]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[301][2]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[292][2]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[300][2]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[291][2]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[299][2]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[290][2]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[298][2]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[289][2]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[297][2]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[288][2]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[296][2]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[295][2]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[303][2]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[294][2]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[302][2]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[291][1]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[299][1]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[290][1]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[298][1]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[293][1]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[301][1]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[292][1]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[300][1]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[289][1]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[297][1]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[288][1]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[296][1]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[295][1]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[303][1]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[294][1]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[302][1]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[293][0]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[301][0]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[292][0]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[300][0]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[291][0]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[299][0]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[290][0]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[298][0]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[289][0]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[297][0]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[288][0]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[296][0]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[295][0]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[303][0]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[294][0]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[302][0]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[291][3]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[299][3]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[290][3]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[298][3]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[293][3]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[301][3]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[292][3]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[300][3]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[289][3]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[297][3]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[288][3]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[296][3]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[295][3]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[303][3]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[294][3]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[302][3]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[293][6]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[301][6]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[292][6]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[300][6]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[291][6]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[299][6]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[290][6]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[298][6]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[289][6]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[297][6]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[288][6]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[296][6]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[295][6]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[303][6]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[294][6]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[302][6]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[291][5]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[299][5]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[290][5]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[298][5]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[293][5]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[301][5]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[292][5]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[300][5]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[289][5]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[297][5]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[288][5]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[296][5]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[295][5]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[303][5]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[294][5]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[302][5]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[293][4]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[301][4]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[292][4]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[300][4]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[291][4]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[299][4]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[290][4]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[298][4]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[289][4]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[297][4]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[288][4]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[296][4]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[295][4]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[303][4]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[294][4]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[302][4]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[291][7]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[299][7]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[290][7]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[298][7]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[293][7]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[301][7]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[292][7]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[300][7]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[289][7]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[297][7]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[288][7]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[296][7]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[295][7]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[303][7]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[294][7]              ; Stuck at GND due to stuck port clock_enable ;
+; RAM_mem:inst1|mem2[302][7]              ; Stuck at GND due to stuck port clock_enable ;
+; Total Number of Removed Registers = 672 ;                                             ;
++-----------------------------------------+---------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                  ;
++-----------------------------+--------------------+-----------------------------------------------------------+
+; Register name               ; Reason for Removal ; Registers Removed due to This Register                    ;
++-----------------------------+--------------------+-----------------------------------------------------------+
+; PC_reg:inst4|stack_reg0[12] ; Lost Fanouts       ; PC_reg:inst4|stack_reg1[12], PC_reg:inst4|stack_reg2[12], ;
+;                             ;                    ; PC_reg:inst4|stack_reg3[12], PC_reg:inst4|stack_reg4[12], ;
+;                             ;                    ; PC_reg:inst4|stack_reg5[12], PC_reg:inst4|stack_reg6[12], ;
+;                             ;                    ; PC_reg:inst4|stack_reg7[12]                               ;
++-----------------------------+--------------------+-----------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1580  ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 1467  ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 1568  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; port_io:inst2|tris_reg[4]               ; 2       ;
+; port_io:inst10|tris_reg[4]              ; 2       ;
+; port_io:inst2|tris_reg[3]               ; 2       ;
+; port_io:inst10|tris_reg[3]              ; 2       ;
+; port_io:inst2|tris_reg[7]               ; 2       ;
+; port_io:inst10|tris_reg[7]              ; 2       ;
+; port_io:inst10|tris_reg[2]              ; 2       ;
+; port_io:inst2|tris_reg[2]               ; 2       ;
+; port_io:inst10|tris_reg[1]              ; 2       ;
+; port_io:inst2|tris_reg[1]               ; 2       ;
+; port_io:inst10|tris_reg[0]              ; 2       ;
+; port_io:inst2|tris_reg[0]               ; 2       ;
+; port_io:inst10|tris_reg[5]              ; 2       ;
+; port_io:inst2|tris_reg[5]               ; 2       ;
+; port_io:inst10|tris_reg[6]              ; 2       ;
+; port_io:inst2|tris_reg[6]               ; 2       ;
+; Total number of inverted registers = 16 ;         ;
++-----------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |main|PC_reg:inst4|stack_reg7[0] ;
+; 3:1                ; 91 bits   ; 182 LEs       ; 91 LEs               ; 91 LEs                 ; Yes        ; |main|PC_reg:inst4|stack_reg6[5] ;
+; 7:1                ; 13 bits   ; 52 LEs        ; 39 LEs               ; 13 LEs                 ; Yes        ; |main|PC_reg:inst4|pc[9]         ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; No         ; |main|alu:inst8|Add0             ;
+; 15:1               ; 8 bits    ; 80 LEs        ; 48 LEs               ; 32 LEs                 ; No         ; |main|alu:inst8|Mux5             ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |main|alu:inst8|Add0             ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |main|alu:inst8|Add0             ;
+; 256:1              ; 8 bits    ; 1360 LEs      ; 1360 LEs             ; 0 LEs                  ; No         ; |main|RAM_mem:inst1|dbus_out[4]  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Source assignments for Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------+
+; Assignment                      ; Value              ; From ; To                                ;
++---------------------------------+--------------------+------+-----------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                 ;
++---------------------------------+--------------------+------+-----------------------------------+
+
+
++--------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Rom:inst5 ;
++-----------------+-------+------------------------------+
+; Parameter Name  ; Value ; Type                         ;
++-----------------+-------+------------------------------+
+; WIDTH_BYTEENA_A ; 1     ; Untyped                      ;
+; WIDTH_BYTEENA_B ; 1     ; Untyped                      ;
++-----------------+-------+------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Rom:inst5|altsyncram:altsyncram_component         ;
++------------------------------------+------------------------------------------+----------------+
+; Parameter Name                     ; Value                                    ; Type           ;
++------------------------------------+------------------------------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                        ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                                       ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                      ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                                       ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                      ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                                        ; Untyped        ;
+; OPERATION_MODE                     ; ROM                                      ; Untyped        ;
+; WIDTH_A                            ; 14                                       ; Untyped        ;
+; WIDTHAD_A                          ; 12                                       ; Untyped        ;
+; NUMWORDS_A                         ; 4096                                     ; Untyped        ;
+; OUTDATA_REG_A                      ; CLOCK0                                   ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                                     ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                                     ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                                     ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                                     ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                                     ; Untyped        ;
+; WIDTH_B                            ; 1                                        ; Untyped        ;
+; WIDTHAD_B                          ; 1                                        ; Untyped        ;
+; NUMWORDS_B                         ; 1                                        ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1                                   ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                   ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK1                                   ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK1                                   ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED                             ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1                                   ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                                     ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                                     ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                                     ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                                     ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                                     ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                                     ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 1                                        ; Untyped        ;
+; WIDTH_BYTEENA_B                    ; 1                                        ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                                     ; Untyped        ;
+; BYTE_SIZE                          ; 8                                        ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                     ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                     ; Untyped        ;
+; INIT_FILE                          ; ../Topo da hierarquia/program memory.mif ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                   ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 0                                        ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                   ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                   ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                   ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                   ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                          ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                          ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                                    ; Untyped        ;
+; DEVICE_FAMILY                      ; Cyclone II                               ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_g561                          ; Untyped        ;
++------------------------------------+------------------------------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: BUSMUX:inst11 ;
++----------------+-------+-----------------------------------+
+; Parameter Name ; Value ; Type                              ;
++----------------+-------+-----------------------------------+
+; WIDTH          ; 8     ; Untyped                           ;
++----------------+-------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: port_io:inst10 ;
++----------------+-----------+--------------------------------+
+; Parameter Name ; Value     ; Type                           ;
++----------------+-----------+--------------------------------+
+; port_addr      ; 000000110 ; Unsigned Binary                ;
+; alt_port_addr  ; 100000110 ; Unsigned Binary                ;
+; tris_addr      ; 010000110 ; Unsigned Binary                ;
+; alt_tris_addr  ; 110000110 ; Unsigned Binary                ;
++----------------+-----------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: port_io:inst2 ;
++----------------+-----------+-------------------------------+
+; Parameter Name ; Value     ; Type                          ;
++----------------+-----------+-------------------------------+
+; port_addr      ; 000000101 ; Unsigned Binary               ;
+; alt_port_addr  ; 000000101 ; Unsigned Binary               ;
+; tris_addr      ; 010000101 ; Unsigned Binary               ;
+; alt_tris_addr  ; 010000101 ; Unsigned Binary               ;
++----------------+-----------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                      ;
++-------------------------------------------+-------------------------------------------+
+; Name                                      ; Value                                     ;
++-------------------------------------------+-------------------------------------------+
+; Number of entity instances                ; 1                                         ;
+; Entity Instance                           ; Rom:inst5|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; ROM                                       ;
+;     -- WIDTH_A                            ; 14                                        ;
+;     -- NUMWORDS_A                         ; 4096                                      ;
+;     -- OUTDATA_REG_A                      ; CLOCK0                                    ;
+;     -- WIDTH_B                            ; 1                                         ;
+;     -- NUMWORDS_B                         ; 1                                         ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                    ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                              ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                      ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                 ;
++-------------------------------------------+-------------------------------------------+
+
+
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Fri Jun 17 20:15:14 2022
+    Info: Processing started: Tue Jun 21 13:18:38 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off main -c main
 Warning: Tcl Script File ../ROM.qip not found
     Info: set_global_assignment -name QIP_FILE ../ROM.qip
@@ -188,20 +1224,669 @@ Info: Found 2 design units, including 1 entities, in source file /users/gabriel/
 Warning: Using design file main.bdf, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info: Found entity 1: main
 Info: Elaborating entity "main" for the top level hierarchy
-Error: Width mismatch in port "dbus_in[7..0]" of instance "inst1" and type RAM_mem -- source is ""alu_z""
-Error: Width mismatch in port "dbus_in[7..0]" of instance "inst3" and type FSR_reg -- source is ""alu_z""
-Error: Width mismatch in port "dbus_in[7..0]" of instance "inst4" and type PC_reg -- source is ""alu_z""
-Error: Width mismatch in port "dbus_in[7..0]" of instance "inst6" and type Status_reg -- source is ""alu_z""
-Error: Width mismatch in port "d_in[7..0]" of instance "inst7" and type w_reg -- source is ""alu_z""
-Error: Width mismatch in port "dbus_in[7..0]" of instance "inst10" and type Port_io -- source is ""alu_z""
-Error: Width mismatch in port "dbus_in[7..0]" of instance "inst2" and type Port_io -- source is ""alu_z""
-Error: Width mismatch in alu_z -- source is ""r_out[7..0]" (ID alu:inst8)"
-Error: Width mismatch in alu_z -- source is ""r_out[7..0]" (ID alu:inst8)"
-Error: Can't elaborate top-level user hierarchy
-Error: Quartus II Analysis & Synthesis was unsuccessful. 10 errors, 2 warnings
-    Error: Peak virtual memory: 234 megabytes
-    Error: Processing ended: Fri Jun 17 20:15:15 2022
-    Error: Elapsed time: 00:00:01
-    Error: Total CPU time (on all processors): 00:00:01
+Info: Elaborating entity "control_unit" for hierarchy "control_unit:inst"
+Info: Elaborating entity "alu" for hierarchy "alu:inst8"
+Info: Elaborating entity "Status_reg" for hierarchy "Status_reg:inst6"
+Info: Elaborating entity "addr_mux" for hierarchy "addr_mux:inst9"
+Info: Elaborating entity "Rom" for hierarchy "Rom:inst5"
+Info: Elaborating entity "altsyncram" for hierarchy "Rom:inst5|altsyncram:altsyncram_component"
+Info: Elaborated megafunction instantiation "Rom:inst5|altsyncram:altsyncram_component"
+Info: Instantiated megafunction "Rom:inst5|altsyncram:altsyncram_component" with the following parameter:
+    Info: Parameter "LPM_TYPE" = "altsyncram"
+    Info: Parameter "LPM_HINT" = "ENABLE_RUNTIME_MOD=NO"
+    Info: Parameter "INTENDED_DEVICE_FAMILY" = "Stratix"
+    Info: Parameter "OPERATION_MODE" = "ROM"
+    Info: Parameter "WIDTH_A" = "14"
+    Info: Parameter "WIDTHAD_A" = "12"
+    Info: Parameter "NUMWORDS_A" = "4096"
+    Info: Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info: Parameter "OUTDATA_REG_A" = "CLOCK0"
+    Info: Parameter "OUTDATA_ACLR_A" = "NONE"
+    Info: Parameter "INIT_FILE" = "../Topo da hierarquia/program memory.mif"
+    Info: Parameter "WIDTH_BYTEENA_A" = "1"
+Info: Found 1 design units, including 1 entities, in source file db/altsyncram_g561.tdf
+    Info: Found entity 1: altsyncram_g561
+Info: Elaborating entity "altsyncram_g561" for hierarchy "Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated"
+Info: Elaborating entity "PC_reg" for hierarchy "PC_reg:inst4"
+Warning (10631): VHDL Process Statement warning at PC_reg.vhd(121): inferring latch(es) for signal or variable "nextpc_out", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "nextpc_out[0]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[1]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[2]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[3]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[4]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[5]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[6]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[7]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[8]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[9]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[10]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[11]" at PC_reg.vhd(121)
+Info (10041): Inferred latch for "nextpc_out[12]" at PC_reg.vhd(121)
+Info: Elaborating entity "FSR_reg" for hierarchy "FSR_reg:inst3"
+Info: Elaborating entity "BUSMUX" for hierarchy "BUSMUX:inst11"
+Info: Elaborated megafunction instantiation "BUSMUX:inst11"
+Info: Instantiated megafunction "BUSMUX:inst11" with the following parameter:
+    Info: Parameter "WIDTH" = "8"
+Info: Elaborating entity "lpm_mux" for hierarchy "BUSMUX:inst11|lpm_mux:$00000"
+Info: Elaborated megafunction instantiation "BUSMUX:inst11|lpm_mux:$00000", which is child of megafunction instantiation "BUSMUX:inst11"
+Info: Found 1 design units, including 1 entities, in source file db/mux_smc.tdf
+    Info: Found entity 1: mux_smc
+Info: Elaborating entity "mux_smc" for hierarchy "BUSMUX:inst11|lpm_mux:$00000|mux_smc:auto_generated"
+Info: Elaborating entity "RAM_mem" for hierarchy "RAM_mem:inst1"
+Warning (10631): VHDL Process Statement warning at RAM_mem.vhd(72): inferring latch(es) for signal or variable "dbus_out", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "dbus_out[0]" at RAM_mem.vhd(72)
+Info (10041): Inferred latch for "dbus_out[1]" at RAM_mem.vhd(72)
+Info (10041): Inferred latch for "dbus_out[2]" at RAM_mem.vhd(72)
+Info (10041): Inferred latch for "dbus_out[3]" at RAM_mem.vhd(72)
+Info (10041): Inferred latch for "dbus_out[4]" at RAM_mem.vhd(72)
+Info (10041): Inferred latch for "dbus_out[5]" at RAM_mem.vhd(72)
+Info (10041): Inferred latch for "dbus_out[6]" at RAM_mem.vhd(72)
+Info (10041): Inferred latch for "dbus_out[7]" at RAM_mem.vhd(72)
+Info: Elaborating entity "port_io" for hierarchy "port_io:inst10"
+Info: Elaborating entity "port_io" for hierarchy "port_io:inst2"
+Info: Elaborating entity "w_reg" for hierarchy "w_reg:inst7"
+Warning: Always-enabled tri-state buffer(s) removed
+    Warning: Converted the fanout from the always-enabled tri-state buffer "port_io:inst10|latch[2]" to the node "port_io:inst10|dbus_out[2]" into a wire
+    Warning: Converted the fanout from the always-enabled tri-state buffer "port_io:inst10|latch[1]" to the node "port_io:inst10|dbus_out[1]" into a wire
+    Warning: Converted the fanout from the always-enabled tri-state buffer "port_io:inst10|latch[0]" to the node "port_io:inst10|dbus_out[0]" into a wire
+    Warning: Converted the fanout from the always-enabled tri-state buffer "port_io:inst10|latch[3]" to the node "port_io:inst10|dbus_out[3]" into a wire
+    Warning: Converted the fanout from the always-enabled tri-state buffer "port_io:inst10|latch[6]" to the node "port_io:inst10|dbus_out[6]" into a wire
+    Warning: Converted the fanout from the always-enabled tri-state buffer "port_io:inst10|latch[5]" to the node "port_io:inst10|dbus_out[5]" into a wire
+    Warning: Converted the fanout from the always-enabled tri-state buffer "port_io:inst10|latch[4]" to the node "port_io:inst10|dbus_out[4]" into a wire
+    Warning: Converted the fanout from the always-enabled tri-state buffer "port_io:inst10|latch[7]" to the node "port_io:inst10|dbus_out[7]" into a wire
+Warning: Tri-state node(s) do not directly drive top-level pin(s)
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst2|latch[2]" to the node "port_io:inst2|dbus_out[2]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst2|latch[1]" to the node "port_io:inst2|dbus_out[1]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst2|latch[0]" to the node "port_io:inst2|dbus_out[0]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst2|latch[3]" to the node "port_io:inst2|dbus_out[3]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst2|latch[6]" to the node "port_io:inst2|dbus_out[6]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst2|latch[5]" to the node "port_io:inst2|dbus_out[5]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst2|latch[4]" to the node "port_io:inst2|dbus_out[4]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst2|latch[7]" to the node "port_io:inst2|dbus_out[7]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst10|port_io[7]" to the node "port_io:inst10|dbus_out[7]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst10|port_io[6]" to the node "port_io:inst10|dbus_out[6]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst10|port_io[5]" to the node "port_io:inst10|dbus_out[5]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst10|port_io[4]" to the node "port_io:inst10|dbus_out[4]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst10|port_io[3]" to the node "port_io:inst10|dbus_out[3]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst10|port_io[2]" to the node "port_io:inst10|dbus_out[2]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst10|port_io[1]" to the node "port_io:inst10|dbus_out[1]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst10|port_io[0]" to the node "port_io:inst10|dbus_out[0]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst2|port_io[7]" to the node "port_io:inst2|latch[7]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst2|port_io[6]" to the node "port_io:inst2|latch[6]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst2|port_io[5]" to the node "port_io:inst2|latch[5]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst2|port_io[4]" to the node "port_io:inst2|latch[4]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst2|port_io[3]" to the node "port_io:inst2|latch[3]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst2|port_io[2]" to the node "port_io:inst2|latch[2]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst2|port_io[1]" to the node "port_io:inst2|latch[1]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "port_io:inst2|port_io[0]" to the node "port_io:inst2|latch[0]" into an OR gate
+Warning: Tri-state node(s) do not directly drive top-level pin(s)
+    Warning: Converted the fan-out from the tri-state buffer "RAM_mem:inst1|dbus_out[2]" to the node "busmux:inst11|lpm_mux:$00000|mux_smc:auto_generated|result_node[2]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "RAM_mem:inst1|dbus_out[1]" to the node "busmux:inst11|lpm_mux:$00000|mux_smc:auto_generated|result_node[1]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "RAM_mem:inst1|dbus_out[0]" to the node "busmux:inst11|lpm_mux:$00000|mux_smc:auto_generated|result_node[0]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "RAM_mem:inst1|dbus_out[3]" to the node "busmux:inst11|lpm_mux:$00000|mux_smc:auto_generated|result_node[3]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "RAM_mem:inst1|dbus_out[6]" to the node "busmux:inst11|lpm_mux:$00000|mux_smc:auto_generated|result_node[6]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "RAM_mem:inst1|dbus_out[5]" to the node "busmux:inst11|lpm_mux:$00000|mux_smc:auto_generated|result_node[5]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "RAM_mem:inst1|dbus_out[4]" to the node "busmux:inst11|lpm_mux:$00000|mux_smc:auto_generated|result_node[4]" into an OR gate
+    Warning: Converted the fan-out from the tri-state buffer "RAM_mem:inst1|dbus_out[7]" to the node "busmux:inst11|lpm_mux:$00000|mux_smc:auto_generated|result_node[7]" into an OR gate
+Warning: Latch RAM_mem:inst1|dbus_out[2]$latch has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated|q_a[1]
+    Warning: Ports ENA and CLR on the latch are fed by the same signal Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated|q_a[6]
+Warning: Latch RAM_mem:inst1|dbus_out[0]_12701 has unsafe behavior
+    Warning: Ports ENA and CLR on the latch are fed by the same signal Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated|q_a[6]
+Warning: Latch RAM_mem:inst1|dbus_out[1]$latch has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated|q_a[2]
+    Warning: Ports ENA and CLR on the latch are fed by the same signal Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated|q_a[6]
+Warning: Latch RAM_mem:inst1|dbus_out[0]$latch has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated|q_a[1]
+    Warning: Ports ENA and CLR on the latch are fed by the same signal Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated|q_a[6]
+Warning: Latch RAM_mem:inst1|dbus_out[3]$latch has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated|q_a[2]
+    Warning: Ports ENA and CLR on the latch are fed by the same signal Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated|q_a[6]
+Warning: Latch RAM_mem:inst1|dbus_out[6]$latch has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated|q_a[1]
+    Warning: Ports ENA and CLR on the latch are fed by the same signal Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated|q_a[6]
+Warning: Latch RAM_mem:inst1|dbus_out[5]$latch has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated|q_a[2]
+    Warning: Ports ENA and CLR on the latch are fed by the same signal Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated|q_a[6]
+Warning: Latch RAM_mem:inst1|dbus_out[4]$latch has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated|q_a[1]
+    Warning: Ports ENA and CLR on the latch are fed by the same signal Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated|q_a[6]
+Warning: Latch RAM_mem:inst1|dbus_out[7]$latch has unsafe behavior
+    Warning: Ports D and ENA on the latch are fed by the same signal Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated|q_a[2]
+    Warning: Ports ENA and CLR on the latch are fed by the same signal Rom:inst5|altsyncram:altsyncram_component|altsyncram_g561:auto_generated|q_a[6]
+Info: Registers with preset signals will power-up high
+Info: DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Info: 521 registers lost all their fanouts during netlist optimizations. The first 521 are displayed below.
+    Info: Register "RAM_mem:inst1|mem2[304][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[312][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[308][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[316][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[306][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[314][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[310][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[318][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[305][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[313][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[309][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[317][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[307][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[315][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[311][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[319][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[304][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[312][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[308][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[316][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[306][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[314][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[310][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[318][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[305][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[313][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[309][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[317][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[307][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[315][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[311][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[319][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[304][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[312][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[308][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[316][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[306][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[314][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[310][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[318][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[305][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[313][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[309][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[317][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[307][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[315][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[311][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[319][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[304][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[312][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[308][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[316][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[306][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[314][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[310][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[318][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[305][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[313][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[309][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[317][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[307][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[315][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[311][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[319][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[304][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[312][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[308][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[316][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[306][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[314][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[310][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[318][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[305][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[313][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[309][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[317][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[307][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[315][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[311][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[319][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[304][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[312][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[308][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[316][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[306][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[314][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[310][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[318][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[305][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[313][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[309][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[317][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[307][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[315][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[311][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[319][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[304][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[312][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[308][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[316][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[306][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[314][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[310][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[318][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[305][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[313][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[309][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[317][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[307][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[315][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[311][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[319][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[304][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[312][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[308][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[316][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[306][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[314][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[310][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[318][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[305][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[313][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[309][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[317][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[307][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[315][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[311][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[319][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[320][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[336][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[352][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[328][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[344][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[360][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[324][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[340][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[356][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[332][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[348][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[364][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[322][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[338][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[354][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[330][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[346][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[362][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[326][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[342][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[358][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[334][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[350][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[366][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[321][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[337][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[353][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[329][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[345][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[361][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[325][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[341][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[357][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[333][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[349][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[365][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[323][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[339][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[355][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[331][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[347][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[363][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[327][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[343][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[359][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[335][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[351][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[367][7]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[320][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[336][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[352][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[328][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[344][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[360][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[324][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[340][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[356][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[332][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[348][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[364][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[322][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[338][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[354][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[330][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[346][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[362][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[326][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[342][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[358][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[334][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[350][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[366][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[321][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[337][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[353][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[329][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[345][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[361][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[325][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[341][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[357][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[333][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[349][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[365][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[323][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[339][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[355][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[331][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[347][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[363][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[327][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[343][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[359][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[335][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[351][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[367][6]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[320][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[336][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[352][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[328][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[344][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[360][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[324][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[340][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[356][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[332][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[348][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[364][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[322][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[338][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[354][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[330][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[346][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[362][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[326][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[342][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[358][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[334][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[350][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[366][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[321][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[337][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[353][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[329][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[345][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[361][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[325][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[341][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[357][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[333][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[349][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[365][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[323][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[339][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[355][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[331][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[347][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[363][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[327][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[343][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[359][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[335][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[351][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[367][5]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[320][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[336][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[352][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[328][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[344][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[360][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[324][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[340][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[356][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[332][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[348][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[364][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[322][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[338][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[354][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[330][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[346][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[362][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[326][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[342][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[358][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[334][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[350][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[366][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[321][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[337][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[353][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[329][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[345][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[361][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[325][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[341][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[357][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[333][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[349][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[365][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[323][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[339][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[355][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[331][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[347][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[363][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[327][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[343][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[359][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[335][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[351][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[367][4]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[320][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[336][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[352][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[328][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[344][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[360][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[324][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[340][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[356][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[332][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[348][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[364][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[322][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[338][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[354][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[330][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[346][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[362][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[326][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[342][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[358][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[334][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[350][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[366][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[321][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[337][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[353][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[329][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[345][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[361][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[325][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[341][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[357][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[333][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[349][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[365][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[323][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[339][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[355][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[331][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[347][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[363][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[327][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[343][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[359][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[335][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[351][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[367][3]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[320][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[336][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[352][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[328][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[344][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[360][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[324][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[340][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[356][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[332][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[348][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[364][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[322][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[338][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[354][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[330][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[346][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[362][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[326][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[342][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[358][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[334][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[350][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[366][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[321][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[337][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[353][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[329][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[345][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[361][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[325][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[341][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[357][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[333][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[349][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[365][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[323][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[339][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[355][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[331][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[347][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[363][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[327][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[343][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[359][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[335][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[351][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[367][2]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[320][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[336][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[352][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[328][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[344][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[360][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[324][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[340][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[356][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[332][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[348][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[364][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[322][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[338][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[354][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[330][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[346][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[362][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[326][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[342][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[358][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[334][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[350][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[366][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[321][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[337][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[353][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[329][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[345][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[361][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[325][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[341][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[357][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[333][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[349][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[365][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[323][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[339][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[355][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[331][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[347][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[363][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[327][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[343][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[359][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[335][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[351][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[367][1]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[320][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[336][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[352][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[328][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[344][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[360][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[324][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[340][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[356][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[332][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[348][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[364][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[322][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[338][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[354][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[330][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[346][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[362][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[326][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[342][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[358][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[334][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[350][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[366][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[321][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[337][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[353][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[329][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[345][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[361][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[325][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[341][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[357][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[333][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[349][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[365][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[323][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[339][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[355][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[331][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[347][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[363][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[327][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[343][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[359][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[335][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[351][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "RAM_mem:inst1|mem2[367][0]" lost all its fanouts during netlist optimizations.
+    Info: Register "PC_reg:inst4|pc[12]" lost all its fanouts during netlist optimizations.
+    Info: Register "PC_reg:inst4|stack_reg0[12]" lost all its fanouts during netlist optimizations.
+    Info: Register "PC_reg:inst4|stack_reg1[12]" lost all its fanouts during netlist optimizations.
+    Info: Register "PC_reg:inst4|stack_reg2[12]" lost all its fanouts during netlist optimizations.
+    Info: Register "PC_reg:inst4|stack_reg3[12]" lost all its fanouts during netlist optimizations.
+    Info: Register "PC_reg:inst4|stack_reg4[12]" lost all its fanouts during netlist optimizations.
+    Info: Register "PC_reg:inst4|stack_reg5[12]" lost all its fanouts during netlist optimizations.
+    Info: Register "PC_reg:inst4|stack_reg6[12]" lost all its fanouts during netlist optimizations.
+    Info: Register "PC_reg:inst4|stack_reg7[12]" lost all its fanouts during netlist optimizations.
+Info: Implemented 3263 device resources after synthesis - the final resource count might be different
+    Info: Implemented 2 input pins
+    Info: Implemented 63 output pins
+    Info: Implemented 3184 logic cells
+    Info: Implemented 14 RAM segments
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 73 warnings
+    Info: Peak virtual memory: 258 megabytes
+    Info: Processing ended: Tue Jun 21 13:18:57 2022
+    Info: Elapsed time: 00:00:19
+    Info: Total CPU time (on all processors): 00:00:20
 
 

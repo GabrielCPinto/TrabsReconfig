@@ -1,5 +1,5 @@
 Flow report for main
-Fri Jun 17 20:15:15 2022
+Tue Jun 21 13:18:57 2022
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Flow Summary                                                                      ;
 +------------------------------------+----------------------------------------------+
-; Flow Status                        ; Flow Failed - Fri Jun 17 20:15:15 2022       ;
+; Flow Status                        ; Successful - Tue Jun 21 13:18:57 2022        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; main                                         ;
 ; Top-level Entity Name              ; main                                         ;
@@ -46,15 +46,15 @@ applicable agreement for further details.
 ; Device                             ; EP2C35F672C6                                 ;
 ; Timing Models                      ; Final                                        ;
 ; Met timing requirements            ; N/A                                          ;
-; Total logic elements               ; N/A until Partition Merge                    ;
-;     Total combinational functions  ; N/A until Partition Merge                    ;
-;     Dedicated logic registers      ; N/A until Partition Merge                    ;
-; Total registers                    ; N/A until Partition Merge                    ;
-; Total pins                         ; N/A until Partition Merge                    ;
-; Total virtual pins                 ; N/A until Partition Merge                    ;
-; Total memory bits                  ; N/A until Partition Merge                    ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                    ;
-; Total PLLs                         ; N/A until Partition Merge                    ;
+; Total logic elements               ; 3,176                                        ;
+;     Total combinational functions  ; 1,739                                        ;
+;     Dedicated logic registers      ; 1,580                                        ;
+; Total registers                    ; 1580                                         ;
+; Total pins                         ; 65                                           ;
+; Total virtual pins                 ; 0                                            ;
+; Total memory bits                  ; 57,344                                       ;
+; Embedded Multiplier 9-bit elements ; 0                                            ;
+; Total PLLs                         ; 0                                            ;
 +------------------------------------+----------------------------------------------+
 
 
@@ -63,7 +63,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/17/2022 20:15:14 ;
+; Start date & time ; 06/21/2022 13:18:38 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; main                ;
 +-------------------+---------------------+
@@ -74,9 +74,14 @@ applicable agreement for further details.
 +------------------------------------+-------------------------------+---------------+-------------+----------------+
 ; Assignment Name                    ; Value                         ; Default Value ; Entity Name ; Section Id     ;
 +------------------------------------+-------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID              ; 9218721141012.165550771419904 ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID              ; 9218721141012.165582831814384 ; --            ; --          ; --             ;
+; IP_TOOL_NAME                       ; ROM: 1-PORT                   ; --            ; --          ; --             ;
+; IP_TOOL_VERSION                    ; 9.1                           ; --            ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP             ; 85                            ; --            ; --          ; --             ;
 ; MIN_CORE_JUNCTION_TEMP             ; 0                             ; --            ; --          ; --             ;
+; MISC_FILE                          ; ../Rom/Rom.tdf                ; --            ; --          ; --             ;
+; MISC_FILE                          ; ../Rom/Rom.bsf                ; --            ; --          ; --             ;
+; MISC_FILE                          ; ../Rom/Rom.inc                ; --            ; --          ; --             ;
 ; PARTITION_COLOR                    ; 16764057                      ; --            ; --          ; Top            ;
 ; PARTITION_NETLIST_TYPE             ; SOURCE                        ; --            ; --          ; Top            ;
 ; USE_GENERATED_PHYSICAL_CONSTRAINTS ; Off                           ; --            ; --          ; eda_blast_fpga ;
@@ -88,8 +93,8 @@ applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:01     ; 1.0                     ; 234 MB              ; 00:00:01                           ;
-; Total                ; 00:00:01     ; --                      ; --                  ; 00:00:01                           ;
+; Analysis & Synthesis ; 00:00:19     ; 1.0                     ; 258 MB              ; 00:00:20                           ;
+; Total                ; 00:00:19     ; --                      ; --                  ; 00:00:20                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

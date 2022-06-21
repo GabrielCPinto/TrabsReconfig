@@ -69,7 +69,7 @@ BEGIN
 		END IF;
 	END PROCESS;
 
-    PROCESS(rd_en,clk_in)
+    PROCESS(rd_en,clk_in,abus_in,mem0,mem1,mem2,mem_com)
         BEGIN
         IF rd_en = '0' THEN
             dbus_out <= "ZZZZZZZZ";

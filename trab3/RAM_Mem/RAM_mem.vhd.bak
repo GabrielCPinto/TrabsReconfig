@@ -57,7 +57,7 @@ BEGIN
 		ELSIF RISING_EDGE(clk_in) AND wr_en = '1' THEN  --Escrita na memoria de forma sincrona
             
             IF x"20" <= abus_in AND abus_in <= x"6F" THEN --validações da área de memoria selecionada 
-				mem0(33) <= dbus_in; 
+				mem0(to_integer(unsigned(abus_in))) <= dbus_in; 
             ELSIF abus_in >= x"A0" AND abus_in <= x"EF" THEN --validações da área de memoria selecionada
                 mem1(to_integer(unsigned(abus_in))) <= dbus_in; 
             ELSIF abus_in >= x"120" AND abus_in <= x"16F" THEN --validações da área de memoria selecionada
@@ -73,7 +73,7 @@ BEGIN
         BEGIN
         IF rd_en = '0' THEN
             dbus_out <= "ZZZZZZZZ";
-        ELSIF RISING_EDGE(clk_in) AND rd_en = '1' THEN
+        ELSIF rd_en = '1' THEN
 
             IF x"20" <= abus_in AND abus_in <= x"6F" THEN --validações da área de memoria selecionada 
                 dbus_out <= mem0(to_integer(unsigned(abus_in))); 

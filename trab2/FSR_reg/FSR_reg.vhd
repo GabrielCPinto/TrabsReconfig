@@ -25,7 +25,7 @@ END ENTITY;
 ARCHITECTURE arch1 OF FSR_reg IS
 SIGNAL ler : STD_LOGIC_VECTOR(7 DOWNTO 0);
 BEGIN
-PROCESS(nrst, clk_in, abus_in, dbus_in, wr_en, rd_en)
+PROCESS(nrst, clk_in, abus_in, dbus_in, wr_en, rd_en, ler)
 	BEGIN
 		IF nrst = '0' THEN -- verificando se deve resetar
 		   fsr_out <= (OTHERS => '0');

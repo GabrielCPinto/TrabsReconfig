@@ -613,4 +613,12 @@ VECTOR("C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/Topo da hierarquia/main
 		VISIBLE = Y;
 		FLAG = N;
 	}
+	LINE{
+		SIGNAL = "altera_reserved_tdo";
+		INDEX = 72;
+		FORMAT = E;
+		SCALE = 1;
+		VISIBLE = Y;
+		FLAG = N;
+	}
 }

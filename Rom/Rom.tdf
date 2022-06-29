@@ -48,7 +48,7 @@ VARIABLE
 	altsyncram_component : altsyncram WITH (
 			CLOCK_ENABLE_INPUT_A = "BYPASS",
 			CLOCK_ENABLE_OUTPUT_A = "BYPASS",
-			INIT_FILE = "program memory",
+			INIT_FILE = "../Topo da hierarquia/program memory.mif",
 			INTENDED_DEVICE_FAMILY = "Cyclone II",
 			LPM_HINT = "ENABLE_RUNTIME_MOD=NO",
 			LPM_TYPE = "altsyncram",
@@ -90,7 +90,7 @@ END;
 -- Retrieval info: PRIVATE: JTAG_ENABLED NUMERIC "0"
 -- Retrieval info: PRIVATE: JTAG_ID STRING "NONE"
 -- Retrieval info: PRIVATE: MAXIMUM_DEPTH NUMERIC "0"
--- Retrieval info: PRIVATE: MIFfilename STRING "program memory"
+-- Retrieval info: PRIVATE: MIFfilename STRING "../Topo da hierarquia/program memory.mif"
 -- Retrieval info: PRIVATE: NUMWORDS_A NUMERIC "4096"
 -- Retrieval info: PRIVATE: RAM_BLOCK_TYPE NUMERIC "0"
 -- Retrieval info: PRIVATE: RegAddr NUMERIC "1"
@@ -103,7 +103,7 @@ END;
 -- Retrieval info: PRIVATE: rden NUMERIC "0"
 -- Retrieval info: CONSTANT: CLOCK_ENABLE_INPUT_A STRING "BYPASS"
 -- Retrieval info: CONSTANT: CLOCK_ENABLE_OUTPUT_A STRING "BYPASS"
--- Retrieval info: CONSTANT: INIT_FILE STRING "program memory"
+-- Retrieval info: CONSTANT: INIT_FILE STRING "../Topo da hierarquia/program memory.mif"
 -- Retrieval info: CONSTANT: INTENDED_DEVICE_FAMILY STRING "Cyclone II"
 -- Retrieval info: CONSTANT: LPM_HINT STRING "ENABLE_RUNTIME_MOD=NO"
 -- Retrieval info: CONSTANT: LPM_TYPE STRING "altsyncram"
@@ -123,7 +123,7 @@ END;
 -- Retrieval info: LIBRARY: altera_mf altera_mf.altera_mf_components.all
 -- Retrieval info: GEN_FILE: TYPE_NORMAL Rom.tdf TRUE
 -- Retrieval info: GEN_FILE: TYPE_NORMAL Rom.inc TRUE
--- Retrieval info: GEN_FILE: TYPE_NORMAL Rom.cmp FALSE
+-- Retrieval info: GEN_FILE: TYPE_NORMAL Rom.cmp TRUE
 -- Retrieval info: GEN_FILE: TYPE_NORMAL Rom.bsf TRUE
 -- Retrieval info: GEN_FILE: TYPE_NORMAL Rom_inst.tdf FALSE
 -- Retrieval info: GEN_FILE: TYPE_NORMAL Rom_waveforms.html TRUE

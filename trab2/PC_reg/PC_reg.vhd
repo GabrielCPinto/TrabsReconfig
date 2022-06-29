@@ -46,8 +46,9 @@ END ENTITY;
 
 ARCHITECTURE arch1 OF PC_reg IS
 	SIGNAL pc : STD_LOGIC_VECTOR(12 DOWNTO 0);
-	SIGNAL pclatch : STD_LOGIC_VECTOR(7 DOWNTO 0);
-SIGNAL stack_reg0 : STD_LOGIC_VECTOR(12 DOWNTO 0);
+	SIGNAL pc_lath : STD_LOGIC_VECTOR(7 DOWNTO 0);
+	SIGNAL nextpc : STD_LOGIC_VECTOR(12 downto 0);
+	SIGNAL stack_reg0 : STD_LOGIC_VECTOR(12 DOWNTO 0);
 	SIGNAL stack_reg1 : STD_LOGIC_VECTOR(12 DOWNTO 0);
 	SIGNAL stack_reg2 : STD_LOGIC_VECTOR(12 DOWNTO 0);
 	SIGNAL stack_reg3 : STD_LOGIC_VECTOR(12 DOWNTO 0);
@@ -56,36 +57,77 @@ SIGNAL stack_reg0 : STD_LOGIC_VECTOR(12 DOWNTO 0);
 	SIGNAL stack_reg6 : STD_LOGIC_VECTOR(12 DOWNTO 0);
 	SIGNAL stack_reg7 : STD_LOGIC_VECTOR(12 DOWNTO 0);
 	CONSTANT one  : STD_LOGIC_VECTOR(12 DOWNTO 0) := "0000000000001";
+	CONSTANT zero : STD_LOGIC_VECTOR(12 DOWNTO 0) := "0000000000000";
 BEGIN
 	
-PROCESS(nrst, clk_in, inc_pc, load_pc, wr_en, abus_in, stack_push, stack_pop)--PC, o PCL È PC(7...0)
-BEGIN
-
-IF nrst = '0' THEN
-pc <= (OTHERS => '0');
-ELSIF RISING_EDGE(clk_in) AND inc_pc ='1' THEN
-pc <= pc + one;
-ELSIF RISING_EDGE(clk_in) AND load_pc = '1' THEN
-pc(10 downto 0) <= addr_in;
-pc(12 downto 11) <= pclatch(4 downto 3);
-ELSIF RISING_EDGE(clk_in) AND wr_en = '1' AND abus_in(6 downto 0) = "0000010" THEN
-pc(7 downto 0) <= dbus_in;
-pc(12 downto 8) <= pc(4 downto 0);
-END IF;
-
-IF RISING_EDGE(clk_in) AND (stack_pop = '1' OR stack_push = '1') THEN
-			IF stack_pop = '1' THEN --pop
-				pc <= stack_reg0;
-				stack_reg0 <= stack_reg1;
-				stack_reg1 <= stack_reg2;
-				stack_reg2 <= stack_reg3;
-				stack_reg3 <= stack_reg4;
-				stack_reg4 <= stack_reg5;
-				stack_reg5 <= stack_reg6;
-				stack_reg6 <= stack_reg7;
-				stack_reg7 <= "0000000000000";
-
-			ELSIF stack_push = '1'  THEN --push
+PROCESS(nrst, clk_in, nextpc)
+	BEGIN
+		IF nrst = '0' THEN --reset de pc_reg
+			pc <= (OTHERS => '0');
+		ELSIF RISING_EDGE(clk_in) THEN
+			pc <= nextpc;
+		END IF;
+	END PROCESS;
+	
+PROCESS(nrst, clk_in, wr_en, abus_in)
+	BEGIN
+		IF nrst = '0' THEN --reset de pc_reg
+			pc_lath <= (OTHERS => '0');
+		ELSIF RISING_EDGE(clk_in) THEN
+			IF wr_en = '1' AND abus_in(6 DOWNTO 0) = "0001010" THEN
+				pc_lath <= dbus_in;
+			END IF;			
+		END IF;
+	END PROCESS;
+	
+PROCESS(stack_pop, abus_in, addr_in, dbus_in, inc_pc, load_pc, pc, wr_en, stack_reg0, nextpc, pc_lath)
+	BEGIN
+		IF stack_pop = '1' THEN
+			nextpc <= stack_reg0;
+		--Operacao de incremento
+		ELSIF inc_pc = '1' THEN
+			nextpc <= (pc + one);
+		--Operacoes de carga
+		ELSIF load_pc = '1' THEN
+			nextpc(10 DOWNTO 0)  <= addr_in;
+			nextpc(12 DOWNTO 11) <= pc_lath(4 DOWNTO 3);
+		ELSIF abus_in(6 DOWNTO 0) = "0000010" AND wr_en = '1' THEN --Escrita em PCL
+			nextpc(7 DOWNTO 0)  <= dbus_in;
+			nextpc(12 DOWNTO 8) <= pc_lath(4 DOWNTO 0);
+		ELSE --Escrita em PCLath
+			nextpc <= pc;
+		END IF;
+		
+		nextpc_out <= nextpc;
+		
+	END PROCESS;
+	
+PROCESS(abus_in, rd_en, pc, pc_lath)
+	BEGIN
+		--Operacoes de leitura em PCL ou PCLath
+		IF abus_in(6 DOWNTO 0) = "0000010" AND rd_en = '1' THEN --Leitura em PCL
+			dbus_out <= pc(7 DOWNTO 0);
+		ELSIF abus_in(6 DOWNTO 0) = "0001010" AND rd_en = '1' THEN --Leitura em PCLath
+			dbus_out <= pc_lath;
+		ELSE --EndereÁo n„o corresponde e rd_en = '0'
+			dbus_out <= "ZZZZZZZZ";  --saida em alta imped√¢ncia
+		END IF;
+	END PROCESS;
+	
+PROCESS(nrst, clk_in, stack_push, stack_pop, abus_in, inc_pc, load_pc, wr_en, rd_en)
+	BEGIN
+		IF nrst = '0' THEN --reset dos registradores
+			stack_reg0 <= (OTHERS => '0');
+			stack_reg1 <= (OTHERS => '0');
+			stack_reg2 <= (OTHERS => '0');
+			stack_reg3 <= (OTHERS => '0');
+			stack_reg4 <= (OTHERS => '0');
+			stack_reg5 <= (OTHERS => '0');
+			stack_reg6 <= (OTHERS => '0');
+			stack_reg7 <= (OTHERS => '0');
+		ELSIF RISING_EDGE(clk_in) THEN
+			--Opera√ß√£o de desempilhar
+			IF stack_push = '1' THEN
 				stack_reg7 <= stack_reg6;
 				stack_reg6 <= stack_reg5;
 				stack_reg5 <= stack_reg4;
@@ -94,37 +136,18 @@ IF RISING_EDGE(clk_in) AND (stack_pop = '1' OR stack_push = '1') THEN
 				stack_reg2 <= stack_reg1;
 				stack_reg1 <= stack_reg0;
 				stack_reg0 <= pc;
+			--Opera√ß√£o de empilhar
+			ELSIF stack_pop = '1' THEN
+				stack_reg0 <= stack_reg1;
+				stack_reg1 <= stack_reg2;
+				stack_reg2 <= stack_reg3;
+				stack_reg3 <= stack_reg4;
+				stack_reg4 <= stack_reg5;
+				stack_reg5 <= stack_reg6;
+				stack_reg6 <= stack_reg7;
+				stack_reg7 <= zero;
 			END IF;
 		END IF;
-END PROCESS;
-	
-PROCESS(nrst, clk_in, wr_en, abus_in)--PCLATCH
-BEGIN
-IF nrst = '0' THEN
-pclatch <= (OTHERS => '0');
-ELSIF RISING_EDGE(clk_in) AND wr_en = '1' AND abus_in(6 downto 0) = "0001010" THEN
-pclatch <= dbus_in;
-END IF;
-END PROCESS;	
-	
-PROCESS(clk_in, rd_en, abus_in)
-	BEGIN
-	IF RISING_EDGE(clk_in) AND rd_en = '1' AND abus_in(6 downto 0) = "0000010" THEN
-		dbus_out <= pc(7 downto 0);
-	ELSIF RISING_EDGE(clk_in) AND rd_en = '1' AND abus_in(6 downto 0) = "0001010" THEN
-		dbus_out <= pclatch(7 downto 0);
-	ELSIF RISING_EDGE(clk_in) THEN
-		dbus_out <= "ZZZZZZZZ";
-	END IF;
 	END PROCESS;
-	
-PROCESS(stack_pop, inc_pc, rd_en, wr_en )
-	BEGIN
-	IF stack_pop = '0' AND inc_pc = '0' AND rd_en = '0' AND wr_en = '0' THEN --essa saÌda dever· corresponder ao valor atual do contador
-		nextpc_out <= pc;
-	--ELSE
-		--nextpc_out <= pc;
-	END IF;
-	END PROCESS;
-	
+
 END arch1;

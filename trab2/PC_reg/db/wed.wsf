@@ -23,8 +23,8 @@ applicable agreement for further details.
 VECTOR("C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/trab2/PC_reg/PC_reg.vwf")
 {
 	ZOOM{
-		ZBEGIN = 81089;
-		ZEND = 126845;
+		ZBEGIN = 0;
+		ZEND = 48408;
 		NUMERATOR = 1242;
 		DENOMINATOR = 45756;
 		TOP_INDEX = 0;

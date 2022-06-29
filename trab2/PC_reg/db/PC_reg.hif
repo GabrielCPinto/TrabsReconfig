@@ -31,7 +31,7 @@ ON
 # case_insensitive
 # source_file
 pc_reg.vhd
-9d448d52fecdaac254a8df3af8b664
+bc5c9a0fe24e9d6a08f027203d3768
 5
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT

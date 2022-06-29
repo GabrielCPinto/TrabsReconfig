@@ -72,11 +72,17 @@ BEGIN
 				   
 	r_out  <= aux(7 DOWNTO 0);
 	
-	c_out  <= aux(8) WHEN op_sel = OP_ADD ELSE
-			  NOT aux(8);
+	WITH op_sel SELECT
+		c_out  <= aux(8) WHEN OP_ADD,
+				  NOT aux(8) WHEN OP_SUB,
+				  a_in(7) WHEN OP_RL,
+				  a_in(0) WHEN OP_RR,
+				  '0' WHEN OTHERS;			  
 	
-	dc_out <= aux2(4) WHEN op_sel = OP_ADD ELSE
-			  NOT aux2(4);
+	WITH op_sel SELECT
+		dc_out <= aux2(4) WHEN OP_ADD,
+				  NOT aux2(4) WHEN OP_SUB,
+				  '0' WHEN OTHERS;
 	
 	z_out  <= '1' WHEN aux(7 DOWNTO 0) = "00000000" ELSE
 			  '0';

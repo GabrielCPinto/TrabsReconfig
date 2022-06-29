@@ -46,7 +46,6 @@ BEGIN
 	aux3 <= a_in + bitsel WHEN ((OP_BS = op_sel) AND (a_in(to_integer(unsigned(bit_sel)))) = '0') ELSE
 			a_in - bitsel WHEN ((OP_BC = op_sel) AND (a_in(to_integer(unsigned(bit_sel)))) = '1') ELSE
 			a_in;
-	--aux3 <= a_in - bitsel WHEN ((OP_BS = op_sel) AND (a_in(to_integer(unsigned(bit_sel)))) = '1');
 	
 	WITH op_sel SELECT
 		aux <= '0' & (a_in OR b_in)  WHEN OP_OR, 	--OR

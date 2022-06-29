@@ -37,40 +37,44 @@ ENTITY Status_reg IS
 END ENTITY;
 
 ARCHITECTURE arch1 OF Status_reg IS
+SIGNAL status_reg : STD_LOGIC_VECTOR(7 DOWNTO 0);
 BEGIN
 PROCESS(nrst, clk_in, abus_in, dbus_in, wr_en, rd_en)
 	BEGIN
 		IF nrst = '0' THEN --reset
-			dbus_out <= (OTHERS => '0');
-			irp_out <= '0';
-			rp_out <= (OTHERS => '0');
-			z_out <= '0';
-			dc_out <= '0';
-			c_out <= '0';	
-		ELSIF RISING_EDGE(clk_in) AND abus_in(6 DOWNTO 0) = "0000011" THEN
+			status_reg <= (OTHERS => '0');	
+		ELSIF RISING_EDGE(clk_in)THEN
 		
-			IF z_wr_en = '1' THEN--prioridade do z_wr_en
-				dbus_out(2) <= z_in;
+			IF wr_en = '1' AND abus_in(6 DOWNTO 0) = "0000011" THEN			
+				status_reg <= dbus_in;
+			END IF;
+			IF z_wr_en = '1' THEN 
+				status_reg(2) <= z_in;
 			END IF;
 			
-			IF dc_wr_en = '1' THEN--prioridade do dc_wr_en
-				dbus_out(1) <= dc_in;
-			END IF;
-				
-			IF c_wr_en = '1' THEN--prioridade do c_wr_en
-				dbus_out(0) <= c_in;
+			--preferência de dc_wr_en sobre wr_en
+			IF dc_wr_en = '1' THEN 
+				status_reg(1) <= dc_in;
 			END IF;
 			
-			IF wr_en = '1' THEN --leitura
-				irp_out <= dbus_in(7);
-				rp_out <= dbus_in (6 DOWNTO 5);
-				z_out <= dbus_in(2);
-				dc_out <= dbus_in(1);
-				c_out <= dbus_in(0);
-				dbus_out <= dbus_in;
+			--preferência de c_wr_en sobre wr_en
+			IF c_wr_en = '1' THEN 
+				status_reg(0) <= c_in;
 			END IF;
 		END IF;
-		
+	END PROCESS;
+
+	--saida irp_out
+	irp_out <= status_reg(7);
+	--saida rp_out
+	rp_out <= status_reg(6 DOWNTO 5);
+	--saidas z, dc e c
+	z_out  <= status_reg(2);
+	dc_out <= status_reg(1);
+	c_out  <= status_reg(0);
+
+PROCESS (abus_in, rd_en, status_reg,dbus_in)
+	BEGIN	
 		 --escrita
 		IF abus_in(6 DOWNTO 0) = "0000011" AND rd_en = '1' THEN
 				dbus_out(7 DOWNTO 5) <= dbus_in(7 DOWNTO 5);

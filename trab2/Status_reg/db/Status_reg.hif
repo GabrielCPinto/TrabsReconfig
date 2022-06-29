@@ -31,7 +31,7 @@ ON
 # case_insensitive
 # source_file
 status_reg.vhd
-bd373bbf1f51de5758dba61ede90f2
+85477c304155390de365623b55117ed
 5
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT

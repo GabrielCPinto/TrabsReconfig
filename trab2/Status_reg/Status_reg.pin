@@ -73,13 +73,13 @@ Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage 
 -------------------------------------------------------------------------------------------------------------
 GND                          : A2        : gnd    :                   :         :           :                
 VCCIO3                       : A3        : power  :                   : 3.3V    : 3         :                
-abus_in[1]                   : A4        : input  : 3.3-V LVTTL       :         : 3         : N              
-abus_in[5]                   : A5        : input  : 3.3-V LVTTL       :         : 3         : N              
-dbus_out[7]                  : A6        : output : 3.3-V LVTTL       :         : 3         : N              
-GND*                         : A7        :        :                   :         : 3         :                
-dbus_in[3]                   : A8        : input  : 3.3-V LVTTL       :         : 3         : N              
+dbus_out[5]                  : A4        : output : 3.3-V LVTTL       :         : 3         : N              
+dbus_in[6]                   : A5        : input  : 3.3-V LVTTL       :         : 3         : N              
+c_out                        : A6        : output : 3.3-V LVTTL       :         : 3         : N              
+wr_en                        : A7        : input  : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : A8        :        :                   :         : 3         :                
 GND*                         : A9        :        :                   :         : 3         :                
-z_wr_en                      : A10       : input  : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : A10       :        :                   :         : 3         :                
 VCCIO3                       : A11       : power  :                   : 3.3V    : 3         :                
 GND                          : A12       : gnd    :                   :         :           :                
 GND+                         : A13       :        :                   :         : 4         :                
@@ -103,7 +103,7 @@ GND*                         : AA5       :        :                   :         
 GND*                         : AA6       :        :                   :         : 1         :                
 GND*                         : AA7       :        :                   :         : 1         :                
 VCCA_PLL1                    : AA8       : power  :                   : 1.2V    :           :                
-dbus_in[4]                   : AA9       : input  : 3.3-V LVTTL       :         : 8         : N              
+GND*                         : AA9       :        :                   :         : 8         :                
 GND*                         : AA10      :        :                   :         : 8         :                
 GND*                         : AA11      :        :                   :         : 8         :                
 GND*                         : AA12      :        :                   :         : 8         :                
@@ -153,7 +153,7 @@ GND*                         : AC3       :        :                   :         
 GND                          : AC4       : gnd    :                   :         :           :                
 GND*                         : AC5       :        :                   :         : 8         :                
 GND*                         : AC6       :        :                   :         : 8         :                
-GND*                         : AC7       :        :                   :         : 8         :                
+irp_out                      : AC7       : output : 3.3-V LVTTL       :         : 8         : N              
 GND*                         : AC8       :        :                   :         : 8         :                
 GND*                         : AC9       :        :                   :         : 8         :                
 GND*                         : AC10      :        :                   :         : 8         :                
@@ -180,7 +180,7 @@ GND*                         : AD4       :        :                   :         
 GND*                         : AD5       :        :                   :         : 8         :                
 GND*                         : AD6       :        :                   :         : 8         :                
 GND*                         : AD7       :        :                   :         : 8         :                
-GND*                         : AD8       :        :                   :         : 8         :                
+rd_en                        : AD8       : input  : 3.3-V LVTTL       :         : 8         : N              
 GND                          : AD9       : gnd    :                   :         :           :                
 GND*                         : AD10      :        :                   :         : 8         :                
 GND*                         : AD11      :        :                   :         : 8         :                
@@ -242,7 +242,7 @@ GND                          : AF15      : gnd    :                   :         
 VCCIO7                       : AF16      : power  :                   : 3.3V    : 7         :                
 GND*                         : AF17      :        :                   :         : 7         :                
 GND*                         : AF18      :        :                   :         : 7         :                
-GND*                         : AF19      :        :                   :         : 7         :                
+dbus_in[3]                   : AF19      : input  : 3.3-V LVTTL       :         : 7         : N              
 GND*                         : AF20      :        :                   :         : 7         :                
 GND*                         : AF21      :        :                   :         : 7         :                
 GND*                         : AF22      :        :                   :         : 7         :                
@@ -250,13 +250,13 @@ GND*                         : AF23      :        :                   :         
 VCCIO7                       : AF24      : power  :                   : 3.3V    : 7         :                
 GND                          : AF25      : gnd    :                   :         :           :                
 GND                          : B1        : gnd    :                   :         :           :                
-dbus_in[1]                   : B2        : input  : 3.3-V LVTTL       :         : 2         : N              
-rp_out[1]                    : B3        : output : 3.3-V LVTTL       :         : 2         : N              
-dbus_in[6]                   : B4        : input  : 3.3-V LVTTL       :         : 3         : N              
-dbus_out[0]                  : B5        : output : 3.3-V LVTTL       :         : 3         : N              
-dbus_in[2]                   : B6        : input  : 3.3-V LVTTL       :         : 3         : N              
-GND*                         : B7        :        :                   :         : 3         :                
-GND*                         : B8        :        :                   :         : 3         :                
+abus_in[2]                   : B2        : input  : 3.3-V LVTTL       :         : 2         : N              
+c_in                         : B3        : input  : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : B4        :        :                   :         : 3         :                
+dbus_out[6]                  : B5        : output : 3.3-V LVTTL       :         : 3         : N              
+dbus_out[1]                  : B6        : output : 3.3-V LVTTL       :         : 3         : N              
+abus_in[4]                   : B7        : input  : 3.3-V LVTTL       :         : 3         : N              
+dc_wr_en                     : B8        : input  : 3.3-V LVTTL       :         : 3         : N              
 GND*                         : B9        :        :                   :         : 3         :                
 GND*                         : B10       :        :                   :         : 3         :                
 GND*                         : B11       :        :                   :         : 3         :                
@@ -276,18 +276,18 @@ GND*                         : B24       :        :                   :         
 GND*                         : B25       :        :                   :         : 5         :                
 GND                          : B26       : gnd    :                   :         :           :                
 VCCIO2                       : C1        : power  :                   : 3.3V    : 2         :                
-dc_out                       : C2        : output : 3.3-V LVTTL       :         : 2         : N              
-irp_out                      : C3        : output : 3.3-V LVTTL       :         : 2         : N              
-dbus_out[3]                  : C4        : output : 3.3-V LVTTL       :         : 3         : N              
-abus_in[3]                   : C5        : input  : 3.3-V LVTTL       :         : 3         : N              
-z_out                        : C6        : output : 3.3-V LVTTL       :         : 3         : N              
-dbus_in[7]                   : C7        : input  : 3.3-V LVTTL       :         : 3         : N              
-GND*                         : C8        :        :                   :         : 3         :                
-GND*                         : C9        :        :                   :         : 3         :                
-c_in                         : C10       : input  : 3.3-V LVTTL       :         : 3         : N              
+dbus_in[0]                   : C2        : input  : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : C3        :        :                   :         : 2         :                
+dbus_in[1]                   : C4        : input  : 3.3-V LVTTL       :         : 3         : N              
+dbus_in[5]                   : C5        : input  : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : C6        :        :                   :         : 3         :                
+abus_in[3]                   : C7        : input  : 3.3-V LVTTL       :         : 3         : N              
+rp_out[0]                    : C8        : output : 3.3-V LVTTL       :         : 3         : N              
+abus_in[5]                   : C9        : input  : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : C10       :        :                   :         : 3         :                
 GND*                         : C11       :        :                   :         : 3         :                
 GND*                         : C12       :        :                   :         : 3         :                
-z_in                         : C13       : input  : 3.3-V LVTTL       :         : 3         : N              
+abus_in[7]                   : C13       : input  : 3.3-V LVTTL       :         : 3         : N              
 GND                          : C14       : gnd    :                   :         :           :                
 GND*                         : C15       :        :                   :         : 4         :                
 GND*                         : C16       :        :                   :         : 4         :                
@@ -301,19 +301,19 @@ GND*                         : C23       :        :                   :         
 GND*                         : C24       :        :                   :         : 5         :                
 GND*                         : C25       :        :                   :         : 5         :                
 VCCIO5                       : C26       : power  :                   : 3.3V    : 5         :                
-abus_in[6]                   : D1        : input  : 3.3-V LVTTL       :         : 2         : N              
-rp_out[0]                    : D2        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : D1        :        :                   :         : 2         :                
+GND*                         : D2        :        :                   :         : 2         :                
 ~nCSO~ / RESERVED_INPUT_WITH_WEAK_PULLUP : D3        : input  : 3.3-V LVTTL       :         : 2         : N              
 GND                          : D4        : gnd    :                   :         :           :                
-abus_in[2]                   : D5        : input  : 3.3-V LVTTL       :         : 3         : N              
-GND*                         : D6        :        :                   :         : 3         :                
-GND*                         : D7        :        :                   :         : 3         :                
+dbus_out[2]                  : D5        : output : 3.3-V LVTTL       :         : 3         : N              
+dbus_out[7]                  : D6        : output : 3.3-V LVTTL       :         : 3         : N              
+c_wr_en                      : D7        : input  : 3.3-V LVTTL       :         : 3         : N              
 GND*                         : D8        :        :                   :         : 3         :                
 GND*                         : D9        :        :                   :         : 3         :                
 GND*                         : D10       :        :                   :         : 3         :                
 GND*                         : D11       :        :                   :         : 3         :                
 GND*                         : D12       :        :                   :         : 3         :                
-dc_in                        : D13       : input  : 3.3-V LVTTL       :         : 3         : N              
+abus_in[8]                   : D13       : input  : 3.3-V LVTTL       :         : 3         : N              
 GND*                         : D14       :        :                   :         : 4         :                
 GND*                         : D15       :        :                   :         : 4         :                
 GND*                         : D16       :        :                   :         : 4         :                
@@ -326,15 +326,15 @@ VCCIO4                       : D22       : power  :                   : 3.3V    
 GND*                         : D23       :        :                   :         : 5         :                
 GND                          : D24       : gnd    :                   :         :           :                
 GND*                         : D25       :        :                   :         : 5         :                
-dc_wr_en                     : D26       : input  : 3.3-V LVTTL       :         : 5         : N              
+GND*                         : D26       :        :                   :         : 5         :                
 GND*                         : E1        :        :                   :         : 2         :                
 GND*                         : E2        :        :                   :         : 2         :                
 ~ASDO~ / RESERVED_INPUT_WITH_WEAK_PULLUP : E3        : input  : 3.3-V LVTTL       :         : 2         : N              
 GND_PLL3                     : E4        : gnd    :                   :         :           :                
-dbus_out[1]                  : E5        : output : 3.3-V LVTTL       :         : 2         : N              
+dbus_out[3]                  : E5        : output : 3.3-V LVTTL       :         : 2         : N              
 VCCIO3                       : E6        : power  :                   : 3.3V    : 3         :                
 GND                          : E7        : gnd    :                   :         :           :                
-dbus_out[6]                  : E8        : output : 3.3-V LVTTL       :         : 3         : N              
+abus_in[0]                   : E8        : input  : 3.3-V LVTTL       :         : 3         : N              
 VCCIO3                       : E9        : power  :                   : 3.3V    : 3         :                
 GND*                         : E10       :        :                   :         : 3         :                
 GND                          : E11       : gnd    :                   :         :           :                
@@ -350,19 +350,19 @@ GND*                         : E20       :        :                   :         
 GND_PLL2                     : E21       : gnd    :                   :         :           :                
 GND*                         : E22       :        :                   :         : 5         :                
 GND*                         : E23       :        :                   :         : 5         :                
-abus_in[8]                   : E24       : input  : 3.3-V LVTTL       :         : 5         : N              
+GND*                         : E24       :        :                   :         : 5         :                
 GND*                         : E25       :        :                   :         : 5         :                
 GND*                         : E26       :        :                   :         : 5         :                
 GND*                         : F1        :        :                   :         : 2         :                
 GND*                         : F2        :        :                   :         : 2         :                
-dbus_in[5]                   : F3        : input  : 3.3-V LVTTL       :         : 2         : N              
-dbus_out[5]                  : F4        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : F3        :        :                   :         : 2         :                
+GND*                         : F4        :        :                   :         : 2         :                
 VCCIO2                       : F5        : power  :                   : 3.3V    : 2         :                
-abus_in[0]                   : F6        : input  : 3.3-V LVTTL       :         : 2         : N              
-abus_in[4]                   : F7        : input  : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : F6        :        :                   :         : 2         :                
+GND*                         : F7        :        :                   :         : 2         :                
 GNDA_PLL3                    : F8        : gnd    :                   :         :           :                
-GND*                         : F9        :        :                   :         : 3         :                
-GND*                         : F10       :        :                   :         : 3         :                
+abus_in[6]                   : F9        : input  : 3.3-V LVTTL       :         : 3         : N              
+dbus_in[7]                   : F10       : input  : 3.3-V LVTTL       :         : 3         : N              
 GND*                         : F11       :        :                   :         : 3         :                
 GND*                         : F12       :        :                   :         : 3         :                
 GND*                         : F13       :        :                   :         : 4         :                
@@ -373,7 +373,7 @@ GND*                         : F17       :        :                   :         
 GND*                         : F18       :        :                   :         : 4         :                
 GNDA_PLL2                    : F19       : gnd    :                   :         :           :                
 GND*                         : F20       :        :                   :         : 5         :                
-GND*                         : F21       :        :                   :         : 5         :                
+z_in                         : F21       : input  : 3.3-V LVTTL       :         : 5         : N              
 VCCIO5                       : F22       : power  :                   : 3.3V    : 5         :                
 GND*                         : F23       :        :                   :         : 5         :                
 GND*                         : F24       :        :                   :         : 5         :                
@@ -383,12 +383,12 @@ GND*                         : G1        :        :                   :         
 GND*                         : G2        :        :                   :         : 2         :                
 GND*                         : G3        :        :                   :         : 2         :                
 GND*                         : G4        :        :                   :         : 2         :                
-c_out                        : G5        : output : 3.3-V LVTTL       :         : 2         : N              
-wr_en                        : G6        : input  : 3.3-V LVTTL       :         : 2         : N              
+dbus_out[0]                  : G5        : output : 3.3-V LVTTL       :         : 2         : N              
+dbus_out[4]                  : G6        : output : 3.3-V LVTTL       :         : 2         : N              
 GND_PLL3                     : G7        : gnd    :                   :         :           :                
 VCCA_PLL3                    : G8        : power  :                   : 1.2V    :           :                
-rd_en                        : G9        : input  : 3.3-V LVTTL       :         : 3         : N              
-GND*                         : G10       :        :                   :         : 3         :                
+rp_out[1]                    : G9        : output : 3.3-V LVTTL       :         : 3         : N              
+abus_in[1]                   : G10       : input  : 3.3-V LVTTL       :         : 3         : N              
 GND*                         : G11       :        :                   :         : 3         :                
 GND*                         : G12       :        :                   :         : 3         :                
 GND*                         : G13       :        :                   :         : 4         :                
@@ -412,9 +412,9 @@ GND*                         : H4        :        :                   :         
 GND                          : H5        : gnd    :                   :         :           :                
 GND*                         : H6        :        :                   :         : 2         :                
 VCCD_PLL3                    : H7        : power  :                   : 1.2V    :           :                
-dbus_out[2]                  : H8        : output : 3.3-V LVTTL       :         : 3         : N              
+z_out                        : H8        : output : 3.3-V LVTTL       :         : 3         : N              
 VCCIO3                       : H9        : power  :                   : 3.3V    : 3         :                
-dbus_in[0]                   : H10       : input  : 3.3-V LVTTL       :         : 3         : N              
+dc_out                       : H10       : output : 3.3-V LVTTL       :         : 3         : N              
 GND*                         : H11       :        :                   :         : 3         :                
 GND*                         : H12       :        :                   :         : 3         :                
 GND                          : H13       : gnd    :                   :         :           :                
@@ -439,7 +439,7 @@ GND*                         : J5        :        :                   :         
 GND*                         : J6        :        :                   :         : 2         :                
 GND*                         : J7        :        :                   :         : 2         :                
 GND*                         : J8        :        :                   :         : 2         :                
-dbus_out[4]                  : J9        : output : 3.3-V LVTTL       :         : 3         : N              
+dbus_in[2]                   : J9        : input  : 3.3-V LVTTL       :         : 3         : N              
 GND*                         : J10       :        :                   :         : 3         :                
 GND*                         : J11       :        :                   :         : 3         :                
 VCCIO3                       : J12       : power  :                   : 3.3V    : 3         :                
@@ -447,7 +447,7 @@ GND*                         : J13       :        :                   :         
 GND*                         : J14       :        :                   :         : 3         :                
 VCCIO4                       : J15       : power  :                   : 3.3V    : 4         :                
 GND*                         : J16       :        :                   :         : 4         :                
-c_wr_en                      : J17       : input  : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : J17       :        :                   :         : 4         :                
 GND*                         : J18       :        :                   :         : 4         :                
 VCCIO5                       : J19       : power  :                   : 3.3V    : 5         :                
 GND*                         : J20       :        :                   :         : 5         :                
@@ -465,7 +465,7 @@ GND*                         : K5        :        :                   :         
 GND*                         : K6        :        :                   :         : 2         :                
 GND*                         : K7        :        :                   :         : 2         :                
 GND*                         : K8        :        :                   :         : 2         :                
-GND*                         : K9        :        :                   :         : 3         :                
+z_wr_en                      : K9        : input  : 3.3-V LVTTL       :         : 3         : N              
 VCCINT                       : K10       : power  :                   : 1.2V    :           :                
 VCCINT                       : K11       : power  :                   : 1.2V    :           :                
 VCCINT                       : K12       : power  :                   : 1.2V    :           :                
@@ -501,7 +501,7 @@ GND                          : L15       : gnd    :                   :         
 VCCINT                       : L16       : power  :                   : 1.2V    :           :                
 VCCINT                       : L17       : power  :                   : 1.2V    :           :                
 VCCINT                       : L18       : power  :                   : 1.2V    :           :                
-GND*                         : L19       :        :                   :         : 5         :                
+dbus_in[4]                   : L19       : input  : 3.3-V LVTTL       :         : 5         : N              
 GND*                         : L20       :        :                   :         : 5         :                
 GND*                         : L21       :        :                   :         : 5         :                
 GND                          : L22       : gnd    :                   :         :           :                
@@ -700,7 +700,7 @@ GND*                         : W6        :        :                   :         
 GND_PLL1                     : W7        : gnd    :                   :         :           :                
 GND*                         : W8        :        :                   :         : 8         :                
 VCCIO8                       : W9        : power  :                   : 3.3V    : 8         :                
-GND*                         : W10       :        :                   :         : 8         :                
+dc_in                        : W10       : input  : 3.3-V LVTTL       :         : 8         : N              
 GND*                         : W11       :        :                   :         : 8         :                
 GND*                         : W12       :        :                   :         : 8         :                
 GND                          : W13       : gnd    :                   :         :           :                
@@ -737,7 +737,7 @@ GND                          : Y17       : gnd    :                   :         
 GND*                         : Y18       :        :                   :         : 7         :                
 GNDA_PLL4                    : Y19       : gnd    :                   :         :           :                
 VCCD_PLL4                    : Y20       : power  :                   : 1.2V    :           :                
-abus_in[7]                   : Y21       : input  : 3.3-V LVTTL       :         : 6         : N              
+GND*                         : Y21       :        :                   :         : 6         :                
 GND*                         : Y22       :        :                   :         : 6         :                
 GND*                         : Y23       :        :                   :         : 6         :                
 GND*                         : Y24       :        :                   :         : 6         :                

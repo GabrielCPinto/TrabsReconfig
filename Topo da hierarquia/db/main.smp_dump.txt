@@ -1,6 +1,6 @@
 
 State Machine - |main|control_unit:inst|pres_state
-Name pres_state.fet_dec_ex pres_state.fetch_only pres_state.rst 
+Name pres_state.fetch_dec_ex pres_state.fetch_only pres_state.rst 
 pres_state.rst 0 0 0 
 pres_state.fetch_only 0 1 1 
-pres_state.fet_dec_ex 1 0 1 
+pres_state.fetch_dec_ex 1 0 1 

@@ -25,66 +25,59 @@ PORT (
 );
 END ENTITY;
 
-ARCHITECTURE arch1 OF RAM_mem IS
-	TYPE memory_type0 IS ARRAY (32 TO 111) OF STD_LOGIC_VECTOR (7 DOWNTO 0); --Array de 80 bytes
-	TYPE memory_type1 IS ARRAY (160 TO 239) OF STD_LOGIC_VECTOR (7 DOWNTO 0); --Array de 80 bytes
-	TYPE memory_type2 IS ARRAY (288 TO 367) OF STD_LOGIC_VECTOR (7 DOWNTO 0); --Array de 80 bytes
-	TYPE small_memory_type IS ARRAY (112 TO 127) OF STD_LOGIC_VECTOR (7 DOWNTO 0);	 --Array 16 bytes
-	
-	SIGNAL mem0 : memory_type0; --Primeira área de memória
-	SIGNAL mem1 : memory_type1; --Segunda área de memória
-	SIGNAL mem2 : memory_type2; --Terceira área de memória
-	SIGNAL mem_com : small_memory_type; --Quarta área de memória
+ARCHITECTURE arch OF RAM_mem IS
+	TYPE mem80_type IS ARRAY(0 TO 79) OF STD_LOGIC_VECTOR(7 DOWNTO 0);
+	TYPE mem16_type IS ARRAY(0 TO 15) OF STD_LOGIC_VECTOR(7 DOWNTO 0);
+	SIGNAL mem0, mem1, mem2 : mem80_type;
+	SIGNAL mem_com : mem16_type;
+	SIGNAL mem80_addr : INTEGER;
+	SIGNAL mem16_addr : INTEGER;
 BEGIN
-	PROCESS(nrst, clk_in, wr_en) 
-		BEGIN
-		
-		IF nrst = '0' THEN  --Limpa toda área da RAM
-			FOR i IN 32 TO 111 LOOP --Loop das áreas com 80bytes
-				mem0(i) <= (OTHERS => '0'); 
-			END LOOP;
-			FOR i IN 160 TO 239 LOOP --Loop das áreas com 80bytes
-				mem1(i) <= (OTHERS => '0');
-			END LOOP;
-			FOR i IN 288 TO 367 LOOP --Loop das áreas com 80bytes
-				mem2(i) <= (OTHERS => '0');
-			END LOOP;
-			
-			FOR i IN 112 TO 127 LOOP --loop da área com 16bytes
-				mem_com(i) <= (OTHERS => '0');
-			END LOOP;
-			
-		ELSIF RISING_EDGE(clk_in) AND wr_en = '1' THEN  --Escrita na memoria de forma sincrona
-            
-            IF x"20" <= abus_in AND abus_in <= x"6F" THEN --validações da área de memoria selecionada 
-				mem0(to_integer(unsigned(abus_in))) <= dbus_in; 
-            ELSIF abus_in >= x"A0" AND abus_in <= x"EF" THEN --validações da área de memoria selecionada
-                mem1(to_integer(unsigned(abus_in))) <= dbus_in; 
-            ELSIF abus_in >= x"120" AND abus_in <= x"16F" THEN --validações da área de memoria selecionada
-                mem2(to_integer(unsigned(abus_in))) <= dbus_in; 
-            ELSIF abus_in >= x"70" AND abus_in <= x"7F" THEN --validações da área de memoria selecionada
-                mem_com(to_integer(unsigned(abus_in))) <= dbus_in; 
-            END IF;
-			
+PROCESS(nrst, clk_in, abus_in, dbus_in, wr_en, rd_en,
+		mem0, mem1, mem2, mem_com, mem80_addr, mem16_addr)
+	BEGIN
+		--converte os enderecos binarios para intereiros
+		--usados na indexacao das memorias
+		mem80_addr <= to_integer(unsigned(abus_in));
+		mem16_addr <= to_integer(unsigned(abus_in(6 DOWNTO 0)));
+		--reset assincrono; bits da memorias zerados
+		IF nrst = '0' THEN 
+			mem0 <= (OTHERS => (OTHERS => '0'));
+			mem1 <= (OTHERS => (OTHERS => '0'));
+			mem2 <= (OTHERS => (OTHERS => '0'));
+			mem_com <= (OTHERS => (OTHERS => '0'));	
+		ELSIF RISING_EDGE(clk_in) AND wr_en = '1' THEN
+			--Operacao de escrita nas �reas de mem�ria
+			IF (mem80_addr >= 32 AND mem80_addr <= 111) THEN 
+				--escrita na memoria0
+				mem0(mem80_addr - 32) <= dbus_in;
+			ELSIF (mem80_addr >= 160 AND mem80_addr <= 239) THEN 
+				--escrita na memoria1
+				mem1(mem80_addr - 160) <= dbus_in;
+			ELSIF (mem80_addr >= 288 AND mem80_addr <= 367) THEN
+				--escrita na memoria2
+				mem2(mem80_addr - 288) <= dbus_in; 
+			ELSIF (mem16_addr >= 112 AND mem16_addr <= 127) THEN
+				--escrita na memoria_com
+				mem_com(mem16_addr - 112) <= dbus_in; 
+			END IF;			
 		END IF;
+		--Operacao de Leitura nas �reas de mem�ria
+		IF rd_en = '1' AND (mem80_addr >= 32 AND mem80_addr <= 111) THEN
+			--leitura na memoria0
+			dbus_out <= mem0(mem80_addr - 32);
+		ELSIF rd_en = '1' AND (mem80_addr >= 160 AND mem80_addr <= 239) THEN 
+			--leitura na memoria1
+			dbus_out <= mem1(mem80_addr - 160);
+		ELSIF rd_en = '1' AND (mem80_addr >= 288 AND mem80_addr <= 367) THEN
+			--leitura na memoria2
+			dbus_out <= mem2(mem80_addr - 288); 
+		ELSIF rd_en = '1' AND (mem16_addr >= 112 AND mem16_addr <= 127) THEN
+			--leitura na memoria_com
+			dbus_out <= mem_com(mem16_addr - 112); 
+		ELSE --dbus_out em alta imped�ncia
+			dbus_out <= ("ZZZZZZZZ");
+		END IF;
+			
 	END PROCESS;
-
-    PROCESS(rd_en,clk_in,abus_in,mem0,mem1,mem2,mem_com)
-        BEGIN
-        IF rd_en = '0' THEN
-            dbus_out <= "ZZZZZZZZ";
-        ELSIF rd_en = '1' THEN
-
-            IF x"20" <= abus_in AND abus_in <= x"6F" THEN --validações da área de memoria selecionada 
-                dbus_out <= mem0(to_integer(unsigned(abus_in))); 
-            ELSIF abus_in >= x"A0" AND abus_in <= x"EF" THEN --validações da área de memoria selecionada
-                dbus_out <= mem1(to_integer(unsigned(abus_in))); 
-            ELSIF abus_in >= x"120" AND abus_in <= x"16F" THEN --validações da área de memoria selecionada
-                dbus_out <= mem2(to_integer(unsigned(abus_in))); 
-            ELSIF abus_in >= x"70" AND abus_in <= x"7F" THEN --validações da área de memoria selecionada
-                dbus_out <= mem_com(to_integer(unsigned(abus_in))); 
-            END IF;
-
-        END IF;
-    END PROCESS;
-END arch1;
+END arch;

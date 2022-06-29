@@ -1,5 +1,5 @@
 Simulator report for Port_io
-Sun May 29 15:13:09 2022
+Mon Jun 27 21:42:50 2022
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -45,41 +45,41 @@ applicable agreement for further details.
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
 ; Simulation End Time         ; 1.0 us       ;
-; Simulation Netlist Size     ; 63 nodes     ;
-; Simulation Coverage         ;      63.64 % ;
-; Total Number of Transitions ; 1679         ;
+; Simulation Netlist Size     ; 71 nodes     ;
+; Simulation Coverage         ;      14.71 % ;
+; Total Number of Transitions ; 1007         ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
-; Device                      ; EP2C35F672C6 ;
 +-----------------------------+--------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------+
-; Simulator Settings                                                                                                      ;
-+--------------------------------------------------------------------------------------------+------------+---------------+
-; Option                                                                                     ; Setting    ; Default Value ;
-+--------------------------------------------------------------------------------------------+------------+---------------+
-; Simulation mode                                                                            ; Timing     ; Timing        ;
-; Start time                                                                                 ; 0 ns       ; 0 ns          ;
-; Simulation results format                                                                  ; CVWF       ;               ;
-; Add pins automatically to simulation output waveforms                                      ; On         ; On            ;
-; Check outputs                                                                              ; Off        ; Off           ;
-; Report simulation coverage                                                                 ; On         ; On            ;
-; Display complete 1/0 value coverage report                                                 ; On         ; On            ;
-; Display missing 1-value coverage report                                                    ; On         ; On            ;
-; Display missing 0-value coverage report                                                    ; On         ; On            ;
-; Detect setup and hold time violations                                                      ; Off        ; Off           ;
-; Detect glitches                                                                            ; Off        ; Off           ;
-; Disable timing delays in Timing Simulation                                                 ; Off        ; Off           ;
-; Generate Signal Activity File                                                              ; Off        ; Off           ;
-; Generate VCD File for PowerPlay Power Analyzer                                             ; Off        ; Off           ;
-; Group bus channels in simulation results                                                   ; Off        ; Off           ;
-; Preserve fewer signal transitions to reduce memory requirements                            ; On         ; On            ;
-; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE ; INPUT_EDGE    ;
-; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off        ; Off           ;
-; Overwrite Waveform Inputs With Simulation Outputs                                          ; On         ;               ;
-; Perform Glitch Filtering in Timing Simulation                                              ; Auto       ; Auto          ;
-+--------------------------------------------------------------------------------------------+------------+---------------+
++--------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                       ;
++--------------------------------------------------------------------------------------------+-------------+---------------+
+; Option                                                                                     ; Setting     ; Default Value ;
++--------------------------------------------------------------------------------------------+-------------+---------------+
+; Simulation mode                                                                            ; Functional  ; Timing        ;
+; Start time                                                                                 ; 0 ns        ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF        ;               ;
+; Vector input source                                                                        ; Port_io.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On          ; On            ;
+; Check outputs                                                                              ; Off         ; Off           ;
+; Report simulation coverage                                                                 ; On          ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On          ; On            ;
+; Display missing 1-value coverage report                                                    ; On          ; On            ;
+; Display missing 0-value coverage report                                                    ; On          ; On            ;
+; Detect setup and hold time violations                                                      ; Off         ; Off           ;
+; Detect glitches                                                                            ; Off         ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off         ; Off           ;
+; Generate Signal Activity File                                                              ; Off         ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off         ; Off           ;
+; Group bus channels in simulation results                                                   ; Off         ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On          ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE  ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off         ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; On          ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto        ; Auto          ;
++--------------------------------------------------------------------------------------------+-------------+---------------+
 
 
 +----------------------+
@@ -94,102 +94,167 @@ Please use Quartus II to view the waveform report data.
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;      63.64 % ;
-; Total nodes checked                                 ; 63           ;
-; Total output ports checked                          ; 55           ;
-; Total output ports with complete 1/0-value coverage ; 35           ;
-; Total output ports with no 1/0-value coverage       ; 6            ;
-; Total output ports with no 1-value coverage         ; 10           ;
-; Total output ports with no 0-value coverage         ; 16           ;
+; Total coverage as a percentage                      ;      14.71 % ;
+; Total nodes checked                                 ; 71           ;
+; Total output ports checked                          ; 68           ;
+; Total output ports with complete 1/0-value coverage ; 10           ;
+; Total output ports with no 1/0-value coverage       ; 58           ;
+; Total output ports with no 1-value coverage         ; 58           ;
+; Total output ports with no 0-value coverage         ; 58           ;
 +-----------------------------------------------------+--------------+
 
 
 The following table displays output ports that toggle between 1 and 0 during simulation.
-+--------------------------------------------------------------------------+
-; Complete 1/0-Value Coverage                                              ;
-+--------------------------+----------------------------+------------------+
-; Node Name                ; Output Port Name           ; Output Port Type ;
-+--------------------------+----------------------------+------------------+
-; |Port_io|Equal0~0        ; |Port_io|Equal0~0          ; combout          ;
-; |Port_io|Equal0~1        ; |Port_io|Equal0~1          ; combout          ;
-; |Port_io|process_1~0     ; |Port_io|process_1~0       ; combout          ;
-; |Port_io|p_reg[7]        ; |Port_io|p_reg[7]          ; regout           ;
-; |Port_io|process_0~0     ; |Port_io|process_0~0       ; combout          ;
-; |Port_io|dbus_out[1]     ; |Port_io|dbus_out[1]       ; padio            ;
-; |Port_io|dbus_out[2]     ; |Port_io|dbus_out[2]       ; padio            ;
-; |Port_io|dbus_out[3]     ; |Port_io|dbus_out[3]       ; padio            ;
-; |Port_io|dbus_out[4]     ; |Port_io|dbus_out[4]       ; padio            ;
-; |Port_io|dbus_out[7]     ; |Port_io|dbus_out[7]       ; padio            ;
-; |Port_io|port_io[7]      ; |Port_io|port_io[7]~output ; padio            ;
-; |Port_io|abus_in[1]      ; |Port_io|abus_in[1]~corein ; combout          ;
-; |Port_io|abus_in[2]      ; |Port_io|abus_in[2]~corein ; combout          ;
-; |Port_io|abus_in[0]      ; |Port_io|abus_in[0]~corein ; combout          ;
-; |Port_io|abus_in[3]      ; |Port_io|abus_in[3]~corein ; combout          ;
-; |Port_io|abus_in[6]      ; |Port_io|abus_in[6]~corein ; combout          ;
-; |Port_io|abus_in[7]      ; |Port_io|abus_in[7]~corein ; combout          ;
-; |Port_io|abus_in[4]      ; |Port_io|abus_in[4]~corein ; combout          ;
-; |Port_io|abus_in[5]      ; |Port_io|abus_in[5]~corein ; combout          ;
-; |Port_io|rd_en           ; |Port_io|rd_en~corein      ; combout          ;
-; |Port_io|abus_in[8]      ; |Port_io|abus_in[8]~corein ; combout          ;
-; |Port_io|dbus_in[0]      ; |Port_io|dbus_in[0]~corein ; combout          ;
-; |Port_io|clk_in          ; |Port_io|clk_in~corein     ; combout          ;
-; |Port_io|dbus_in[1]      ; |Port_io|dbus_in[1]~corein ; combout          ;
-; |Port_io|dbus_in[2]      ; |Port_io|dbus_in[2]~corein ; combout          ;
-; |Port_io|dbus_in[3]      ; |Port_io|dbus_in[3]~corein ; combout          ;
-; |Port_io|dbus_in[4]      ; |Port_io|dbus_in[4]~corein ; combout          ;
-; |Port_io|dbus_in[5]      ; |Port_io|dbus_in[5]~corein ; combout          ;
-; |Port_io|dbus_in[6]      ; |Port_io|dbus_in[6]~corein ; combout          ;
-; |Port_io|dbus_in[7]      ; |Port_io|dbus_in[7]~corein ; combout          ;
-; |Port_io|clk_in~clkctrl  ; |Port_io|clk_in~clkctrl    ; outclk           ;
-; |Port_io|p_reg[0]~feeder ; |Port_io|p_reg[0]~feeder   ; combout          ;
-; |Port_io|p_reg[3]~feeder ; |Port_io|p_reg[3]~feeder   ; combout          ;
-; |Port_io|p_reg[6]~feeder ; |Port_io|p_reg[6]~feeder   ; combout          ;
-; |Port_io|p_reg[7]~feeder ; |Port_io|p_reg[7]~feeder   ; combout          ;
-+--------------------------+----------------------------+------------------+
++--------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                  ;
++---------------------+---------------------+------------------+
+; Node Name           ; Output Port Name    ; Output Port Type ;
++---------------------+---------------------+------------------+
+; |port_io|rd_en      ; |port_io|rd_en      ; out              ;
+; |port_io|abus_in[0] ; |port_io|abus_in[0] ; out              ;
+; |port_io|abus_in[1] ; |port_io|abus_in[1] ; out              ;
+; |port_io|abus_in[2] ; |port_io|abus_in[2] ; out              ;
+; |port_io|abus_in[3] ; |port_io|abus_in[3] ; out              ;
+; |port_io|abus_in[4] ; |port_io|abus_in[4] ; out              ;
+; |port_io|abus_in[5] ; |port_io|abus_in[5] ; out              ;
+; |port_io|abus_in[6] ; |port_io|abus_in[6] ; out              ;
+; |port_io|abus_in[7] ; |port_io|abus_in[7] ; out              ;
+; |port_io|abus_in[8] ; |port_io|abus_in[8] ; out              ;
++---------------------+---------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
-+----------------------------------------------------------------------+
-; Missing 1-Value Coverage                                             ;
-+----------------------+----------------------------+------------------+
-; Node Name            ; Output Port Name           ; Output Port Type ;
-+----------------------+----------------------------+------------------+
-; |Port_io|p_reg[0]    ; |Port_io|p_reg[0]          ; regout           ;
-; |Port_io|p_reg[5]    ; |Port_io|p_reg[5]          ; regout           ;
-; |Port_io|p_reg[6]    ; |Port_io|p_reg[6]          ; regout           ;
-; |Port_io|dbus_out[0] ; |Port_io|dbus_out[0]       ; padio            ;
-; |Port_io|dbus_out[5] ; |Port_io|dbus_out[5]       ; padio            ;
-; |Port_io|dbus_out[6] ; |Port_io|dbus_out[6]       ; padio            ;
-; |Port_io|port_io[0]  ; |Port_io|port_io[0]~output ; padio            ;
-; |Port_io|port_io[5]  ; |Port_io|port_io[5]~output ; padio            ;
-; |Port_io|port_io[6]  ; |Port_io|port_io[6]~output ; padio            ;
-; |Port_io|wr_en       ; |Port_io|wr_en~corein      ; combout          ;
-+----------------------+----------------------------+------------------+
++----------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                   ;
++----------------------------+----------------------------+------------------+
+; Node Name                  ; Output Port Name           ; Output Port Type ;
++----------------------------+----------------------------+------------------+
+; |port_io|dbus_out[1]~0     ; |port_io|dbus_out[1]~0     ; out              ;
+; |port_io|dbus_out[1]$latch ; |port_io|dbus_out[1]$latch ; out              ;
+; |port_io|dbus_out[1]~1     ; |port_io|dbus_out[1]~1     ; out0             ;
+; |port_io|dbus_out[0]~2     ; |port_io|dbus_out[0]~2     ; out              ;
+; |port_io|process_0~0       ; |port_io|process_0~0       ; out0             ;
+; |port_io|process_0~1       ; |port_io|process_0~1       ; out0             ;
+; |port_io|process_0~2       ; |port_io|process_0~2       ; out0             ;
+; |port_io|process_0~3       ; |port_io|process_0~3       ; out0             ;
+; |port_io|port_io[7]~0      ; |port_io|port_io[7]~0      ; out              ;
+; |port_io|port_io[6]~1      ; |port_io|port_io[6]~1      ; out              ;
+; |port_io|port_io[5]~2      ; |port_io|port_io[5]~2      ; out              ;
+; |port_io|port_io[4]~3      ; |port_io|port_io[4]~3      ; out              ;
+; |port_io|port_io[3]~4      ; |port_io|port_io[3]~4      ; out              ;
+; |port_io|port_io[2]~5      ; |port_io|port_io[2]~5      ; out              ;
+; |port_io|port_io[1]~6      ; |port_io|port_io[1]~6      ; out              ;
+; |port_io|port_io[0]~7      ; |port_io|port_io[0]~7      ; out              ;
+; |port_io|dbus_out[2]~3     ; |port_io|dbus_out[2]~3     ; out              ;
+; |port_io|dbus_out[3]~4     ; |port_io|dbus_out[3]~4     ; out              ;
+; |port_io|dbus_out[4]~5     ; |port_io|dbus_out[4]~5     ; out              ;
+; |port_io|dbus_out[5]~6     ; |port_io|dbus_out[5]~6     ; out              ;
+; |port_io|dbus_out[6]~7     ; |port_io|dbus_out[6]~7     ; out              ;
+; |port_io|dbus_out[7]~8     ; |port_io|dbus_out[7]~8     ; out              ;
+; |port_io|port_io[0]        ; |port_io|port_io[0]        ; out              ;
+; |port_io|port_io[0]        ; |port_io|port_io[0]~result ; pin_out          ;
+; |port_io|port_io[1]        ; |port_io|port_io[1]        ; out              ;
+; |port_io|port_io[1]        ; |port_io|port_io[1]~result ; pin_out          ;
+; |port_io|port_io[2]        ; |port_io|port_io[2]        ; out              ;
+; |port_io|port_io[2]        ; |port_io|port_io[2]~result ; pin_out          ;
+; |port_io|port_io[3]        ; |port_io|port_io[3]        ; out              ;
+; |port_io|port_io[3]        ; |port_io|port_io[3]~result ; pin_out          ;
+; |port_io|port_io[4]        ; |port_io|port_io[4]        ; out              ;
+; |port_io|port_io[4]        ; |port_io|port_io[4]~result ; pin_out          ;
+; |port_io|port_io[5]        ; |port_io|port_io[5]        ; out              ;
+; |port_io|port_io[5]        ; |port_io|port_io[5]~result ; pin_out          ;
+; |port_io|port_io[6]        ; |port_io|port_io[6]        ; out              ;
+; |port_io|port_io[6]        ; |port_io|port_io[6]~result ; pin_out          ;
+; |port_io|port_io[7]        ; |port_io|port_io[7]        ; out              ;
+; |port_io|port_io[7]        ; |port_io|port_io[7]~result ; pin_out          ;
+; |port_io|dbus_out[0]       ; |port_io|dbus_out[0]       ; pin_out          ;
+; |port_io|dbus_out[1]       ; |port_io|dbus_out[1]       ; pin_out          ;
+; |port_io|dbus_out[2]       ; |port_io|dbus_out[2]       ; pin_out          ;
+; |port_io|dbus_out[3]       ; |port_io|dbus_out[3]       ; pin_out          ;
+; |port_io|dbus_out[4]       ; |port_io|dbus_out[4]       ; pin_out          ;
+; |port_io|dbus_out[5]       ; |port_io|dbus_out[5]       ; pin_out          ;
+; |port_io|dbus_out[6]       ; |port_io|dbus_out[6]       ; pin_out          ;
+; |port_io|dbus_out[7]       ; |port_io|dbus_out[7]       ; pin_out          ;
+; |port_io|port_io[7]~8      ; |port_io|port_io[7]~8      ; out0             ;
+; |port_io|port_io[6]~9      ; |port_io|port_io[6]~9      ; out0             ;
+; |port_io|port_io[5]~10     ; |port_io|port_io[5]~10     ; out0             ;
+; |port_io|port_io[4]~11     ; |port_io|port_io[4]~11     ; out0             ;
+; |port_io|port_io[3]~12     ; |port_io|port_io[3]~12     ; out0             ;
+; |port_io|port_io[2]~13     ; |port_io|port_io[2]~13     ; out0             ;
+; |port_io|port_io[1]~14     ; |port_io|port_io[1]~14     ; out0             ;
+; |port_io|port_io[0]~15     ; |port_io|port_io[0]~15     ; out0             ;
+; |port_io|Equal0~0          ; |port_io|Equal0~0          ; out0             ;
+; |port_io|Equal1~0          ; |port_io|Equal1~0          ; out0             ;
+; |port_io|Equal2~0          ; |port_io|Equal2~0          ; out0             ;
+; |port_io|Equal3~0          ; |port_io|Equal3~0          ; out0             ;
++----------------------------+----------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 0 during simulation.
-+-----------------------------------------------------------------------+
-; Missing 0-Value Coverage                                              ;
-+-----------------------+----------------------------+------------------+
-; Node Name             ; Output Port Name           ; Output Port Type ;
-+-----------------------+----------------------------+------------------+
-; |Port_io|p_reg[0]     ; |Port_io|p_reg[0]          ; regout           ;
-; |Port_io|p_reg[1]     ; |Port_io|p_reg[1]          ; regout           ;
-; |Port_io|p_reg[2]     ; |Port_io|p_reg[2]          ; regout           ;
-; |Port_io|p_reg[3]     ; |Port_io|p_reg[3]          ; regout           ;
-; |Port_io|p_reg[4]     ; |Port_io|p_reg[4]          ; regout           ;
-; |Port_io|p_reg[5]     ; |Port_io|p_reg[5]          ; regout           ;
-; |Port_io|p_reg[6]     ; |Port_io|p_reg[6]          ; regout           ;
-; |Port_io|port_io[0]   ; |Port_io|port_io[0]~output ; padio            ;
-; |Port_io|port_io[1]   ; |Port_io|port_io[1]~output ; padio            ;
-; |Port_io|port_io[2]   ; |Port_io|port_io[2]~output ; padio            ;
-; |Port_io|port_io[3]   ; |Port_io|port_io[3]~output ; padio            ;
-; |Port_io|port_io[4]   ; |Port_io|port_io[4]~output ; padio            ;
-; |Port_io|port_io[5]   ; |Port_io|port_io[5]~output ; padio            ;
-; |Port_io|port_io[6]   ; |Port_io|port_io[6]~output ; padio            ;
-; |Port_io|nrst         ; |Port_io|nrst~corein       ; combout          ;
-; |Port_io|nrst~clkctrl ; |Port_io|nrst~clkctrl      ; outclk           ;
-+-----------------------+----------------------------+------------------+
++----------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                   ;
++----------------------------+----------------------------+------------------+
+; Node Name                  ; Output Port Name           ; Output Port Type ;
++----------------------------+----------------------------+------------------+
+; |port_io|dbus_out[1]~0     ; |port_io|dbus_out[1]~0     ; out              ;
+; |port_io|dbus_out[1]$latch ; |port_io|dbus_out[1]$latch ; out              ;
+; |port_io|dbus_out[1]~1     ; |port_io|dbus_out[1]~1     ; out0             ;
+; |port_io|dbus_out[0]~2     ; |port_io|dbus_out[0]~2     ; out              ;
+; |port_io|process_0~0       ; |port_io|process_0~0       ; out0             ;
+; |port_io|process_0~1       ; |port_io|process_0~1       ; out0             ;
+; |port_io|process_0~2       ; |port_io|process_0~2       ; out0             ;
+; |port_io|process_0~3       ; |port_io|process_0~3       ; out0             ;
+; |port_io|port_io[7]~0      ; |port_io|port_io[7]~0      ; out              ;
+; |port_io|port_io[6]~1      ; |port_io|port_io[6]~1      ; out              ;
+; |port_io|port_io[5]~2      ; |port_io|port_io[5]~2      ; out              ;
+; |port_io|port_io[4]~3      ; |port_io|port_io[4]~3      ; out              ;
+; |port_io|port_io[3]~4      ; |port_io|port_io[3]~4      ; out              ;
+; |port_io|port_io[2]~5      ; |port_io|port_io[2]~5      ; out              ;
+; |port_io|port_io[1]~6      ; |port_io|port_io[1]~6      ; out              ;
+; |port_io|port_io[0]~7      ; |port_io|port_io[0]~7      ; out              ;
+; |port_io|dbus_out[2]~3     ; |port_io|dbus_out[2]~3     ; out              ;
+; |port_io|dbus_out[3]~4     ; |port_io|dbus_out[3]~4     ; out              ;
+; |port_io|dbus_out[4]~5     ; |port_io|dbus_out[4]~5     ; out              ;
+; |port_io|dbus_out[5]~6     ; |port_io|dbus_out[5]~6     ; out              ;
+; |port_io|dbus_out[6]~7     ; |port_io|dbus_out[6]~7     ; out              ;
+; |port_io|dbus_out[7]~8     ; |port_io|dbus_out[7]~8     ; out              ;
+; |port_io|port_io[0]        ; |port_io|port_io[0]        ; out              ;
+; |port_io|port_io[0]        ; |port_io|port_io[0]~result ; pin_out          ;
+; |port_io|port_io[1]        ; |port_io|port_io[1]        ; out              ;
+; |port_io|port_io[1]        ; |port_io|port_io[1]~result ; pin_out          ;
+; |port_io|port_io[2]        ; |port_io|port_io[2]        ; out              ;
+; |port_io|port_io[2]        ; |port_io|port_io[2]~result ; pin_out          ;
+; |port_io|port_io[3]        ; |port_io|port_io[3]        ; out              ;
+; |port_io|port_io[3]        ; |port_io|port_io[3]~result ; pin_out          ;
+; |port_io|port_io[4]        ; |port_io|port_io[4]        ; out              ;
+; |port_io|port_io[4]        ; |port_io|port_io[4]~result ; pin_out          ;
+; |port_io|port_io[5]        ; |port_io|port_io[5]        ; out              ;
+; |port_io|port_io[5]        ; |port_io|port_io[5]~result ; pin_out          ;
+; |port_io|port_io[6]        ; |port_io|port_io[6]        ; out              ;
+; |port_io|port_io[6]        ; |port_io|port_io[6]~result ; pin_out          ;
+; |port_io|port_io[7]        ; |port_io|port_io[7]        ; out              ;
+; |port_io|port_io[7]        ; |port_io|port_io[7]~result ; pin_out          ;
+; |port_io|dbus_out[0]       ; |port_io|dbus_out[0]       ; pin_out          ;
+; |port_io|dbus_out[1]       ; |port_io|dbus_out[1]       ; pin_out          ;
+; |port_io|dbus_out[2]       ; |port_io|dbus_out[2]       ; pin_out          ;
+; |port_io|dbus_out[3]       ; |port_io|dbus_out[3]       ; pin_out          ;
+; |port_io|dbus_out[4]       ; |port_io|dbus_out[4]       ; pin_out          ;
+; |port_io|dbus_out[5]       ; |port_io|dbus_out[5]       ; pin_out          ;
+; |port_io|dbus_out[6]       ; |port_io|dbus_out[6]       ; pin_out          ;
+; |port_io|dbus_out[7]       ; |port_io|dbus_out[7]       ; pin_out          ;
+; |port_io|port_io[7]~8      ; |port_io|port_io[7]~8      ; out0             ;
+; |port_io|port_io[6]~9      ; |port_io|port_io[6]~9      ; out0             ;
+; |port_io|port_io[5]~10     ; |port_io|port_io[5]~10     ; out0             ;
+; |port_io|port_io[4]~11     ; |port_io|port_io[4]~11     ; out0             ;
+; |port_io|port_io[3]~12     ; |port_io|port_io[3]~12     ; out0             ;
+; |port_io|port_io[2]~13     ; |port_io|port_io[2]~13     ; out0             ;
+; |port_io|port_io[1]~14     ; |port_io|port_io[1]~14     ; out0             ;
+; |port_io|port_io[0]~15     ; |port_io|port_io[0]~15     ; out0             ;
+; |port_io|Equal0~0          ; |port_io|Equal0~0          ; out0             ;
+; |port_io|Equal1~0          ; |port_io|Equal1~0          ; out0             ;
+; |port_io|Equal2~0          ; |port_io|Equal2~0          ; out0             ;
+; |port_io|Equal3~0          ; |port_io|Equal3~0          ; out0             ;
++----------------------------+----------------------------+------------------+
 
 
 +---------------------+
@@ -205,7 +270,7 @@ The following table displays output ports that do not toggle to 0 during simulat
 Info: *******************************************************************
 Info: Running Quartus II Simulator
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Sun May 29 15:13:08 2022
+    Info: Processing started: Mon Jun 27 21:42:50 2022
 Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off Port_io -c Port_io
 Info: Using vector source file "C:/Users/GABRIEL/Desktop/vhdl/TrabsReconfig-main/trab3/Port_io/Port_io.vwf"
 Info: Overwriting simulation input file with simulation results
@@ -213,13 +278,13 @@ Info: Overwriting simulation input file with simulation results
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
 Info: Simulation partitioned into 1 sub-simulations
-Info: Simulation coverage is      63.64 %
-Info: Number of transitions in simulation is 1679
+Info: Simulation coverage is      14.71 %
+Info: Number of transitions in simulation is 1007
 Info: Vector file Port_io.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
 Info: Quartus II Simulator was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 148 megabytes
-    Info: Processing ended: Sun May 29 15:13:09 2022
-    Info: Elapsed time: 00:00:01
+    Info: Peak virtual memory: 141 megabytes
+    Info: Processing ended: Mon Jun 27 21:42:50 2022
+    Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:00
 
 

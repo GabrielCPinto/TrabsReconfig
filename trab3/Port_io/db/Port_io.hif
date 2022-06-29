@@ -31,7 +31,7 @@ ON
 # case_insensitive
 # source_file
 port_io.vhd
-a65874208ceaab204381557edefa8bad
+fd29739c2d77776833993f42bbf0ffc6
 5
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -65,7 +65,7 @@ DEF
 |
 }
 # lmf
-c:|altera|91sp2|quartus|lmf|maxplus2.lmf
+f:|quartus|altera|91sp2|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
 # macro_sequence
 

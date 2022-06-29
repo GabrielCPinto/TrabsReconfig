@@ -1,5 +1,5 @@
 Analysis & Synthesis report for control_unit
-Tue Jun 21 13:13:10 2022
+Mon Jun 27 16:43:02 2022
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -42,13 +42,13 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +------------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Jun 21 13:13:10 2022        ;
+; Analysis & Synthesis Status        ; Successful - Mon Jun 27 16:43:02 2022        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; control_unit                                 ;
 ; Top-level Entity Name              ; control_unit                                 ;
 ; Family                             ; Cyclone II                                   ;
-; Total logic elements               ; 177                                          ;
-;     Total combinational functions  ; 176                                          ;
+; Total logic elements               ; 54                                           ;
+;     Total combinational functions  ; 53                                           ;
 ;     Dedicated logic registers      ; 3                                            ;
 ; Total registers                    ; 3                                            ;
 ; Total pins                         ; 35                                           ;
@@ -163,16 +163,16 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 177       ;
+; Estimated Total logic elements              ; 54        ;
 ;                                             ;           ;
-; Total combinational functions               ; 176       ;
+; Total combinational functions               ; 53        ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 124       ;
-;     -- 3 input functions                    ; 42        ;
-;     -- <=2 input functions                  ; 10        ;
+;     -- 4 input functions                    ; 37        ;
+;     -- 3 input functions                    ; 13        ;
+;     -- <=2 input functions                  ; 3         ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 176       ;
+;     -- normal mode                          ; 53        ;
 ;     -- arithmetic mode                      ; 0         ;
 ;                                             ;           ;
 ; Total registers                             ; 3         ;
@@ -180,10 +180,10 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
 ; I/O pins                                    ; 35        ;
-; Maximum fan-out node                        ; instr[13] ;
-; Maximum fan-out                             ; 50        ;
-; Total fan-out                               ; 668       ;
-; Average fan-out                             ; 3.12      ;
+; Maximum fan-out node                        ; instr[11] ;
+; Maximum fan-out                             ; 22        ;
+; Total fan-out                               ; 219       ;
+; Average fan-out                             ; 2.41      ;
 +---------------------------------------------+-----------+
 
 
@@ -192,21 +192,21 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |control_unit              ; 176 (176)         ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 35   ; 0            ; |control_unit       ; work         ;
+; |control_unit              ; 53 (53)           ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 35   ; 0            ; |control_unit       ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
-+----------------------------------------------------------------------------------------+
-; State Machine - |control_unit|pres_state                                               ;
-+-----------------------+-----------------------+-----------------------+----------------+
-; Name                  ; pres_state.fet_dec_ex ; pres_state.fetch_only ; pres_state.rst ;
-+-----------------------+-----------------------+-----------------------+----------------+
-; pres_state.rst        ; 0                     ; 0                     ; 0              ;
-; pres_state.fetch_only ; 0                     ; 1                     ; 1              ;
-; pres_state.fet_dec_ex ; 1                     ; 0                     ; 1              ;
-+-----------------------+-----------------------+-----------------------+----------------+
++--------------------------------------------------------------------------------------------+
+; State Machine - |control_unit|pres_state                                                   ;
++-------------------------+-------------------------+-----------------------+----------------+
+; Name                    ; pres_state.fetch_dec_ex ; pres_state.fetch_only ; pres_state.rst ;
++-------------------------+-------------------------+-----------------------+----------------+
+; pres_state.rst          ; 0                       ; 0                     ; 0              ;
+; pres_state.fetch_only   ; 0                       ; 1                     ; 1              ;
+; pres_state.fetch_dec_ex ; 1                       ; 0                     ; 1              ;
++-------------------------+-------------------------+-----------------------+----------------+
 
 
 +------------------------------------------------------+
@@ -224,14 +224,14 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |control_unit|wr_w_reg_en  ;
-; 286:1              ; 2 bits    ; 380 LEs       ; 246 LEs              ; 134 LEs                ; No         ; |control_unit|wr_dc_en     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |control_unit|wr_dc_en              ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |control_unit|next_state.fetch_only ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
 
 
 +-------------------------------+
@@ -240,7 +240,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Tue Jun 21 13:13:07 2022
+    Info: Processing started: Mon Jun 27 16:43:01 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off control_unit -c control_unit
 Info: Found 2 design units, including 1 entities, in source file /users/gabriel/desktop/vhdl/trabsreconfig-main/trab3/ram_mem/ram_mem.vhd
     Info: Found design unit 1: RAM_mem-arch1
@@ -273,14 +273,14 @@ Info: Found 2 design units, including 1 entities, in source file control_unit.vh
     Info: Found design unit 1: control_unit-arch1
     Info: Found entity 1: control_unit
 Info: Elaborating entity "control_unit" for the top level hierarchy
-Info: Implemented 212 device resources after synthesis - the final resource count might be different
+Info: Implemented 89 device resources after synthesis - the final resource count might be different
     Info: Implemented 17 input pins
     Info: Implemented 18 output pins
-    Info: Implemented 177 logic cells
+    Info: Implemented 54 logic cells
 Info: Quartus II Analysis & Synthesis was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 241 megabytes
-    Info: Processing ended: Tue Jun 21 13:13:10 2022
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:03
+    Info: Peak virtual memory: 240 megabytes
+    Info: Processing ended: Mon Jun 27 16:43:02 2022
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:02
 
 
